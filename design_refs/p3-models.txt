@@ -1,0 +1,34 @@
+note {
+	batchID: string,
+	createdOn: string,
+	lastUpdated: string,
+	noteContent: string,
+	noteID: string,
+	noteType: string,
+	technicalScore: 0 | 1 | 2 | 3 | 4,
+	associateID: string | undefined,
+	weekNumber: number,
+}
+
+batch {
+	batchID: string,
+	trainerID: string,
+	startDate: string,
+	endDate: string,
+	batchTitle: string,
+	associateList: string[],
+}
+
+user {
+	userID: string,
+	email: string,
+	role: Trainer | QC_Analyst | Admin
+	firstName: string,
+	lastName: string,
+}
+
+associate {
+	associateID: string,
+	firstName: string,
+	lastName: string,
+}

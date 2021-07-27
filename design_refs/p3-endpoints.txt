@@ -1,0 +1,19 @@
+/api/v1/
+
+/users - GET, POST, PUT
+	/{userID} - GET, DELETE
+
+/batch - GET, POST, PUT
+	/{batchID} - GET, DELETE
+	/{batchID}/associates - GET
+	/time/{year}/{quarter} - GET
+
+/notes - GET, POST, PUT
+	/{noteID} - GET, DELETE
+	/batch/{batchID} - GET
+	/batch/{batchID}/{week} - GET
+	/batch/{batchID}/{week}/overall - GET
+	/associate/{associateID} - GET
+
+/associates - GET, POST, PUT
+	/{associateID} - GET, DELETE
