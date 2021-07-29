@@ -10,16 +10,22 @@ export default {
   prefixes: [Linking.makeUrl('/')],
   config: {
     screens: {
-      Root: {
+      AppNavigator: {
         screens: {
-          TabOne: {
+          Login: 'Login',
+          HomeDrawer: {
             screens: {
-              TabOneScreen: 'one',
-            },
-          },
-          TabTwo: {
-            screens: {
-              TabTwoScreen: 'two',
+              QualityAudit: {
+                screens: {
+                  BatchSelection: 'BatchSelection',
+                  NoteNavigation: {
+                    screens: {
+                      OverallNotes: 'OverallNotes',
+                      WeekNotes: 'WeekNotes',
+                    }
+                  },
+                },
+              },
             },
           },
         },

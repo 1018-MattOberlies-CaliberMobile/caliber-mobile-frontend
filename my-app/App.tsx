@@ -13,17 +13,17 @@ export default function App() {
 
   if (!isLoadingComplete) {
     return null;
-  } else {
-    return (
-      <SafeAreaProvider>
-        <Navigation colorScheme={colorScheme} />
-        <StatusBar />
-      </SafeAreaProvider>
-    );
   }
+  return (
+    <SafeAreaProvider>
+      <Navigation colorScheme={colorScheme} />
+      <StatusBar />
+    </SafeAreaProvider>
+  );
 }
 
 const styles = StyleSheet.create({
+  // eslint-disable-next-line react-native/no-unused-styles
   container: {
     alignItems: 'center',
     backgroundColor: '#fff',
@@ -31,4 +31,3 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
-
