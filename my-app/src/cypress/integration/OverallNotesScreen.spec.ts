@@ -10,9 +10,17 @@ context('overall screen', () => {
     });
   });
   context('overall week body', () => {
-    it('status is visible', () => {
+    it('should reveal modal when status indicator is pressed', () => {
       cy.get('[data-testid="statusIndicator"]').click();
       cy.get('[data-testid="statusSelector"]').should('be.visible');
+    });
+    it('should dismiss modal when new status is chosen', () => {
+      cy.get('[data-testid="statusSelector"]').should('be.visible');
+      cy.get('[data-testid="statusSelector"]').find('[data-testid="superstar"]').click();
+      cy.get('[data-testid="statusIndicator"]').invoke('prop', 'status')
+        .then((status) => {
+          expect(status).to.equal(4);
+        });
     });
     it('notes visible', () => {
       cy.get('[data-testid="overallNotesInput"]').type('text');
