@@ -11,45 +11,30 @@ import {
 import Batch from '../models/batch';
 import { styles1 } from '../styles/style1';
 
-const DATA:Array<Batch> = [
-  {
-    batchID: '123123',
-    batchTitle: '05132020 Cloud Native Matt',
-    trainerID: 'Matt',
-    startDate: '05/13/2020',
-    associateList: [],
-    notes: [],
-  },
-  {
-    batchID: '12334',
-    batchTitle: '05112020 Java Tyler',
-    trainerID: 'Tyler',
-    startDate: '05/11/2020',
-    associateList: [],
-    notes: [],
-  },
-];
-
 type Props = {
-
+  batchData:Array<Batch>,
 }
 
-export const SearchBar: React.FC<Props> = (props): JSX.Element => {
+export const SearchBar: React.FC<Props> = ({ batchData }): JSX.Element => {
   const nav = useNavigation();
-  const [searchResult, setSearchResult] = useState<Batch[]>(DATA);
+  const [searchResult, setSearchResult] = useState<Batch[]>(batchData);
   const [search, setSearch] = useState('');
 
   const searchBatch = (): void => {
     const arr: Batch[] = [];
-    for (let i = 0; i < DATA.length; i += 1) {
-      if (DATA[i].batchTitle === search) {
-        arr.push(DATA[i]);
+    if (search === 'all') {
+      setSearchResult(batchData);
+      return;
+    }
+    for (let i = 0; i < batchData.length; i += 1) {
+      if (batchData[i].batchTitle === search) {
+        arr.push(batchData[i]);
       }
-      if (DATA[i].trainerID === search) {
-        arr.push(DATA[i]);
+      if (batchData[i].trainerID === search) {
+        arr.push(batchData[i]);
       }
-      if (DATA[i].batchID === search) {
-        arr.push(DATA[i]);
+      if (batchData[i].batchID === search) {
+        arr.push(batchData[i]);
       }
     }
     setSearchResult(arr);
