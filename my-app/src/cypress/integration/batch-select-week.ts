@@ -1,16 +1,17 @@
 /// <reference types="cypress" />
 
-context('year selection tests', () => {
+context('weeks selection tests', () => {
   beforeEach(() => {
     cy.visit('http://localhost:19006/WeekNotes/');
   });
 
-  it('has a nav-bar for weeks', () => {
-    cy.contains('Week 1').click();
-    cy.location('pathname').should('equal', '/one');
+  it('has a scroll view for weeks', () => {
+    cy.location('pathname').should('equal', '/WeekNotes');
+    cy.contains(/Week [A-Z0-9]+/i);
   });
-  it('can navigate to other weeks', () => {
-    cy.contains('Week 2').click();
-    cy.location('pathname').should('equal', '/two');
+
+  it('should show week content when clicked', () => {
+    cy.contains('Week 1').click();
+    cy.get('[data-testid="studentCard"]').should('be.visible');
   });
 });
