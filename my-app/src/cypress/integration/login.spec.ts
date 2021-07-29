@@ -1,7 +1,12 @@
 /// <reference types="cypress" />
 
-it('works', () => {
-  cy.visit('/')
-  cy.contains('Open up App.js to start working on your app!')
-    .should('be.visible')
+describe('The Login Page', () => {
+  it('successfully loads', () => {
+    cy.visit('http://localhost:19006/Root/Login');
+  });
+  it('successfully rendered text', () => {
+    cy.visit('http://localhost:19006/Root/Login');
+    cy.contains('username:');
+    cy.contains('password:');
+  });
 });
