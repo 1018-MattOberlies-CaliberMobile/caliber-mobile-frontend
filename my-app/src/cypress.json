@@ -1,6 +1,42 @@
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> 13ccfa2784a2db8052ccacf7c016ab9344a46c5f
 {
   "fixturesFolder": false,
   "supportFile": false,
   "pluginsFile": false,
   "baseUrl": "http://localhost:19006"
 }
+<<<<<<< HEAD
+=======
+=======
+{}
+>>>>>>> 9ae59be (added testing for batch search)
+=======
+=======
+>>>>>>> e647fbf (added testing for batch search)
+{}
+=======
+=======
+>>>>>>> c196c9e (added testing for batch search)
+{
+  "fixturesFolder": false,
+  "supportFile": false,
+  "pluginsFile": false,
+  "baseUrl": "http://localhost:19006"
+}
+<<<<<<< HEAD
+>>>>>>> 6fa6fbb (move cypress folder to src)
+<<<<<<< HEAD
+>>>>>>> 17867e1 (move cypress folder to src)
+=======
+=======
+=======
+{}
+>>>>>>> 9ae59be (added testing for batch search)
+>>>>>>> c196c9e (added testing for batch search)
+>>>>>>> e647fbf (added testing for batch search)
+>>>>>>> 13ccfa2784a2db8052ccacf7c016ab9344a46c5f
