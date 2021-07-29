@@ -8,6 +8,7 @@ import Batch from '../models/batch';
 import { styles1 } from '../styles/style1';
 
 import { SearchBar } from '../components/SearchBar';
+import Batch from '../models/batch';
 import { styles1 } from '../styles/style1';
 
 type Props = {
@@ -96,7 +97,7 @@ const BatchSelectionScreen: React.FC<Props> = (props): JSX.Element => {
         </View>
       <View style = {styles1.container}>
         <View style = {styles1.break}/>
-        <SearchBar/>
+        <SearchBar batchData={DATA} />
       </View>
     </>
   );
