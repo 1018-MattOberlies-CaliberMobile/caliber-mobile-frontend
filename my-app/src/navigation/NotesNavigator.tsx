@@ -10,7 +10,7 @@ import * as React from 'react';
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
 import { NotesTabParamList } from '../@types/types';
-import WeekNotesScreen from '../../WeekNotesScreen';
+import WeekNotesScreen from '../screens/WeekNotesScreen';
 import OverallNotesScreen from '../screens/OverallNotesScreen';
 
 function TabBarIcon(props: { name: React.ComponentProps<typeof Ionicons>['name']; color: string }): JSX.Element {
