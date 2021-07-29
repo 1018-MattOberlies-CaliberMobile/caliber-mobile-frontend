@@ -45,7 +45,7 @@
             "error",
             2
         ],
-        "linebreak-style": 0,
+        "linebreak-style": "off",
         "quotes": [
             "error",
             "single"
