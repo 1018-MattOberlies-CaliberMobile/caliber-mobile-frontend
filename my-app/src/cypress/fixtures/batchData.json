@@ -1,0 +1,26 @@
+[
+  {
+    "batchID": "123123",
+    "batchTitle": "05132021 Cloud Native Matt",
+    "trainerID": "Matt",
+    "startDate": "05/13/2021",
+    "associateList": [],
+    "notes": []
+  },
+  {
+    "batchID": "12334",
+    "batchTitle": "05112021 Java Tyler",
+    "trainerID": "Tyler",
+    "startDate": "05/11/2021",
+    "associateList": [],
+    "notes": []
+  },
+  {
+    "batchID": "151514",
+    "batchTitle": "04162020 DevOps Tim",
+    "trainerID": "Tim",
+    "startDate": "04/16/2020",
+    "associateList": [],
+    "notes": []
+  }
+]
