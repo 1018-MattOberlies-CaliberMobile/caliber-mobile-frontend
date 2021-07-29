@@ -13,7 +13,7 @@ const Stack = createStackNavigator<QANavStackParamList>();
 const QualityAuditNavigator: React.FC<unknown> = (): JSX.Element => (
   <Stack.Navigator
     initialRouteName='BatchSelection'
-    screenOptions={{ headerShown: false }}>
+    screenOptions={{ headerShown: true }}>
     {console.log('Quality Nav')}
     <Stack.Screen name="BatchSelection" component={BatchSelectionScreen} />
     <Stack.Screen name="NoteNavigation" component={NotesNavigator} />
