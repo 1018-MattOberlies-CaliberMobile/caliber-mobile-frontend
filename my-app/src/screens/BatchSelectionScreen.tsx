@@ -7,10 +7,6 @@ import { getBatchYears } from '../remote/CaliberBatchAPI';
 import Batch from '../models/batch';
 import { styles1 } from '../styles/style1';
 
-import { SearchBar } from '../components/SearchBar';
-import Batch from '../models/batch';
-import { styles1 } from '../styles/style1';
-
 type Props = {
 
 }
@@ -94,10 +90,6 @@ const BatchSelectionScreen: React.FC<Props> = (props): JSX.Element => {
             <Text>Select a year</Text>
           )
         } */}
-        </View>
-      <View style = {styles1.container}>
-        <View style = {styles1.break}/>
-        <SearchBar batchData={DATA} />
       </View>
     </>
   );
