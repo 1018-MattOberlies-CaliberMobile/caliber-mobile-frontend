@@ -22,7 +22,7 @@ export default {
                     screens: {
                       OverallNotes: 'OverallNotes',
                       WeekNotes: 'WeekNotes',
-                    }
+                    },
                   },
                 },
               },
