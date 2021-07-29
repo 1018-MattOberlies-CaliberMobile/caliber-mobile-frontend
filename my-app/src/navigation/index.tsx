@@ -21,7 +21,7 @@ function RootNavigator() {
   console.log('root');
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="Root" component={AppNavigator} />
+      <Stack.Screen name="AppNavigator" component={AppNavigator} />
       <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
     </Stack.Navigator>
   );
@@ -31,7 +31,7 @@ export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeNa
   return (
     <NavigationContainer
       linking={LinkingConfiguration}
-      >
+    >
       <RootNavigator />
     </NavigationContainer>
   );

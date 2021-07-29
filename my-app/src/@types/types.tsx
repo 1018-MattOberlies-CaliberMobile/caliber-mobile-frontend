@@ -4,7 +4,7 @@
  */
 
 export type RootStackParamList = {
-  Root: undefined;
+  AppNavigator: undefined;
   NotFound: undefined;
 };
 
