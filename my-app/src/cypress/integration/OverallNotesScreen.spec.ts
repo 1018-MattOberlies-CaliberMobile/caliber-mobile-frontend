@@ -22,4 +22,13 @@ context('overall screen', () => {
         });
     });
   });
+  context('create note functionality', () => {
+    cy.get('[data-testid="overallNotesInput"]').type('this a note body');
+    cy.get('[data-testid="submitNoteButton"]').click();
+    cy.intercept('/api/v1/user', { hostname: 'mjmpub1ma3.execute-api.us-east-1.amazonaws.com' }, (req) => {
+      /* do something with request and/or response */
+      const { noteId, noteContent } = req.body;
+      expect(noteId).to.equal('');
+    });
+  });
 });
