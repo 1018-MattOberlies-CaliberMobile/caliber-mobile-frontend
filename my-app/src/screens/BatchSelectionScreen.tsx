@@ -1,9 +1,15 @@
 import { useNavigation } from '@react-navigation/native';
+<<<<<<< HEAD
 import React, { useEffect, useState } from 'react';
 import { Button, Text, View } from 'react-native';
 import HorizontalSelector from '../components/HorizontalSelector/HorizontalSelector';
 import { SearchBar } from '../components/SearchBar';
 import { getBatchYears } from '../remote/CaliberBatchAPI';
+=======
+import React from 'react';
+import { Button, Text, View } from 'react-native';
+import { SearchBar } from '../components/SearchBar';
+>>>>>>> 17dcb7371268426bd3e54baae19dc09685dff6f0
 import Batch from '../models/batch';
 import { styles1 } from '../styles/style1';
 
@@ -53,6 +59,7 @@ const BatchSelectionScreen: React.FC<Props> = (props): JSX.Element => {
       <Text>this is the Batch selection screen</Text>
       <Button title='Week Notes' onPress={(): void => navigation.navigate('NoteNavigation', { text: 'Hey' })}/>
 <<<<<<< HEAD
+<<<<<<< HEAD
       <View style={ { flex: 1 } }>
         <HorizontalSelector data={years} onPress={setSelectedYear} />
       </View>
@@ -70,6 +77,11 @@ const BatchSelectionScreen: React.FC<Props> = (props): JSX.Element => {
         <View style = {styles1.break}/>
         <SearchBar batchData={DATA} />
 >>>>>>> 2ac53f4e2b3ff53b20403be373c03ea8f7dd30fd
+=======
+      <View style = {styles1.container}>
+        <View style = {styles1.break}/>
+        <SearchBar batchData={DATA} />
+>>>>>>> 17dcb7371268426bd3e54baae19dc09685dff6f0
       </View>
     </>
   );
