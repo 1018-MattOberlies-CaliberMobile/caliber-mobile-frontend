@@ -19,15 +19,17 @@ const LoginPageStyles = StyleSheet.create({
     padding: 10,
   },
   image: {
-    height: '100%',
+    height: 40,
     marginBottom: 8,
-    width: '100%',
+    resizeMode: 'contain',
+    width: 100,
   },
   imageContainer: {
+    alignItems: 'center',
     backgroundColor: 'white',
     height: 100,
     justifyContent: 'center',
-    width: 350,
+    width: '100%',
   },
   inputField: {
     borderColor: theme.colors.secondary,
