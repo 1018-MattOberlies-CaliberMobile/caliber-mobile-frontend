@@ -6,7 +6,7 @@ describe('The Login Page', () => {
   });
   it('successfully rendered text', () => {
     cy.visit('http://localhost:19006/Root/Login');
-    cy.contains('username:');
-    cy.contains('password:');
+    cy.contains('Username:');
+    cy.contains('Password:');
   });
 });
