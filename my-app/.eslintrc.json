@@ -70,6 +70,7 @@
                 "afterColon": true 
             }
         ],
+        "import/no-extraneous-dependencies": "off",
         "keyword-spacing": [
             "error",
             {

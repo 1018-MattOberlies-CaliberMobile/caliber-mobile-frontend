@@ -1,95 +1,72 @@
 import { useNavigation } from '@react-navigation/native';
 import React, { useEffect, useState } from 'react';
-import { Button, Text, View } from 'react-native';
+import { ScrollView, View } from 'react-native';
+import { useDispatch } from 'react-redux';
 import HorizontalSelector from '../components/HorizontalSelector';
 import { SearchBar } from '../components/SearchBar';
-import { getBatchYears } from '../remote/CaliberBatchAPI';
+import { getBatchYears, getBatchesByYear } from '../remote/CaliberBatchAPI';
 import Batch from '../models/batch';
 import { styles1 } from '../styles/style1';
+import BatchList from '../components/BatchList';
+import { setBatch } from '../redux/slices/batch.slice';
 
 type Props = {
 
 }
 
-const DATA:Array<Batch> = [
-  {
-    batchId: '123123',
-    batchTitle: '05132020 Cloud Native Matt',
-    trainers: [
-      {
-        username: '848a91eb-1829-4cc5-8386-c7f6738f76ab',
-        role: 'Trainer',
-      },
-    ],
-    startDate: new Date().toISOString(),
-    endDate: new Date().toISOString(),
-    associates: [
-
-    ],
-    notes: [
-
-    ],
-  },
-  {
-    batchId: 'tryhtry',
-    batchTitle: '05132020 Cloud Native Matt',
-    trainers: [
-      {
-        username: '848a91eb-5321-4cc5-8386-c7f6738f76ab',
-        role: 'Trainer',
-      },
-    ],
-    startDate: new Date().toISOString(),
-    endDate: new Date().toISOString(),
-    associates: [
-
-    ],
-    notes: [
-
-    ],
-  },
-
-];
-
-const BatchSelectionScreen: React.FC<Props> = (props): JSX.Element => {
+const BatchSelectionScreen: React.FC<Props> = (): JSX.Element => {
   const navigation = useNavigation();
+  const dispatch = useDispatch();
+
   const [years, setYears] = useState<string[]>([]);
-  const [selectedYear, setSelectedYear] = useState<string>();
+  const [selectedYear, setSelectedYear] = useState<string>(new Date().getFullYear().toString());
+  const [batchList, setBatchList] = useState<Batch[]>([]);
+  const [searchResults, setSearchResults] = useState<Batch[]>();
 
   useEffect(() => {
     // Retrieves a list of years which contain batches and sets the component state
     const retrieveBatchYears = async (): Promise<void> => {
       setYears(await getBatchYears());
+      setSelectedYear(years[0]);
     };
     retrieveBatchYears();
   }, []);
 
-  // useEffect(() => {
+  useEffect(() => {
+    // set batch list according to selected year
+    const getBatchList = async (): Promise<void> => {
+      if (selectedYear) {
+        setBatchList(await getBatchesByYear(selectedYear));
+      }
+    };
+    getBatchList();
 
-  // }, [selectedYear]);
+    setSearchResults(undefined);
+  }, [selectedYear]);
+
+  const onSelectBatch = (batch: Batch): void => {
+    console.log(batch);
+    // Assign redux state to be this batch
+    dispatch(setBatch(batch));
+
+    // navigate to notes page
+    navigation.navigate('NoteNavigation');
+  };
 
   console.log('Batch Selection');
   return (
     <>
-      <Text>this is the Batch selection screen</Text>
-      <Button title='Week Notes' onPress={(): void => navigation.navigate('NoteNavigation', { text: 'Hey' })}/>
-
       <View style={ { flex: 1 } }>
-        <HorizontalSelector data={years} onPress={setSelectedYear} />
+        <HorizontalSelector data={years} initialSelected={years[0]} onPress={setSelectedYear} />
         <View style = {styles1.container}>
-          <View style = {styles1.break}/>
-          <SearchBar batchData={DATA} />
+          <SearchBar batchData={batchList} setBatchList={setSearchResults} />
         </View>
       </View>
 
       <View style={ { flex: 8 } }>
-        {/* {
-          selectedYear ? (
-            <BatchList year={selectedYear} />
-          ) : (
-            <Text>Select a year</Text>
-          )
-        } */}
+        <ScrollView>
+          <BatchList batches={searchResults || batchList} onPress={onSelectBatch} />
+        </ScrollView>
       </View>
     </>
   );

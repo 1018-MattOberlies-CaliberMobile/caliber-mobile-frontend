@@ -12,11 +12,11 @@ context('overall screen', () => {
       batch = data;
     });
 
-    cy.wait(2 * 1000);
-    cy.window().its('store').invoke('dispatch', {
-      type: 'SET_BATCH',
-      payload: batch,
-    });
+    // cy.wait(2 * 1000);
+    // cy.window().its('store').invoke('dispatch', {
+    //   type: 'SET_BATCH',
+    //   payload: batch,
+    // });
   });
 
   context('week navigation', () => {
@@ -55,19 +55,21 @@ context('overall screen', () => {
         hostname: 'mjmpub1ma3.execute-api.us-east-1.amazonaws.com',
       }, (req) => {
         const input = Object.keys(req.body);
-        const expected = ['technicalScore', 'noteContent', 'weekNumber'];
         console.debug('No associate in request body');
         expect(input.includes('associate')).to.equal(false);
 
         console.debug('Request body contains all the expected attributes');
-        expect(input.length).to.equal(expected.length);
-        expect(input).to.deep.eq(expected);
+        expect(input.length).to.equal(3);
+        expect(input).to.have.all.keys('technicalScore', 'noteContent', 'weekNumber');
 
         console.debug('Request matches inputted note body');
         expect(req.body.noteContent).to.be('this a note body');
 
         console.debug('Request matches selected technical score');
         expect(req.body.technicalScore).to.equal(4);
+
+        console.debug('Request ensures weekNumber is number');
+        expect(req.body.weekNumber).to.be.instanceOf(Number);
       });
     });
   });

@@ -4,9 +4,9 @@
 
 class Associate {
   constructor(
-    public associateId: string,
-    public firstName: string,
-    public lastName: string,
+      public associateId: string,
+      public firstName: string,
+      public lastName: string,
   ) {}
 }
 

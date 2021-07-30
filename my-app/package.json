@@ -6,16 +6,19 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "eject": "expo eject",
-    "test": "npx jest"
+    "test": "npx jest",
+    "cy": "cd src && npx cypress open"
   },
   "dependencies": {
     "@expo/vector-icons": "^12.0.5",
+    "@jest/globals": "^27.0.6",
     "@react-native-community/masked-view": "0.1.10",
     "@react-navigation/bottom-tabs": "^5.11.11",
     "@react-navigation/drawer": "^5.12.5",
     "@react-navigation/native": "^5.9.4",
     "@react-navigation/stack": "^5.14.5",
     "@reduxjs/toolkit": "^1.6.1",
+    "axios": "^0.21.1",
     "expo": "~42.0.1",
     "expo-linking": "^2.3.1",
     "expo-splash-screen": "^0.11.2",
