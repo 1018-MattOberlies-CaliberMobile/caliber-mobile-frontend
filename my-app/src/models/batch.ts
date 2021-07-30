@@ -9,6 +9,7 @@ import User from './user';
 class Batch {
   constructor(
     public batchId: string,
+    public batchTitle: string,
     public trainers: User[],
     public startDate: string,
     public endDate: string,
