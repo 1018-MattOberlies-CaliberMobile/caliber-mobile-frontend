@@ -1,7 +1,7 @@
 /* eslint-disable max-len */
 import React, { useEffect, useState } from 'react';
 import { Pressable, ScrollView, Text } from 'react-native';
-import HorizontalSelectorStyle from '../../styles/HorizontalSelector';
+import HorizontalSelectorStyle from '../styles/HorizontalSelector';
 
 type Props = {
   data: string[],
