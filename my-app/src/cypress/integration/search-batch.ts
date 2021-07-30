@@ -1,3 +1,6 @@
+import user from '../fixtures/user.json';
+
+
 describe('example to-do app', () => {
   beforeEach(() => {
     // Cypress starts out with a blank slate for each test
