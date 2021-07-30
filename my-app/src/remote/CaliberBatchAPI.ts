@@ -26,10 +26,10 @@ export const getBatchYears = async (): Promise<string[]> => {
  */
 export function getBatchesByYear(year: string): Promise<Batch[]> {
   return BackendClient.get<Batch[]>(`/year/${year}`)
-    .then((res) => {
+    .then((res: { data: Batch[]; }) => {
       console.log('Successfuly retrieved batches', res.data);
       return res.data as Batch[];
-    }).catch((err) => {
+    }).catch((err: unknown) => {
       // TODO: add toast message
       console.log('Error retrieving list of batches: ', err);
       return [];
