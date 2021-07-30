@@ -42,6 +42,7 @@ export const SearchBar: React.FC<Props> = ({ batchData, setBatchList }): JSX.Ele
     <>
       <View style={styles1.row}>
         <TextInput
+          testID='search-bar'
           placeholder = 'Search Here'
           onChangeText = { (txt): void => setSearch(txt) }
         />
