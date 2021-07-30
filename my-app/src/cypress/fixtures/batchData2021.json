@@ -1,0 +1,28 @@
+[
+  {
+    "batchId": "123123",
+    "batchTitle": "05132021 Cloud Native Matt",
+    "trainers": [
+      {
+        "username": "Matt",
+        "role": "Trainer"
+      }
+    ],
+    "startDate": "05/13/2021",
+    "associateList": [],
+    "notes": []
+  },
+  {
+    "batchId": "123321",
+    "batchTitle": "05132021 Java Trevor",
+    "trainers": [
+      {
+        "username": "Trevor",
+        "role": "Trainer"
+      }
+    ],
+    "startDate": "05/13/2021",
+    "associateList": [],
+    "notes": []
+  }
+]

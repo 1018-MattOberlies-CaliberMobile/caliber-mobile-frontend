@@ -1,0 +1,28 @@
+[
+  {
+    "batchId": "12334",
+    "batchTitle": "05112020 Java Tyler",
+    "trainers": [
+      {
+        "username": "Tyler",
+        "role": "Trainer"
+      }
+    ],
+    "startDate": "05/11/2020",
+    "associateList": [],
+    "notes": []
+  },
+  {
+    "batchId": "151514",
+    "batchTitle": "04162020 DevOps Tim",
+    "trainers": [
+      {
+        "username": "Tim",
+        "role": "Trainer"
+      }
+    ],
+    "startDate": "04/16/2020",
+    "associateList": [],
+    "notes": []
+  }
+]
