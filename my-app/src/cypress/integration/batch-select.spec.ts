@@ -53,9 +53,12 @@ context('batch selection tests', () => {
       cy.contains('05132021 Java Trevor').should('not.exist');
     });
     it('do a unsuccessful search test', () => {
-      cy.get('[data-testid="search-bar"]').type('fasdf');
-      cy.get('[data-testid="query-btn"]').should('contain', 'Button').click();
-      cy.get('[data-testid="flat-list-batches"]').should('be.empty');
+      cy.wait('@years');
+      cy.wait('@getBatches2021');
+
+      cy.get('[data-testid="search-bar"]').type('fasdfasfd', { force: true });
+      cy.contains('Search').click({ force: true });
+      cy.get('[data-testid="batch-list"]').should('not.have.value');
     });
   });
 });
