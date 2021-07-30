@@ -1,19 +1,11 @@
 import { useNavigation } from '@react-navigation/native';
 import React, { useEffect, useState } from 'react';
-<<<<<<< HEAD
 import { Button, Text, View } from 'react-native';
 import HorizontalSelector from '../components/HorizontalSelector/HorizontalSelector';
 import { SearchBar } from '../components/SearchBar';
 import { getBatchYears } from '../remote/CaliberBatchAPI';
 import Batch from '../models/batch';
 import { styles1 } from '../styles/style1';
-=======
-import { View } from 'react-native';
-import { Button, Text } from 'react-native';
-import HorizontalSelector from '../components/HorizontalSelector/HorizontalSelector';
-import Batch from '../models/Batch';
-import { getBatchYears } from '../remote/CaliberBatchAPI';
->>>>>>> 51efbae (Fixing merge conflicts with BatchSelectionScreen)
 
 type Props = {
 
@@ -81,7 +73,6 @@ const BatchSelectionScreen: React.FC<Props> = (props): JSX.Element => {
     <>
       <Text>this is the Batch selection screen</Text>
       <Button title='Week Notes' onPress={(): void => navigation.navigate('NoteNavigation', { text: 'Hey' })}/>
-<<<<<<< HEAD
 
       <View style={ { flex: 1 } }>
         <HorizontalSelector data={years} onPress={setSelectedYear} />
@@ -89,10 +80,6 @@ const BatchSelectionScreen: React.FC<Props> = (props): JSX.Element => {
           <View style = {styles1.break}/>
           <SearchBar batchData={DATA} />
         </View>
-=======
-      <View style={ { flex: 1 } }>
-        <HorizontalSelector data={years} onPress={setSelectedYear} />
->>>>>>> 51efbae (Fixing merge conflicts with BatchSelectionScreen)
       </View>
 
       <View style={ { flex: 8 } }>
