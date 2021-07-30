@@ -6,11 +6,9 @@ import { Role } from '../@types';
 
 class User {
   constructor(
-    public userId: string,
+    public username: string,
     public role: Role,
-  ) {
-
-  }
+  ) {}
 }
 
 export default User;
