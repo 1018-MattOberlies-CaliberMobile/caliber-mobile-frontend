@@ -26,6 +26,7 @@ const NotesNavigator: React.FC<unknown> = (): JSX.Element => {
   return (
     <BottomTab.Navigator
       initialRouteName='WeekNotes'
+
       tabBarOptions={{ activeTintColor: Colors[colorScheme].tint }}>
       {console.log('Notes Nav')}
       <BottomTab.Screen
