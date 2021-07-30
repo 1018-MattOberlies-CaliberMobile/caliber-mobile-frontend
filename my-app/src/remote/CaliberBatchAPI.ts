@@ -22,7 +22,7 @@ export function getBatchesByYear(year: string): Batch[] {
   const DATA:Array<Batch> = [
     {
       batchId: '123123',
-      batchTitle: '05132021 Cloud Native Matt',
+      batchTitle: `0513${year} Cloud Native Matt`,
       trainers: [
         {
           username: 'Matt',
@@ -38,7 +38,7 @@ export function getBatchesByYear(year: string): Batch[] {
     },
     {
       batchId: 'tryhtry',
-      batchTitle: '05132021 DevOps Tim',
+      batchTitle: `0513${year} DevOps Tim`,
       trainers: [
         {
           username: 'Tim',
@@ -56,7 +56,7 @@ export function getBatchesByYear(year: string): Batch[] {
   for (let i = 0; i < 20; i += 1) {
     const newBatch: Batch = {
       batchId: `${i}`,
-      batchTitle: '05132020 DevOps Tim',
+      batchTitle: `0513${year} ${i % 2 === 0 ? 'Cloud Native Matt' : 'DevOps Tim'}`,
       trainers: [
         {
           username: `${i % 2 === 0 ? 'Matt' : 'Tim'}`,

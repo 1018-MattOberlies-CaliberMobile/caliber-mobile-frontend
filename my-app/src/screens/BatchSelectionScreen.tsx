@@ -1,12 +1,14 @@
 import { useNavigation } from '@react-navigation/native';
 import React, { useEffect, useState } from 'react';
 import { ScrollView, View } from 'react-native';
+import { useDispatch } from 'react-redux';
 import HorizontalSelector from '../components/HorizontalSelector';
 import { SearchBar } from '../components/SearchBar';
 import { getBatchYears, getBatchesByYear } from '../remote/CaliberBatchAPI';
 import Batch from '../models/batch';
 import { styles1 } from '../styles/style1';
 import BatchList from '../components/BatchList';
+import { setBatch } from '../redux/slices/batch.slice';
 
 type Props = {
 
@@ -14,6 +16,8 @@ type Props = {
 
 const BatchSelectionScreen: React.FC<Props> = (): JSX.Element => {
   const navigation = useNavigation();
+  const dispatch = useDispatch();
+
   const [years, setYears] = useState<string[]>([]);
   const [selectedYear, setSelectedYear] = useState<string>(new Date().getFullYear().toString());
   const [batchList, setBatchList] = useState<Batch[]>([]);
@@ -43,8 +47,10 @@ const BatchSelectionScreen: React.FC<Props> = (): JSX.Element => {
   const onSelectBatch = (batch: Batch): void => {
     console.log(batch);
     // Assign redux state to be this batch
+    dispatch(setBatch(batch));
 
     // navigate to notes page
+    navigation.navigate('NoteNavigation');
   };
 
   console.log('Batch Selection');
