@@ -1,1 +1,6 @@
-{}
+{
+    "fixturesFolder": true,
+    "supportFile": false,
+    "pluginsFile": false,
+    "baseUrl": "http://localhost:19006"
+}

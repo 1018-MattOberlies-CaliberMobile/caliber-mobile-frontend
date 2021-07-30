@@ -6,7 +6,9 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "eject": "expo eject",
-    "test": "npx jest"
+    "test": "npx jest",
+    "cy": "cd src && npx cypress open"
+
   },
   "dependencies": {
     "@expo/vector-icons": "^12.0.5",
@@ -32,6 +34,7 @@
     "react-native-web": "~0.13.12",
     "react-test-renderer": "^17.0.2",
     "ts-node": "^10.1.0"
+
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
