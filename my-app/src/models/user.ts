@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 /* eslint-disable @typescript-eslint/no-empty-function */
 /* eslint-disable @typescript-eslint/no-useless-constructor */
 /* eslint-disable no-unused-vars */
@@ -15,12 +14,3 @@ class User {
 }
 
 export default User;
-=======
-/* eslint-disable no-unused-vars */
-export default class User {
-  constructor(
-    public userID: string,
-    public role: 'Trainer' | 'QC_Analyst' | 'Admin',
-  ) {}
-}
->>>>>>> 497d9b7 (added data models)
