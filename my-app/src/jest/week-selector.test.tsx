@@ -1,4 +1,6 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { render, fireEvent } from '@testing-library/react-native';
+import { expect } from '@jest/globals';
 import 'react-native';
 import React from 'react';
 import HorizontalSelector from '../components/HorizontalSelector';
