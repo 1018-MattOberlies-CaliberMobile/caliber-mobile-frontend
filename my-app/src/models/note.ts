@@ -1,11 +1,18 @@
+/* eslint-disable @typescript-eslint/no-empty-function */
+/* eslint-disable @typescript-eslint/no-useless-constructor */
 /* eslint-disable no-unused-vars */
-export default class Note {
+
+import { TechnicalScore } from '../@types';
+import Associate from './associate';
+
+class Note {
   constructor(
-    public noteID: string,
-    public batchID: string,
+    public noteId: string,
     public noteContent: string,
-    public technicalScore: 0 | 1 | 2 | 3 | 4,
-    public associateID: string | undefined,
+    public technicalScore: TechnicalScore,
+    public associate: Associate,
     public weekNumber: number,
   ) {}
 }
+
+export default Note;
