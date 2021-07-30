@@ -1,5 +1,3 @@
-import user from '../fixtures/user.json';
-
 describe('example to-do app', () => {
   beforeEach(() => {
     // Cypress starts out with a blank slate for each test
@@ -13,9 +11,9 @@ describe('example to-do app', () => {
     it('loads the mock data', () => {
       cy.fixture('../fixtures/batchData').then((json) => {
         cy.intercept('GET', '/batch/time/*', json).as('getMockData');
-      });
-      cy.await('@getMockData').then(({ request }) => {
-        expect(request.body).to.eq(json);
+        cy.wait('@getMockData').then(({ request }) => {
+          expect(request.body).to.eq(json);
+        });
       });
     });
     it('do a succesful search test', () => {
