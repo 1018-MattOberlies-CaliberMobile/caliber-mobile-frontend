@@ -5,19 +5,26 @@ import {
   Button, View, Text, TouchableOpacity, Image,
 } from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
+import { useAppDispatch } from '../redux';
+import { loginAsync } from '../redux/slices/user.slice';
 import LoginPageStyles from '../styles/LoginPageStyles';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const revlogo = require('../../assets/images/rev-logo.png');
 
-type Props = {
-
-};
-
-const LoginPage: React.FC<Props> = (props): JSX.Element => {
+const LoginPage: React.FC<unknown> = (): JSX.Element => {
   const navigation = useNavigation();
   const [username, setUserName] = useState<string>('');
   const [password, setPassWord] = useState<string>('');
-  const handleLogin = ():void => {};
+  const dispatch = useAppDispatch();
+  const handleLogin = async ():Promise<void> => {
+    const result = await dispatch(loginAsync({ username, password }));
+    if (result) {
+      // navigate to next page
+    } else {
+      // eslint-disable-next-line no-alert
+      alert('Login failed');
+    }
+  };
   const Press = (): void => navigation.navigate(
     'HomeDrawer', { screens: 'QualityAudit' },
   );
