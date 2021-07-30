@@ -7,7 +7,7 @@ import { Role } from '../@types';
 class User {
   constructor(
     public userName: string,
-    public role: 'Trainer' | 'QC_Analyst' | 'Admin',
+    public role: Role,
   ) {}
 }
 
