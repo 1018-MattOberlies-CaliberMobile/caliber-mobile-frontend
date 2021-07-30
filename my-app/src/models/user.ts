@@ -2,12 +2,12 @@
 /* eslint-disable @typescript-eslint/no-useless-constructor */
 /* eslint-disable no-unused-vars */
 
-import { Role } from '../@types/index.d';
+import { Role } from '../@types';
 
 class User {
   constructor(
-    userId: string,
-    role: Role,
+    public userId: string,
+    public role: Role,
   ) {
 
   }

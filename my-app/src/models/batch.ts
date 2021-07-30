@@ -2,18 +2,19 @@
 /* eslint-disable @typescript-eslint/no-useless-constructor */
 /* eslint-disable no-unused-vars */
 
-import Associate from './Associate';
-import Note from './Note';
-import User from './User';
+import Associate from './associate';
+import Note from './note';
+import User from './user';
 
 class Batch {
   constructor(
-    batchId: string,
-    trainers: User[],
-    startDate: string,
-    endDate: string,
-    associates: Associate[],
-    notes: Note[],
+    public batchId: string,
+    public batchTitle: string,
+    public trainers: User[],
+    public startDate: string,
+    public endDate: string,
+    public associates: Associate[],
+    public notes: Note[],
   ) {}
 }
 
