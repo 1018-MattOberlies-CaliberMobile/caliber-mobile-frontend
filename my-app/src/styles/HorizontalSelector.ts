@@ -12,8 +12,10 @@ const baseStyle = {
 const HorizontalSelectorStyle = StyleSheet.create({
   container: {
     alignItems: 'center',
-    flex: 1,
+    flexDirection: 'row',
+    flexGrow: 1,
     justifyContent: 'center',
+    paddingHorizontal: 10,
   },
   item: {
     ...baseStyle,
