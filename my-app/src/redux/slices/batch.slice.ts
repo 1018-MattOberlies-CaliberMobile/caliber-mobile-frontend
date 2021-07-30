@@ -15,6 +15,6 @@ export const batchSlice = createSlice({
 
 export const { setBatch, clear } = batchSlice.actions;
 
-export const getBatch = (state: RootState): BatchState => state.batch;
+export const selectBatch = (state: RootState): BatchState => state.batch;
 
 export default batchSlice.reducer;
