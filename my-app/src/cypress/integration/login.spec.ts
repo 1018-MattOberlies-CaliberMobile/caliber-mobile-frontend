@@ -22,4 +22,18 @@ describe('The Login Page', () => {
     cy.get('[data-testid=password-input]').type('wrong password');
     cy.get('[data-testid=login-button]').click();
   });
+  it('valid login', () => {
+    cy.intercept({ method: 'Post' }, (req) => {
+      req.continue((res) => {
+        if (res.body.status === 'failed') {
+          expect(2).to.equal(1);
+        } else {
+          expect(1).to.equal(1);
+        }
+      });
+    });
+    cy.get('[data-testid=username-input]').type('valid user');
+    cy.get('[data-testid=password-input]').type('password is correct');
+    cy.get('[data-testid=login-button]').click();
+  });
 });
