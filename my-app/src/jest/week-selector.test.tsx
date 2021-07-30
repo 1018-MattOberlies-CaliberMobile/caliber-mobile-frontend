@@ -1,7 +1,7 @@
 import { render, fireEvent } from '@testing-library/react-native';
 import 'react-native';
 import React from 'react';
-import HorizontalSelector from '../components/HorizontalSelector/HorizontalSelector';
+import HorizontalSelector from '../components/HorizontalSelector';
 
 describe('Horizontal selector test', () => {
   test('Testing pressing a button in the horizontal selector properly calls the onPress function', () => {
