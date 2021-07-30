@@ -1,7 +1,7 @@
 import { useNavigation } from '@react-navigation/native';
 import React, { useEffect, useState } from 'react';
 import { Button, Text, View } from 'react-native';
-import HorizontalSelector from '../components/HorizontalSelector/HorizontalSelector';
+import HorizontalSelector from '../components/HorizontalSelector';
 import { SearchBar } from '../components/SearchBar';
 import { getBatchYears } from '../remote/CaliberBatchAPI';
 import Batch from '../models/batch';
@@ -17,7 +17,7 @@ const DATA:Array<Batch> = [
     batchTitle: '05132020 Cloud Native Matt',
     trainers: [
       {
-        userId: '848a91eb-1829-4cc5-8386-c7f6738f76ab',
+        username: '848a91eb-1829-4cc5-8386-c7f6738f76ab',
         role: 'Trainer',
       },
     ],
@@ -35,7 +35,7 @@ const DATA:Array<Batch> = [
     batchTitle: '05132020 Cloud Native Matt',
     trainers: [
       {
-        userId: '848a91eb-5321-4cc5-8386-c7f6738f76ab',
+        username: '848a91eb-5321-4cc5-8386-c7f6738f76ab',
         role: 'Trainer',
       },
     ],
