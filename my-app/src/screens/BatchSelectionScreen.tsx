@@ -13,21 +13,42 @@ type Props = {
 
 const DATA:Array<Batch> = [
   {
-    batchID: '123123',
+    batchId: '123123',
     batchTitle: '05132020 Cloud Native Matt',
-    trainerID: 'Matt',
-    startDate: '05/13/2020',
-    associateList: [],
-    notes: [],
+    trainers: [
+      {
+        userId: '848a91eb-1829-4cc5-8386-c7f6738f76ab',
+        role: 'Trainer',
+      },
+    ],
+    startDate: new Date().toISOString(),
+    endDate: new Date().toISOString(),
+    associates: [
+
+    ],
+    notes: [
+
+    ],
   },
   {
-    batchID: '12334',
-    batchTitle: '05112020 Java Tyler',
-    trainerID: 'Tyler',
-    startDate: '05/11/2020',
-    associateList: [],
-    notes: [],
+    batchId: 'tryhtry',
+    batchTitle: '05132020 Cloud Native Matt',
+    trainers: [
+      {
+        userId: '848a91eb-5321-4cc5-8386-c7f6738f76ab',
+        role: 'Trainer',
+      },
+    ],
+    startDate: new Date().toISOString(),
+    endDate: new Date().toISOString(),
+    associates: [
+
+    ],
+    notes: [
+
+    ],
   },
+
 ];
 
 const BatchSelectionScreen: React.FC<Props> = (props): JSX.Element => {

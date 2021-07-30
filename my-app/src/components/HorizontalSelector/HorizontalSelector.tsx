@@ -5,7 +5,7 @@ import HorizontalSelectorStyle from '../../styles/HorizontalSelector';
 
 type Props = {
   data: string[],
-  onPress: React.Dispatch<React.SetStateAction<string | undefined>>,
+  onPress: (item: string) => void,
 }
 const HorizontalSelector: React.FC<Props> = ({ data, onPress }) => {
   const [selected, setSelected] = useState<string>('');

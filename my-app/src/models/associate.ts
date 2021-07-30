@@ -1,8 +1,13 @@
+/* eslint-disable @typescript-eslint/no-empty-function */
+/* eslint-disable @typescript-eslint/no-useless-constructor */
 /* eslint-disable no-unused-vars */
-export default class Associate {
+
+class Associate {
   constructor(
-    public associateID: string,
+    public associateId: string,
     public firstName: string,
     public lastName: string,
   ) {}
 }
+
+export default Associate;
