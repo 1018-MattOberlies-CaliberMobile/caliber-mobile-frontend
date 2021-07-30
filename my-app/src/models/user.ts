@@ -1,7 +1,14 @@
+/* eslint-disable @typescript-eslint/no-empty-function */
+/* eslint-disable @typescript-eslint/no-useless-constructor */
 /* eslint-disable no-unused-vars */
-export default class User {
+
+import { Role } from '../@types';
+
+class User {
   constructor(
-    public userID: string,
-    public role: 'Trainer' | 'QC_Analyst' | 'Admin',
+    public userId: string,
+    public role: Role,
   ) {}
 }
+
+export default User;
