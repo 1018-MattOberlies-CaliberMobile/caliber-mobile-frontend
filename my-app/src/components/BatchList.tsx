@@ -9,7 +9,7 @@ type Props = {
 }
 
 const BatchList: React.FC<Props> = ({ batches, onPress }) => (
-  <ScrollView>
+  <ScrollView testID='batch-list'>
     {
       batches.map((batch) => (
         <BatchCard key={batch.batchId} batch={batch} onPress={onPress} />
