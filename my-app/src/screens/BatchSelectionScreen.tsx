@@ -15,10 +15,10 @@ type Props = {
 const DATA:Array<Batch> = [
   {
     batchId: '123123',
-    batchTitle: '05132020 Cloud Native Matt',
+    batchTitle: '05132021 Cloud Native Matt',
     trainers: [
       {
-        userId: '848a91eb-1829-4cc5-8386-c7f6738f76ab',
+        username: 'Matt',
         role: 'Trainer',
       },
     ],
@@ -33,10 +33,10 @@ const DATA:Array<Batch> = [
   },
   {
     batchId: 'tryhtry',
-    batchTitle: '05132020 DevOps Tim',
+    batchTitle: '05132021 DevOps Tim',
     trainers: [
       {
-        userId: '848a91eb-5321-4cc5-8386-c7f6738f76ab',
+        username: 'Tim',
         role: 'Trainer',
       },
     ],
@@ -57,7 +57,7 @@ for (let i = 0; i < 20; i += 1) {
     batchTitle: '05132020 DevOps Tim',
     trainers: [
       {
-        userId: '848a91eb-5321-4cc5-8386-c7f6738f76ab',
+        username: `${i % 2 === 0 ? 'Matt' : 'Tim'}`,
         role: 'Trainer',
       },
     ],

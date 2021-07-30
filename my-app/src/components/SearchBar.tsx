@@ -28,7 +28,7 @@ export const SearchBar: React.FC<Props> = ({ batchData, setBatchList }): JSX.Ele
       if (batchData[i].batchTitle.toLowerCase().includes(search.toLowerCase())) {
         arr.push(batchData[i]);
       }
-      if (batchData[i].trainers[0].userId === search) {
+      if (batchData[i].trainers[0].username === search) {
         arr.push(batchData[i]);
       }
       if (batchData[i].batchId === search) {
