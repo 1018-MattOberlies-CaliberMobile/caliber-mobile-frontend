@@ -7,6 +7,7 @@ export default class Batch {
     public batchID: string,
     public trainerID: string,
     public startDate: string,
+    public endDate: string,
     public batchTitle: string,
     public associateList: Associate[],
     public notes: Note[],
