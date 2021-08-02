@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Text } from 'react-native';
+import HorizontalSelector from '../components/HorizontalSelector';
 
 type Props = {
 
@@ -40,10 +42,16 @@ export const createWeekArray = (start: string, end: string): string[] => {
 };
 
 const WeekNotesScreen: React.FC<Props> = (props): JSX.Element => {
-  const temp = 0;
+  const arrayString = createWeekArray('2021-7-5', '2021-7-30')
+  const [selected, setSelected] = useState<number>(0);
+
   return (
-    <>
-    </>
+    <div>
+      <Text>Hello</Text>
+      <HorizontalSelector data= {arrayString}
+        initialSelected = {arrayString[selected]}
+        onPress={(item) => { setSelected(arrayString.indexOf(item)); } }></HorizontalSelector>
+    </div>
   );
 };
 
