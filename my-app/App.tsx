@@ -8,6 +8,7 @@ import useCachedResources from './src/hooks/useCachedResources';
 import useColorScheme from './src/hooks/useColorScheme';
 import Navigation from './src/navigation';
 import store from './src/redux/store';
+import OverallNotesScreen from './src/screens/OverallNotesScreen';
 
 export default function App() {
   const isLoadingComplete = useCachedResources();
@@ -17,12 +18,14 @@ export default function App() {
     return null;
   }
   return (
-    <Provider store={store}>
+  /*  <Provider store={store}>
       <SafeAreaProvider>
         <Navigation colorScheme={colorScheme} />
         <StatusBar />
       </SafeAreaProvider>
-    </Provider>
+    </Provider> */
+
+    <OverallNotesScreen/>
 
   );
 }
