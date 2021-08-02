@@ -1,14 +1,15 @@
+/* eslint-disable global-require */
 import { Ionicons } from '@expo/vector-icons';
 import * as Font from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 import * as React from 'react';
 
-export default function useCachedResources() {
+export default function useCachedResources(): boolean {
   const [isLoadingComplete, setLoadingComplete] = React.useState(false);
 
   // Load any resources or data that we need prior to rendering the app
   React.useEffect(() => {
-    async function loadResourcesAndDataAsync() {
+    async function loadResourcesAndDataAsync(): Promise<void> {
       try {
         SplashScreen.preventAutoHideAsync();
 
@@ -16,6 +17,10 @@ export default function useCachedResources() {
         await Font.loadAsync({
           ...Ionicons.font,
           'space-mono': require('../../assets/fonts/SpaceMono-Regular.ttf'),
+          'futura-medium': require('../../assets/fonts/Futura-Std-Medium.otf'),
+          'futura-bold': require('../../assets/fonts/Futura-Std-Bold.otf'),
+          'futura-book': require('../../assets/fonts/Futura-Std-Book.otf'),
+
         });
       } catch (e) {
         // We might want to provide this error information to an error reporting service

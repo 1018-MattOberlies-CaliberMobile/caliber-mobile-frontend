@@ -45,6 +45,7 @@ const styles = StyleSheet.create({
     color: 'white',
     fontWeight: 'bold',
     textAlign: 'center',
+    fontFamily: 'futura-medium'
   },
   flex: {
     flex: 1,
@@ -90,7 +91,7 @@ const StatusSelector: React.FC<Props> = (props): JSX.Element => {
         </View>
     )
   : (
-<View style={{backgroundColor: 'yellow'}}>
+<View >
         <MobileModal
           backdropColor="transparent"
           isVisible={modalVisible}
@@ -98,6 +99,7 @@ const StatusSelector: React.FC<Props> = (props): JSX.Element => {
           <View style={styles.centeredView}>
             <View style={styles.modalView}>
             <Text style={styles.modalText}>Select Status</Text>
+            
               <View style={styles.flex}>
                 
                 <StatusIcon onPress={setSelected} size={35} status={0}/>
