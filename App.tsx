@@ -9,6 +9,7 @@ import useColorScheme from './src/hooks/useColorScheme';
 import Navigation from './src/navigation';
 import store from './src/redux/store';
 import OverallNotesScreen from './src/screens/OverallNotesScreen';
+import WeekNotesScreen from './src/screens/WeekNotesScreen';
 
 export default function App() {
   const isLoadingComplete = useCachedResources();
@@ -25,8 +26,8 @@ export default function App() {
       </SafeAreaProvider>
     </Provider> */
 
-    <OverallNotesScreen/>
-
+    // <OverallNotesScreen/>
+    <WeekNotesScreen batchId='1'/>
   );
 }
 
