@@ -1,4 +1,5 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { Auth } from 'aws-amplify';
 import User from '../../models/user';
 import { RootState } from '../store';
 
@@ -14,8 +15,9 @@ export const loginAsync = createAsyncThunk<User, LoginCredentials>(
   async ({ username, password }, thunkAPI) => {
     try {
       // TODO: cognito auth
-
-      return new User(username, 'Trainer');
+      const result = await Auth.signIn(username, password);
+      const user = new User(result.username, result.attribute['custom:role']);
+      return user;
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
     }
