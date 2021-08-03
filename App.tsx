@@ -1,17 +1,24 @@
 import 'react-native-gesture-handler';
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
-import { StyleSheet } from 'react-native';
+import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
+import { Platform, StyleSheet } from 'react-native';
 import { Provider } from 'react-redux';
+<<<<<<< HEAD
 import { ThemeProvider } from 'styled-components';
 import { ToastProvider } from 'react-native-styled-toast';
+=======
+import Amplify from 'aws-amplify';
+>>>>>>> 7e3525ba6eec36b633f76b17b7b03ed72ef9dea7
 import useCachedResources from './src/hooks/useCachedResources';
 import useColorScheme from './src/hooks/useColorScheme';
 import Navigation from './src/navigation';
 import store from './src/redux/store';
 import OverallNotesScreen from './src/screens/OverallNotesScreen';
 import WeekNotesScreen from './src/screens/WeekNotesScreen';
+import awsmobile from './src/aws-exports';
+
+Amplify.configure(awsmobile);
 
 export default function App() {
   const isLoadingComplete = useCachedResources();
@@ -46,8 +53,7 @@ export default function App() {
       </ThemeProvider>
     </Provider>
 
-  // <OverallNotesScreen/>
-  // <WeekNotesScreen batchId='1'/>
+  // <OverallNotesScreen />
   );
 }
 
