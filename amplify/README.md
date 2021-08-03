@@ -7,7 +7,7 @@ Create IAM User with AdministratorAccess policy
 Store credentials in local .aws file
 </li>
 <li>
-Open project directory (my-app)
+Open project directory 
 </li>
 <li>
 npm install -g @aws-amplify/cli
@@ -127,3 +127,9 @@ UserPool:
 <li>Under Properties, ad schema like above</li>
 <li>Run amplify push</li>
 <ol>
+
+<h2>Add users to the user pool</h2>
+<ol>
+<li>execute the add user script (ts-node src/scripts/addCognitoUsers.ts)</li>
+<li></li>
+</ol>
