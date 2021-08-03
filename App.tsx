@@ -1,9 +1,10 @@
 import 'react-native-gesture-handler';
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import { StyleSheet } from 'react-native';
+import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
+import { Platform, StyleSheet } from 'react-native';
 import { Provider } from 'react-redux';
+import { platform } from 'os';
 import useCachedResources from './src/hooks/useCachedResources';
 import useColorScheme from './src/hooks/useColorScheme';
 import Navigation from './src/navigation';
@@ -17,19 +18,27 @@ export default function App() {
   if (!isLoadingComplete) {
     return null;
   }
-  return (
-  /*  <Provider store={store}>
-      <SafeAreaView>
-        <Navigation colorScheme={colorScheme} />
-        <StatusBar />
-      </SafeAreaView>
-    </Provider> */
+  switch (Platform.OS) {
+  case 'android':
+    return (
 
-    <SafeAreaView>
-      <OverallNotesScreen/>
-    </SafeAreaView>
+      <Provider store={store}>
+        <SafeAreaView>
+          <OverallNotesScreen/>
+        </SafeAreaView>
+      </Provider>
 
-  );
+    );
+  default:
+    return (
+      <Provider store={store}>
+        <SafeAreaProvider>
+          <Navigation colorScheme={colorScheme} />
+          <StatusBar />
+        </SafeAreaProvider>
+      </Provider>
+    );
+  }
 }
 
 const styles = StyleSheet.create({

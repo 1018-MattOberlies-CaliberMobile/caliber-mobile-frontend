@@ -26,7 +26,7 @@ describe('Overall week note page tests', () => {
       <StatusSelector onSelect={mockFn}/>,
     );
 
-    const options: GetAllReturn = getAllByA11yLabel('statusOptions');
+    const options: GetAllReturn = getAllByA11yLabel('Status Options');
 
     fireEvent.press(options[0]);
 
@@ -39,7 +39,7 @@ describe('Overall week note page tests', () => {
       <StatusSelector onSelect={mockFn}/>,
     );
 
-    const options: GetAllReturn = getAllByA11yLabel('statusOptions');
+    const options: GetAllReturn = getAllByA11yLabel('Status Options');
 
     fireEvent.press(options[1]);
 
@@ -52,7 +52,7 @@ describe('Overall week note page tests', () => {
       <StatusSelector onSelect={mockFn}/>,
     );
 
-    const options: GetAllReturn = getAllByA11yLabel('statusOptions');
+    const options: GetAllReturn = getAllByA11yLabel('Status Options');
 
     fireEvent.press(options[2]);
 
@@ -65,7 +65,7 @@ describe('Overall week note page tests', () => {
       <StatusSelector onSelect={mockFn}/>,
     );
 
-    const options: GetAllReturn = getAllByA11yLabel('statusOptions');
+    const options: GetAllReturn = getAllByA11yLabel('Status Options');
 
     fireEvent.press(options[3]);
 
@@ -78,7 +78,7 @@ describe('Overall week note page tests', () => {
       <StatusSelector onSelect={mockFn}/>,
     );
 
-    const options: GetAllReturn = getAllByA11yLabel('statusOptions');
+    const options: GetAllReturn = getAllByA11yLabel('Status Options');
 
     fireEvent.press(options[4]);
 
