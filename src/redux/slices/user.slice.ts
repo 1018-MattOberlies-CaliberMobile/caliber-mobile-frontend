@@ -16,7 +16,6 @@ export const loginAsync = createAsyncThunk<User, LoginCredentials>(
     try {
       // TODO: cognito auth
       const result = await Auth.signIn(username, password);
-      console.log(result);
       const user = new User(result.username, result.attributes['custom:role']);
       return user;
     } catch (error) {

@@ -131,5 +131,5 @@ UserPool:
 <h2>Add users to the user pool</h2>
 <ol>
 <li>execute the add user script (ts-node src/scripts/addCognitoUsers.ts)</li>
-<li></li>
+<li>confirm users in aws console</li>
 </ol>
