@@ -2,6 +2,7 @@ import { useNavigation } from '@react-navigation/native';
 import React, { useEffect, useState } from 'react';
 import { ScrollView, View } from 'react-native';
 import { useDispatch } from 'react-redux';
+import { useToast } from 'react-native-styled-toast';
 import HorizontalSelector from '../components/HorizontalSelector';
 import { SearchBar } from '../components/SearchBar';
 import { getBatchYears, getBatchesByYear } from '../remote/CaliberBatchAPI';
@@ -9,7 +10,6 @@ import Batch from '../models/batch';
 import { styles1 } from '../styles/style1';
 import BatchList from '../components/BatchList';
 import { setBatch } from '../redux/slices/batch.slice';
-import { useToast } from 'react-native-styled-toast';
 
 type Props = {
 
@@ -46,7 +46,10 @@ const BatchSelectionScreen: React.FC<Props> = (): JSX.Element => {
     const getBatchList = async (): Promise<void> => {
       if (selectedYear) {
         getBatchesByYear(selectedYear)
-          .then(setBatchList)
+          .then((res) => {
+            res.sort((a, b) => Date.parse(b.startDate) - Date.parse(a.startDate));
+            setBatchList(res);
+          })
           .catch((err) => {
             toast({ message: 'Could not retrieve batches', intent: 'ERROR' });
           });
