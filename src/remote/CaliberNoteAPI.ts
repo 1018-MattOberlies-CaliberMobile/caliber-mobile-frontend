@@ -21,6 +21,14 @@ export const getNoteByBatchIdAndWeek = async (batchId: string, week: number): Pr
       associate: { associateId: 'id', firstName: 'fn', lastName: 'ln' },
       weekNumber: 1,
     });
+
+    notes.push({
+      noteId: '123e4567-e89b-12d3-a456-4266141740123',
+      noteContent: 'Very smart cookie!',
+      technicalScore: 2,
+      associate: { associateId: 'id', firstName: 'fn', lastName: 'ln' },
+      weekNumber: 1,
+    });
   }
 
   if (week === 2) {

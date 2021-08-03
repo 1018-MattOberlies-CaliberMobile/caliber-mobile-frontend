@@ -26,8 +26,8 @@ export default function App() {
       </SafeAreaProvider>
     </Provider> */
 
-    <OverallNotesScreen/>
-
+    // <OverallNotesScreen/>
+    <WeekNotesScreen batchId='1'/>
   );
 }
 
