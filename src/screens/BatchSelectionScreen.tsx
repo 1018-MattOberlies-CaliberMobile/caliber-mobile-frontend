@@ -72,12 +72,14 @@ const BatchSelectionScreen: React.FC<Props> = (): JSX.Element => {
   console.log('Batch Selection');
   return (
     <>
-      <View style={ { flex: 1 } }>
+      <View style={ { flex: 1.25 } }>
         <HorizontalSelector data={years} initialSelected={years[0]} onPress={setSelectedYear} />
         <View style = {styles1.container}>
           <SearchBar batchData={batchList} setBatchList={setSearchResults} />
         </View>
       </View>
+
+      <View style={ {flex: 0.5}} />
 
       <View style={ { flex: 8 } }>
         <ScrollView>

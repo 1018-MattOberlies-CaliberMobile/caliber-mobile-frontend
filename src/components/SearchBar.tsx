@@ -45,10 +45,12 @@ export const SearchBar: React.FC<Props> = ({ batchData, setBatchList }): JSX.Ele
           testID='search-bar'
           placeholder = 'Search Here'
           onChangeText = { (txt): void => setSearch(txt) }
+          style = {styles1.textInput}
         />
         <Button
           title = 'Search'
           onPress = { searchBatch }
+          color = {styles1.button.backgroundColor}
         />
       </View>
     </>
