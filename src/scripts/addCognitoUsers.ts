@@ -8,7 +8,7 @@ async function signUp(username: string, password: string, role: string) {
       username,
       password,
       attributes: {
-        'custom:role': 'role', // custom attribute, not standard
+        'custom:role': role, // custom attribute, not standard
       },
     });
     console.log(user);
