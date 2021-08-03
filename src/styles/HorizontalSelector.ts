@@ -7,6 +7,7 @@ const baseStyle = {
   fontSize: 24,
   margin: 3,
   padding: 5,
+  borderColor: '#474C55',
 };
 
 const HorizontalSelectorStyle = StyleSheet.create({
@@ -15,6 +16,7 @@ const HorizontalSelectorStyle = StyleSheet.create({
     flexDirection: 'row',
     flexGrow: 1,
     justifyContent: 'center',
+    marginVertical: 5,
     paddingHorizontal: 10,
   },
   item: {
@@ -23,7 +25,7 @@ const HorizontalSelectorStyle = StyleSheet.create({
   },
   selectedItem: {
     ...baseStyle,
-    backgroundColor: '#FCB414',
+    backgroundColor: '#F26925',
   },
 });
 
