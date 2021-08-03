@@ -24,7 +24,6 @@ export default function App() {
   if (!isLoadingComplete) {
     return null;
   }
-
   const theme = {
     space: [0, 4, 8, 12, 16, 20, 24, 32, 40, 48],
     colors: {
