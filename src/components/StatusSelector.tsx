@@ -12,7 +12,8 @@ import StatusIconPressable, { StatusIcon } from './StatusIcon';
 const Modal = require('modal-react-native-web');
 
 type Props = {
-  onSelect: Dispatch<SetStateAction<number | undefined>>,
+  selected: TechnicalScore,
+  onSelect: Dispatch<SetStateAction<TechnicalScore>>,
 }
 const styles = StyleSheet.create({
   button: {
@@ -66,15 +67,15 @@ const styles = StyleSheet.create({
   },
 });
 
-const StatusSelector: React.FC<Props> = (props): JSX.Element => {
+const StatusSelector: React.FC<Props> = ({ selected, onSelect }): JSX.Element => {
   const [modalVisible, setModalVisible] = useState(false);
-  const [selected, setSelected] = useState<TechnicalScore>(0);
   const onPressHandler = (status: TechnicalScore): void => {
     setModalVisible(!modalVisible);
-    setSelected(status);
+    console.log('>> Pressed', status);
+    onSelect(status);
   };
   const ModalViewer = (): JSX.Element => (
-    <Pressable accessibilityLabel={ 'Status Options' } onPress={(): void => setModalVisible(!modalVisible)}>
+    <Pressable testID={ 'Status Options' } onPress={(): void => setModalVisible(!modalVisible)}>
       <StatusIcon size={35} status={selected} />
     </Pressable>
   );
@@ -99,6 +100,7 @@ const StatusSelector: React.FC<Props> = (props): JSX.Element => {
     <>
       {Platform.OS === 'web' ? (
         <View >
+
           <Modal
             visible={modalVisible}
             onRequestClose={(): void => {
@@ -112,6 +114,7 @@ const StatusSelector: React.FC<Props> = (props): JSX.Element => {
       )
         : (
           <View >
+            {console.log('>> Loading app')}
             <MobileModal
               backdropColor="transparent"
               isVisible={modalVisible}

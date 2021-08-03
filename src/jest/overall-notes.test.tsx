@@ -4,6 +4,7 @@ import React from 'react';
 import { expect } from '@jest/globals';
 import HorizontalSelector from '../components/HorizontalSelector';
 import StatusSelector from '../components/StatusSelector';
+import { TechnicalScore } from '../@types';
 
 describe('Overall week note page tests', () => {
   test('Testing when a button is not pressed the onPress function is not being called', () => {
@@ -22,65 +23,75 @@ describe('Overall week note page tests', () => {
 
   test('On selecting the question mark calls onPress with returns 0', () => {
     const mockFn = jest.fn();
-    const { getAllByA11yLabel } = render(
-      <StatusSelector onSelect={mockFn}/>,
+    const selected: TechnicalScore = 0;
+    const { getByTestId } = render(
+      <StatusSelector selected={selected} onSelect={mockFn}/>,
     );
 
-    const options: GetAllReturn = getAllByA11yLabel('Status Options');
-
-    fireEvent.press(options[0]);
+    const Modal = getByTestId('Status Options');
+    fireEvent.press(Modal);
+    const option = getByTestId(`option${selected}`);
+    fireEvent.press(option);
 
     expect(mockFn).toBeCalledWith(0);
   });
 
   test('On selecting the poor option calls onPress with 1', () => {
     const mockFn = jest.fn();
-    const { getAllByA11yLabel } = render(
-      <StatusSelector onSelect={mockFn}/>,
+    const selected: TechnicalScore = 1;
+    const { getByTestId } = render(
+      <StatusSelector selected={selected} onSelect={mockFn}/>,
     );
 
-    const options: GetAllReturn = getAllByA11yLabel('Status Options');
-
-    fireEvent.press(options[1]);
+    const Modal = getByTestId('Status Options');
+    fireEvent.press(Modal);
+    const option = getByTestId(`option${selected}`);
+    fireEvent.press(option);
 
     expect(mockFn).toBeCalledWith(1);
   });
 
   test('On selecting the average option calls onPress with 2', () => {
     const mockFn = jest.fn();
-    const { getAllByA11yLabel } = render(
-      <StatusSelector onSelect={mockFn}/>,
+    const selected: TechnicalScore = 2;
+    const { getByTestId } = render(
+      <StatusSelector selected={selected} onSelect={mockFn}/>,
     );
 
-    const options: GetAllReturn = getAllByA11yLabel('Status Options');
-
-    fireEvent.press(options[2]);
+    const Modal = getByTestId('Status Options');
+    fireEvent.press(Modal);
+    const option = getByTestId(`option${selected}`);
+    fireEvent.press(option);
 
     expect(mockFn).toBeCalledWith(2);
   });
 
   test('On selecting the good option calls onPress with 3', () => {
     const mockFn = jest.fn();
-    const { getAllByA11yLabel } = render(
-      <StatusSelector onSelect={mockFn}/>,
+    const selected: TechnicalScore = 3;
+    const { getByTestId } = render(
+      <StatusSelector selected={selected} onSelect={mockFn}/>,
     );
 
-    const options: GetAllReturn = getAllByA11yLabel('Status Options');
-
-    fireEvent.press(options[3]);
+    const Modal = getByTestId('Status Options');
+    fireEvent.press(Modal);
+    const option = getByTestId(`option${selected}`);
+    fireEvent.press(option);
 
     expect(mockFn).toBeCalledWith(3);
   });
 
   test('On selecting the superstar option calls onPress with 4', () => {
     const mockFn = jest.fn();
-    const { getAllByA11yLabel } = render(
-      <StatusSelector onSelect={mockFn}/>,
+    const selected: TechnicalScore = 4;
+    const { getByTestId } = render(
+      <StatusSelector selected={selected} onSelect={mockFn}/>,
     );
 
-    const options: GetAllReturn = getAllByA11yLabel('Status Options');
-
-    fireEvent.press(options[4]);
+    const Modal = getByTestId('Status Options');
+    fireEvent.press(Modal);
+    const option = getByTestId(`option${selected}`);
+    fireEvent.press(option);
 
     expect(mockFn).toBeCalledWith(4);
   });

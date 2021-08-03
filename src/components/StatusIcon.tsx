@@ -35,6 +35,7 @@ const PressableStatusIcon: React.FC<StatusIconProps & PressableStatusIconProps> 
   status, size, onPress, style,
 }): JSX.Element => (
   <Pressable
+    testID={`option${status}`}
     onPress={(): void => { onPress(status); }}
     style={({ pressed }): StyleProp<ViewStyle> => [
       { opacity: pressed ? 0 : 1 },
