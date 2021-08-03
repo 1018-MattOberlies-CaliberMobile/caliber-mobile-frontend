@@ -6,7 +6,7 @@ import {
 } from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
 import { useAppDispatch } from '../redux';
-import { loginAsync } from '../redux/slices/user.slice';
+import { loginAsync, UserState } from '../redux/slices/user.slice';
 import LoginPageStyles from '../styles/LoginPageStyles';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const revlogo = require('../../assets/images/rev-logo.png');
@@ -18,8 +18,9 @@ const LoginPage: React.FC<unknown> = (): JSX.Element => {
   const dispatch = useAppDispatch();
   const handleLogin = async ():Promise<void> => {
     const result = await dispatch(loginAsync({ username, password }));
-    if (result) {
-      // navigate to next page
+    if (result.meta.requestStatus === 'fulfilled') {
+      const currUser = result.payload as UserState;
+      navigation.navigate('HomeDrawer', { screens: 'QualityAudit' });
     } else {
       // eslint-disable-next-line no-alert
       alert('Login failed');
