@@ -4,12 +4,16 @@ import React from 'react';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import { Platform, StyleSheet } from 'react-native';
 import { Provider } from 'react-redux';
-import { platform } from 'os';
+import Amplify from 'aws-amplify';
 import useCachedResources from './src/hooks/useCachedResources';
 import useColorScheme from './src/hooks/useColorScheme';
 import Navigation from './src/navigation';
 import store from './src/redux/store';
 import OverallNotesScreen from './src/screens/OverallNotesScreen';
+import WeekNotesScreen from './src/screens/WeekNotesScreen';
+import awsmobile from './src/aws-exports';
+
+Amplify.configure(awsmobile);
 
 export default function App() {
   const isLoadingComplete = useCachedResources();
@@ -21,24 +25,12 @@ export default function App() {
   switch (Platform.OS) {
   case 'android':
     return (
-
       <Provider store={store}>
         <SafeAreaView>
           <OverallNotesScreen/>
         </SafeAreaView>
       </Provider>
-
     );
-  default:
-    return (
-      <Provider store={store}>
-        <SafeAreaProvider>
-          <Navigation colorScheme={colorScheme} />
-          <StatusBar />
-        </SafeAreaProvider>
-      </Provider>
-    );
-  }
 }
 
 const styles = StyleSheet.create({
