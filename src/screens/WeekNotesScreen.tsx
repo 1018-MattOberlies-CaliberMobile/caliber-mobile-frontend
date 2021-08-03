@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Text } from 'react-native';
 import HorizontalSelector from '../components/HorizontalSelector';
+import { View } from '../components/Themed';
 import Note from '../models/note';
 import { getNoteByBatchIdAndWeek } from '../remote/CaliberNoteAPI';
 
@@ -45,21 +46,46 @@ export const createWeekArray = (start: string, end: string): string[] => {
 
 const WeekNotesScreen: React.FC<Props> = ({ batchId }): JSX.Element => {
   const arrayString = createWeekArray('2021-7-5', '2021-7-30');
-  const [assocNotes, setAssocNotes] = useState<Note[]>();
+  const [assocNotes, setAssocNotes] = useState<Note[]>([]);
   const [weekNum, setWeekNum] = useState<number>(0);
 
-  async function handleGetNotesForWeek(week: string): Promise<void> {
+  const [noteItems, setNoteItems] = useState<JSX.Element[]>();
+
+  useEffect(() => {
+    (async (): Promise<void> => {
+      const assoc = await getNoteByBatchIdAndWeek(batchId, weekNum + 1);
+      setAssocNotes(assoc);
+    })();
+  }, [weekNum]);
+
+  useEffect(() => {
+    setNoteItems(assocNotes.map((note) => (
+      <View key={note.noteId}>
+        <Text>
+          {note.noteContent}
+        </Text>
+        <Text>
+          {note.technicalScore}
+        </Text>
+      </View>
+    )));
+  }, [assocNotes]);
+
+  function handleGetNotesForWeek(week: string): void {
     setWeekNum(arrayString.indexOf(week));
-    setAssocNotes(await getNoteByBatchIdAndWeek(batchId, weekNum));
   }
 
   return (
-    <div>
-      <Text>Hello</Text>
-      <HorizontalSelector data= {arrayString}
-        initialSelected = {arrayString[0]}
-        onPress= { handleGetNotesForWeek }></HorizontalSelector>
-    </div>
+    <>
+      <div>
+        <HorizontalSelector data={arrayString}
+          initialSelected={arrayString[0]}
+          onPress={handleGetNotesForWeek}></HorizontalSelector>
+      </div>
+      <div>
+        { noteItems }
+      </div>
+    </>
   );
 };
 

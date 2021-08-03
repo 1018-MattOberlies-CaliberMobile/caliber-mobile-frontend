@@ -26,8 +26,7 @@ export default function App() {
       </SafeAreaProvider>
     </Provider> */
 
-    // <OverallNotesScreen/>
-    <WeekNotesScreen/>
+    <OverallNotesScreen/>
 
   );
 }
