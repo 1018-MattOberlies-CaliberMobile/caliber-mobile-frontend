@@ -9,6 +9,7 @@ import Batch from '../models/batch';
 import { styles1 } from '../styles/style1';
 import BatchList from '../components/BatchList';
 import { setBatch } from '../redux/slices/batch.slice';
+import { useToast } from 'react-native-styled-toast';
 
 type Props = {
 
@@ -17,6 +18,7 @@ type Props = {
 const BatchSelectionScreen: React.FC<Props> = (): JSX.Element => {
   const navigation = useNavigation();
   const dispatch = useDispatch();
+  const { toast } = useToast();
 
   const [years, setYears] = useState<string[]>([]);
   const [selectedYear, setSelectedYear] = useState<string>(new Date().getFullYear().toString());
@@ -26,8 +28,15 @@ const BatchSelectionScreen: React.FC<Props> = (): JSX.Element => {
   useEffect(() => {
     // Retrieves a list of years which contain batches and sets the component state
     const retrieveBatchYears = async (): Promise<void> => {
-      setYears(await getBatchYears());
-      setSelectedYear(years[0]);
+      getBatchYears()
+        .then((res) => {
+          setYears(res);
+          setSelectedYear(res[0]);
+        })
+        .catch((err) => {
+          console.log('catch');
+          toast({ message: 'Could not retrieve years', intent: 'ERROR' });
+        });
     };
     retrieveBatchYears();
   }, []);
@@ -36,7 +45,11 @@ const BatchSelectionScreen: React.FC<Props> = (): JSX.Element => {
     // set batch list according to selected year
     const getBatchList = async (): Promise<void> => {
       if (selectedYear) {
-        setBatchList(await getBatchesByYear(selectedYear));
+        getBatchesByYear(selectedYear)
+          .then(setBatchList)
+          .catch((err) => {
+            toast({ message: 'Could not retrieve batches', intent: 'ERROR' });
+          });
       }
     };
     getBatchList();
