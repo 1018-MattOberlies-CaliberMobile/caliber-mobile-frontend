@@ -23,15 +23,12 @@ export default function App() {
     return null;
   }
   return (
-  /*  <Provider store={store}>
+    <Provider store={store}>
       <SafeAreaProvider>
         <Navigation colorScheme={colorScheme} />
         <StatusBar />
       </SafeAreaProvider>
-    </Provider> */
-
-    // <OverallNotesScreen/>
-    <WeekNotesScreen batchId='1'/>
+    </Provider>
   );
 }
 
