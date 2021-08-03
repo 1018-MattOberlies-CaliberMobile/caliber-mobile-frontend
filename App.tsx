@@ -22,15 +22,14 @@ export default function App() {
   if (!isLoadingComplete) {
     return null;
   }
-  switch (Platform.OS) {
-  case 'android':
-    return (
-      <Provider store={store}>
-        <SafeAreaView>
-          <OverallNotesScreen/>
-        </SafeAreaView>
-      </Provider>
-    );
+  return (
+    <Provider store={store}>
+      <SafeAreaProvider>
+        <Navigation colorScheme={colorScheme} />
+        <StatusBar />
+      </SafeAreaProvider>
+    </Provider>
+  );
 }
 
 const styles = StyleSheet.create({

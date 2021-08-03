@@ -19,7 +19,6 @@ const LoginPage: React.FC<unknown> = (): JSX.Element => {
   const handleLogin = async ():Promise<void> => {
     const result = await dispatch(loginAsync({ username, password }));
     if (result.meta.requestStatus === 'fulfilled') {
-      const currUser = result.payload as UserState;
       navigation.navigate('HomeDrawer', { screens: 'QualityAudit' });
     } else {
       // eslint-disable-next-line no-alert
@@ -40,7 +39,7 @@ const LoginPage: React.FC<unknown> = (): JSX.Element => {
         <Text testID="username-input-label">Username: </Text>
         <TextInput style={LoginPageStyles.inputField} placeholder='username' testID='username-input' onChangeText={(text):void => setUserName(text)}></TextInput>
         <Text testID="password-input-label">Password: </Text>
-        <TextInput style={LoginPageStyles.inputField} placeholder='password' testID='password-input' onChangeText={(text):void => setPassWord(text)}></TextInput>
+        <TextInput style={LoginPageStyles.inputField} placeholder='password' testID='password-input' secureTextEntry={true} onChangeText={(text):void => setPassWord(text)}></TextInput>
         <TouchableOpacity style={LoginPageStyles.button} testID='login-button' onPress={handleLogin}>
           <Text style={ LoginPageStyles.buttonText}>Login</Text>
         </TouchableOpacity>
