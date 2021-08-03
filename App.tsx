@@ -27,10 +27,21 @@ export default function App() {
     return (
       <Provider store={store}>
         <SafeAreaView>
-          <OverallNotesScreen/>
+          <Navigation colorScheme={colorScheme} />
+          <StatusBar />
         </SafeAreaView>
       </Provider>
     );
+  default:
+    return (
+      <Provider store={store}>
+        <SafeAreaProvider>
+          <Navigation colorScheme={colorScheme} />
+          <StatusBar />
+        </SafeAreaProvider>
+      </Provider>
+    );
+  }
 }
 
 const styles = StyleSheet.create({
