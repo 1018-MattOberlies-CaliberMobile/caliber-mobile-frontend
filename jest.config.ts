@@ -185,7 +185,7 @@ const config: InitialOptionsTsJest = {
   transformIgnorePatterns: [
     // '\\node_modules\\',
     //   "\\.pnp\\.[^\\\\]+$",
-    // 'node_modulses/(?!(@react-native|react-native|react-native-vector-icons|react-native-modal|react-native-animatable|@expo)/)',
+    'node_modulses/(?!(@react-native|react-native|react-native-vector-icons|react-native-modal|react-native-animatable|@expo)/)',
 
   ],
 
