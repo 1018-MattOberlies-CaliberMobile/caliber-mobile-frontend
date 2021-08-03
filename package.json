@@ -8,7 +8,6 @@
     "eject": "expo eject",
     "test": "npx jest",
     "test:file": "npx jest --",
-
     "cy": "cd src && npx cypress open"
   },
   "dependencies": {
