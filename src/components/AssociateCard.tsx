@@ -1,18 +1,15 @@
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
 import React, { useState, useRef } from 'react';
 import {
   Text,
   View,
   TouchableWithoutFeedback,
-  StyleSheet,
   Animated,
   Easing,
-  Pressable,
 } from 'react-native';
-import Batch from '../models/batch';
 import Note from '../models/note';
-import Associate from '../models/associate';
 import { styles1 } from '../styles/style1';
-import PressableStatusIcon from './StatusIcon';
+import StatusSelector from './StatusSelector';
 
 type Props = {
   note: Note;
@@ -23,15 +20,14 @@ const AccordionListItem: React.FC<Props> = ({ note, children }) => {
   const { firstName, lastName } = note.associate;
   const [open, setOpen] = useState(false);
   const animatedController = useRef(new Animated.Value(0)).current;
-  // eslint-disable-next-line max-len
-  const [bodySectionHeight, setBodySectionHeight] = useState(0); // put 0 as default val. might not be right
+  const [bodySectionHeight, setBodySectionHeight] = useState<number>(0);
+  const [selected, setSelected] = useState<number | undefined>(technicalScore);
 
   const bodyHeight = animatedController.interpolate({
     inputRange: [0, 1],
     outputRange: [0, bodySectionHeight],
   });
 
-  // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
   const toggleListItem = () => {
     if (open) {
       Animated.timing(animatedController, {
@@ -56,7 +52,7 @@ const AccordionListItem: React.FC<Props> = ({ note, children }) => {
       <TouchableWithoutFeedback onPress={(): unknown => toggleListItem()}>
         <View style={styles1.cardContainer}>
           <Text>{lastName}, {firstName}</Text>
-          <PressableStatusIcon onPress={void} status={technicalScore}/>
+          <StatusSelector onSelect={setSelected}/>
         </View>
       </TouchableWithoutFeedback>
       <Animated.View style={[styles1.cardBackground, { height: bodyHeight }]}>
