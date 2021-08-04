@@ -53,6 +53,7 @@ const StatusSelector: React.FC<Props> = ({ selected, onSelect }): JSX.Element =>
 
           <Modal
             visible={modalVisible}
+            ariaHideApp={false}
             onRequestClose={(): void => {
               setModalVisible(!modalVisible);
             }}>

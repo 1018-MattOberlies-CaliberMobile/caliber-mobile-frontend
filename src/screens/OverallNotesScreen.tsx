@@ -1,13 +1,20 @@
+/* eslint-disable max-len */
 /* eslint-disable react-native/no-inline-styles */
 import React, { useState, useEffect } from 'react';
-import { Text, TextInput, View } from 'react-native';
+import {
+  Pressable, Text, TextInput, TouchableOpacity, View,
+} from 'react-native';
 import { useDispatch } from 'react-redux';
 import { TechnicalScore } from '../@types';
 import HorizontalSelector from '../components/HorizontalSelector';
 import StatusSelector from '../components/StatusSelector';
 import Batch from '../models/batch';
+import Note from '../models/note';
 import { useAppSelector } from '../redux';
 import { selectBatch, setBatch } from '../redux/slices/batch.slice';
+import { selectWeek, setWeek } from '../redux/slices/week.slice';
+import { CreateOverallNote } from '../remote/CaliberNoteAPI';
+import LoginPageStyles from '../styles/LoginPageStyles';
 import { createWeekArray } from './WeekNotesScreen';
 
 type Props = {
@@ -16,11 +23,26 @@ type Props = {
 
 const OverallNotesScreen: React.FC<Props> = (props): JSX.Element => {
   const dispatch = useDispatch();
-  const [selected, setSelected] = useState<TechnicalScore>(0);
+  const [technicalScore, setSelected] = useState<TechnicalScore>(0);
   const batch = useAppSelector(selectBatch);
+  const currentWeek = useAppSelector(selectWeek);
   const [weeks, setWeeks] = useState<string[]>();
-  const handleWeekSelector = (): void => {
-    //
+  const [noteContent, setNoteContent] = useState<string>('');
+  const handleWeekSelector = (week: string): void => {
+    dispatch(setWeek(week));
+  };
+  const handleSave = (): void => {
+    console.log('>> saving info');
+    console.log('>>> week: ', currentWeek);
+    console.log('>>> technical score: ', technicalScore);
+    console.log('>>> note content: ', noteContent);
+    const newNote: Note = {
+      noteId: '0000',
+      technicalScore,
+      noteContent,
+      weekNumber: currentWeek ? parseInt(currentWeek.replace('week', ''), 10) : 0,
+    };
+    CreateOverallNote(newNote);
   };
   useEffect(() => {
     const newBatch: Batch = new Batch('123', 'mockBatch',
@@ -55,12 +77,14 @@ const OverallNotesScreen: React.FC<Props> = (props): JSX.Element => {
 
   return (
     <View>
-      {weeks && <HorizontalSelector data={weeks} onPress={handleWeekSelector}/>}
-      {/* <HorizontalSelector data={['test', 'test1']} onPress={handleWeekSelector}/> */}
-      <Text style={{ fontFamily: 'futura-medium' }}>Week 0</Text>
-      <StatusSelector selected={selected} onSelect={setSelected}/>
-      {!!selected && <Text>{selected}</Text>}
-      <TextInput testID='overallNotesInput'></TextInput>
+      {weeks && <HorizontalSelector initialSelected={currentWeek || ''} data={weeks} onPress={handleWeekSelector}/>}
+      <Text style={{ fontFamily: 'futura-medium' }}>{currentWeek}</Text>
+      <StatusSelector selected={technicalScore} onSelect={setSelected}/>
+      {!!technicalScore && <Text>{technicalScore}</Text>}
+      <TextInput testID='overallNotesInput' onChangeText={setNoteContent}></TextInput>
+      <TouchableOpacity style={LoginPageStyles.button} testID='SaveNote' onPress={handleSave}>
+        <Text style={ LoginPageStyles.buttonText}>Save</Text>
+      </TouchableOpacity>
     </View>
   );
 };
