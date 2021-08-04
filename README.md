@@ -131,7 +131,7 @@ The project code base is mainly located within the `src` folder.
 
 ## Contributors
 
-> List
+> Albert Didde, Kyle Bartolucci, David Quezada, Charles Ammons, Hines Kao, Charles Goff Hardy, Sam Henley, Kirk Simmonds, James Potvin, Honorines Icyitegetse, Prem Patel, Dustin Diaz, Donovan Dixon, Dallin Lemon, Daniel Kim, Taiwo Ogunseye
 
 ## License
 
