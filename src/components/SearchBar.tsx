@@ -15,7 +15,7 @@ type Props = {
 }
 
 export const SearchBar: React.FC<Props> = ({ batchData, setBatchList }): JSX.Element => {
-  const nav = useNavigation();
+  // const nav = useNavigation();
   const [search, setSearch] = useState('');
 
   const searchBatch = (): void => {

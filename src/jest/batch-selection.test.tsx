@@ -68,12 +68,6 @@ describe('SearchBar component test', () => {
     expect(search.getByText('Search')).toBeTruthy();
   });
 
-  test('Testing the filter function', () => {
-    // const instanceOf1 = renderer.create(<SearchBar batchData={DATA}/>).getInstance();
-    // const comp = render(<SearchBar batchData={DATA} setBatchList={func(DATA)}/>);
-    // submitButton.simulate('click');
-  });
-
   test('Search click event should trigger setBatchList prop', () => {
     const onEventMock = jest.fn();
     const search = render(
