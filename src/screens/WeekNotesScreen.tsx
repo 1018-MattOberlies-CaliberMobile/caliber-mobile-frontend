@@ -6,6 +6,7 @@ import ToggleSwitch from '../components/ToggleSwitch';
 import Note from '../models/note';
 import { getNoteByBatchIdAndWeek } from '../remote/CaliberNoteAPI';
 import WeekNoteStyle from '../styles/WeekNotesStyle';
+import RefreshButton from '../components/RefreshButton';
 
 type Props = {
   batchId: string;
@@ -101,6 +102,7 @@ const WeekNotesScreen: React.FC<Props> = ({ batchId }): JSX.Element => {
   return (
     <>
       <View style={WeekNoteStyle.container}>
+
         <HorizontalSelector data={arrayString}
           initialSelected={arrayString[0]}
           onPress={handleGetNotesForWeek}/>

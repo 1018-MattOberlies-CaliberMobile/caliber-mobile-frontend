@@ -44,7 +44,7 @@ export default function App() {
           <SafeAreaProvider>
             <Navigation colorScheme={colorScheme} />
             {/* <OverallNotesScreen/> */}
-            {/* <WeekNotesScreen batchId={'123'}/> */}
+            <WeekNotesScreen batchId={'123'}/>
             <StatusBar />
           </SafeAreaProvider>
         </ToastProvider>
