@@ -14,6 +14,7 @@ import store from './src/redux/store';
 import OverallNotesScreen from './src/screens/OverallNotesScreen';
 import WeekNotesScreen from './src/screens/WeekNotesScreen';
 import awsmobile from './src/aws-exports';
+import RevatureBanner from './src/components/RevatureBanner';
 
 Amplify.configure(awsmobile);
 
@@ -38,9 +39,19 @@ export default function App() {
   };
 
   return (
-
-
-    <WeekNotesScreen batchId={'123'}/>
+    <Provider store={store}>
+      <ThemeProvider theme={appTheme}>
+        <ToastProvider position="BOTTOM">
+          <SafeAreaProvider>
+            <RevatureBanner/>
+            <Navigation colorScheme={colorScheme} />
+            {/* <OverallNotesScreen/> */}
+            {/* <WeekNotesScreen batchId={'123'}/> */}
+            <StatusBar />
+          </SafeAreaProvider>
+        </ToastProvider>
+      </ThemeProvider>
+    </Provider>
   );
 }
 

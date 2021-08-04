@@ -6,7 +6,15 @@ export const styles1 = StyleSheet.create({
     margin: 5,
   },
   button: {
+    alignItems: 'center',
     backgroundColor: '#F26925',
+    flex: 1,
+    justifyContent: 'center',
+  },
+  buttonText: {
+    color: 'white',
+    fontWeight: 'bold',
+    letterSpacing: 0.25,
   },
   cardBackground: {
     backgroundColor: '#EFEFEF',
@@ -79,8 +87,9 @@ export const styles1 = StyleSheet.create({
   },
   textInput: {
     borderWidth: 1,
-    flex: 1,
+    flex: 3,
     flexDirection: 'row',
+    fontFamily: 'futura-medium',
     marginRight: 5,
     paddingHorizontal: 5,
   },
