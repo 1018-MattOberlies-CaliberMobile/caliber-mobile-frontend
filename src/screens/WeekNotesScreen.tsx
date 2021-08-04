@@ -32,6 +32,7 @@ export const createWeekArray = (start: string, end: string): string[] => {
   let weekNum = 1;
 
   if (startDate.getDate() === endDate.getDate()) {
+    console.log('>> start and end dates match');
     return [];
   }
 
@@ -49,13 +50,14 @@ export const createWeekArray = (start: string, end: string): string[] => {
 
   const timeLength = endDate.valueOf() - startDate.valueOf();
   let timeRemaining = timeLength;
-
+  console.log('>> Time Remaining: ', timeRemaining);
   while (timeRemaining > 0) {
+    console.log('>> Time Remaining: ', timeRemaining);
     weekArray.push(`week${weekNum}`);
     weekNum += 1;
     timeRemaining -= MILLISECONDS_IN_WEEK;
   }
-
+  console.log('>> returning:', weekArray);
   return weekArray;
 };
 
@@ -74,7 +76,6 @@ const WeekNotesScreen: React.FC<Props> = ({ batchId }): JSX.Element => {
   }, [weekNum]);
 
   useEffect(() => {
-
     const items = assocNotes.map((note) => (
 
       <View key={note.noteId}>

@@ -79,7 +79,7 @@ const BatchSelectionScreen: React.FC<Props> = (): JSX.Element => {
         </View>
       </View>
 
-      <View style={ {flex: 0.5}} />
+      <View style={ { flex: 0.5 }} />
 
       <View style={ { flex: 8 } }>
         <ScrollView>
