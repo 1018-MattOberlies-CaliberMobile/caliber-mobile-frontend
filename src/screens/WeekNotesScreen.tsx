@@ -102,7 +102,7 @@ const WeekNotesScreen: React.FC<Props> = ({ batchId }): JSX.Element => {
   return (
     <>
       <View style={WeekNoteStyle.container}>
-
+        <RefreshButton functionality={() => alert('button pressed') }/>
         <HorizontalSelector data={arrayString}
           initialSelected={arrayString[0]}
           onPress={handleGetNotesForWeek}/>
