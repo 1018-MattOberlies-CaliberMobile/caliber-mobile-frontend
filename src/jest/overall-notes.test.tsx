@@ -1,22 +1,10 @@
 /* eslint-disable no-unused-expressions */
-import { fireEvent, GetAllReturn, render } from '@testing-library/react-native';
+import { fireEvent, render } from '@testing-library/react-native';
 import React from 'react';
 import { expect } from '@jest/globals';
-import HorizontalSelector from '../components/HorizontalSelector';
 import StatusSelector from '../components/StatusSelector';
 
 describe('Overall week note page tests', () => {
-  test('Testing when a button is not pressed the onPress function is not being called', () => {
-    let output = '';
-    const setOutput = (item :string): void => { output = item; };
-
-    const { getByText } = render(
-      <HorizontalSelector data = {['week1', 'week2', 'week3']} onPress={ setOutput } />,
-    );
-
-    expect(getByText('week1')).toBeTruthy();
-  });
-
   // status selector
   // test onSelect is called with the correct info
 

@@ -2,7 +2,6 @@ import { StyleSheet } from 'react-native';
 
 const baseStyle = {
   borderRadius: 5,
-  borderWidth: 2,
   flex: 1,
   fontSize: 24,
   margin: 3,

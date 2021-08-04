@@ -10,8 +10,8 @@ class Note {
     public noteId: string,
     public noteContent: string,
     public technicalScore: TechnicalScore,
-    public associate: Associate,
     public weekNumber: number,
+    public associate?: Associate,
   ) {}
 }
 

@@ -18,16 +18,32 @@ export default function App() {
   if (!isLoadingComplete) {
     return null;
   }
-  return (
-  /*  <Provider store={store}>
-      <SafeAreaProvider>
-        <Navigation colorScheme={colorScheme} />
-        <StatusBar />
-      </SafeAreaProvider>
-    </Provider> */
+  const appTheme = {
+    space: [0, 4, 8, 12, 16, 20, 24, 32, 40, 48],
+    colors: {
+      text: '#474C55',
+      background: '#FFFFFF',
+      border: '#E2E8F0',
+      muted: '#F0F1F3',
+      success: '#7DBE31',
+      error: '#FC0021',
+      info: '#00FFFF',
+    },
+  };
 
-    // <OverallNotesScreen/>
-    <WeekNotesScreen batchId='1'/>
+  return (
+    <Provider store={store}>
+      <ThemeProvider theme={appTheme}>
+        <ToastProvider position="BOTTOM">
+          <SafeAreaProvider>
+            <Navigation colorScheme={colorScheme} />
+            {/* <OverallNotesScreen/> */}
+            {/* <WeekNotesScreen batchId={'123'}/> */}
+            <StatusBar />
+          </SafeAreaProvider>
+        </ToastProvider>
+      </ThemeProvider>
+    </Provider>
   );
 }
 
