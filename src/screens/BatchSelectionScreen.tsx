@@ -34,7 +34,6 @@ const BatchSelectionScreen: React.FC<Props> = (): JSX.Element => {
           setSelectedYear(res[0]);
         })
         .catch((err) => {
-          console.log('catch');
           toast({ message: 'Could not retrieve years', intent: 'ERROR' });
         });
     };

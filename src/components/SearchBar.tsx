@@ -4,7 +4,7 @@
 import { useNavigation } from '@react-navigation/native';
 import * as React from 'react';
 import { useState } from 'react';
-import { TextInput, View, Button } from 'react-native';
+import { Text, TextInput, View, Button, TouchableOpacity } from 'react-native';
 
 import Batch from '../models/batch';
 import { styles1 } from '../styles/style1';
@@ -47,12 +47,10 @@ export const SearchBar: React.FC<Props> = ({ batchData, setBatchList }): JSX.Ele
           onChangeText = { (txt): void => setSearch(txt) }
           style = {styles1.textInput}
         />
-        <Button
-          title = 'Search'
-          testID = 'search-button'
-          onPress = { searchBatch }
-          color = {styles1.button.backgroundColor}
-        />
+
+        <TouchableOpacity style={styles1.button} testID='login-button' onPress={searchBatch}>
+          <Text style={ styles1.buttonText }>Search</Text>
+        </TouchableOpacity>
       </View>
     </>
   );

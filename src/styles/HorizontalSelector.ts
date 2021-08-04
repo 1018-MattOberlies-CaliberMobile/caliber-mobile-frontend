@@ -6,6 +6,7 @@ const baseStyle = {
   fontSize: 24,
   margin: 3,
   padding: 5,
+  fontFamily: 'futura-medium',
 };
 
 const HorizontalSelectorStyle = StyleSheet.create({

@@ -1,5 +1,5 @@
 /* eslint-disable arrow-body-style */
-/* eslint-disable import/prefer-default-export */
+import { Auth } from 'aws-amplify';
 import BackendClient from './CaliberBackendClient';
 import Batch from '../models/batch';
 
@@ -20,10 +20,15 @@ export const getBatchYears = async (): Promise<string[]> => {
  * batches that the user is a trainer of
  * @param year the year to retrieve batches for
  */
-export function getBatchesByYear(year: string): Promise<Batch[]> {
-  return BackendClient.get<Batch[]>(`/year/${year}`)
-    .then((res: { data: Batch[]; }) => {
-      console.log('Successfuly retrieved batches', res.data);
-      return res.data as Batch[];
-    });
+export async function getBatchesByYear(year: string): Promise<Batch[]> {
+  const session = await Auth.currentSession();
+  console.log(session.getAccessToken().getJwtToken());
+  return BackendClient.get<Batch[]>(`/year/${year}`, {
+    headers: {
+      Authorizaton: `Bearer ${session.getIdToken().getJwtToken()}`,
+    },
+  }).then((res: { data: Batch[]; }) => {
+    console.log('Successfuly retrieved batches', res.data);
+    return res.data as Batch[];
+  });
 }
