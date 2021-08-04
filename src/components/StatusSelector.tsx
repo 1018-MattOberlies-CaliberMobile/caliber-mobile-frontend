@@ -5,7 +5,9 @@ import {
 import MobileModal from 'react-native-modal' ;
 import { TechnicalScore } from '../@types';
 import StatusIcon from './StatusIcon';
+
 const Modal = require('modal-react-native-web');
+
 type Props = {
   onSelect: Dispatch<SetStateAction<number | undefined>>,
 }
