@@ -42,9 +42,9 @@ export default function App() {
       <ThemeProvider theme={appTheme}>
         <ToastProvider position="BOTTOM">
           <SafeAreaProvider>
-            {/* <Navigation colorScheme={colorScheme} /> */}
-            <OverallNotesScreen/>
-            {/* <WeekNotesScreen batchId={'123'}/> */}
+            <Navigation colorScheme={colorScheme} />
+            {/* <OverallNotesScreen/> */}
+            <WeekNotesScreen batchId={'123'}/>
             <StatusBar />
           </SafeAreaProvider>
         </ToastProvider>

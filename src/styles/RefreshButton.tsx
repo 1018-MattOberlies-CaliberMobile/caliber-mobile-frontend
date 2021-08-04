@@ -11,7 +11,7 @@ const RefreshButton = StyleSheet.create({
     fontWeight: 'bold',
     justifyContent: 'center',
     padding: 10,
-    width: 105,
+    width: 110,
   },
   buttonText: {
     color: 'white',
