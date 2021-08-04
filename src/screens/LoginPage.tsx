@@ -45,7 +45,6 @@ const LoginPage: React.FC<unknown> = (): JSX.Element => {
           <Text style={ LoginPageStyles.buttonText}>Login</Text>
         </TouchableOpacity>
         <Button title='button' onPress={Press}/>
-        <RefreshButton functionality={() => alert('button pressed') }/>
       </View>
     </>
   );

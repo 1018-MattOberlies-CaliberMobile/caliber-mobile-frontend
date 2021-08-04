@@ -99,13 +99,17 @@ const WeekNotesScreen: React.FC<Props> = ({ batchId }): JSX.Element => {
     setWeekNum(arrayString.indexOf(week));
   }
 
+  async function refreshWeekNotes(): Promise<void> {
+    const assoc = await getNoteByBatchIdAndWeek(batchId, weekNum + 1);
+    setAssocNotes(assoc);
+  }
   return (
     <>
       <View style={WeekNoteStyle.container}>
-        <RefreshButton functionality={() => alert('button pressed') }/>
         <HorizontalSelector data={arrayString}
           initialSelected={arrayString[0]}
           onPress={handleGetNotesForWeek}/>
+        <RefreshButton functionality={ refreshWeekNotes }/>
         <ToggleSwitch value={randomOrder} setValue={setRandomOrder}/>
       </View>
       <View>
