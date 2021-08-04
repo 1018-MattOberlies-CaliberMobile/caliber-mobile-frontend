@@ -3,11 +3,12 @@
 /* eslint-disable react-native/no-unused-styles */
 import React, { Dispatch, SetStateAction, useState } from 'react';
 import {
-  View, Alert, Text, Pressable, StyleSheet, Platform,
+  View, Text, Pressable, Platform,
 } from 'react-native';
 import MobileModal from 'react-native-modal';
 import { TechnicalScore } from '../@types';
 import StatusIconPressable, { StatusIcon } from './StatusIcon';
+import styles from '../styles/WeekNotes';
 
 const Modal = require('modal-react-native-web');
 
@@ -15,63 +16,12 @@ type Props = {
   selected: TechnicalScore,
   onSelect: Dispatch<SetStateAction<TechnicalScore>>,
 }
-const styles = StyleSheet.create({
-  button: {
-    borderRadius: 20,
-    elevation: 2,
-    padding: 10,
-  },
-  buttonClose: {
-    backgroundColor: '#2196F3',
-  },
-  buttonOpen: {
-    backgroundColor: '#F194FF',
-  },
-  centeredView: {
-    alignItems: 'center',
-
-    backgroundColor: 'rgba(0,0,0,0)',
-    flex: 1,
-    justifyContent: 'center',
-  },
-  flex: {
-    alignItems: 'center',
-    flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'space-evenly',
-    width: '100%',
-  },
-  modalText: {
-    fontFamily: 'futura-bold',
-    fontSize: 20,
-    marginBottom: 15,
-    textAlign: 'center',
-  },
-  modalView: {
-    alignItems: 'center',
-    borderRadius: 20,
-    borderStyle: 'solid',
-    borderWidth: 5,
-    flex: 0.25,
-    margin: 5,
-    padding: 10,
-  },
-  statusIcon: {
-    marginHorizontal: 10,
-  },
-  textStyle: {
-    color: 'white',
-    fontFamily: 'futura-medium',
-    fontWeight: 'bold',
-    textAlign: 'center',
-  },
-});
 
 const StatusSelector: React.FC<Props> = ({ selected, onSelect }): JSX.Element => {
   const [modalVisible, setModalVisible] = useState(false);
   const onPressHandler = (status: TechnicalScore): void => {
     setModalVisible(!modalVisible);
-    console.log('>> Pressed', status);
+    // console.log('>> Pressed', status);
     onSelect(status);
   };
   const ModalViewer = (): JSX.Element => (
@@ -103,6 +53,7 @@ const StatusSelector: React.FC<Props> = ({ selected, onSelect }): JSX.Element =>
 
           <Modal
             visible={modalVisible}
+            ariaHideApp={false}
             onRequestClose={(): void => {
               setModalVisible(!modalVisible);
             }}>
@@ -114,7 +65,6 @@ const StatusSelector: React.FC<Props> = ({ selected, onSelect }): JSX.Element =>
       )
         : (
           <View >
-            {console.log('>> Loading app')}
             <MobileModal
               backdropColor="transparent"
               isVisible={modalVisible}

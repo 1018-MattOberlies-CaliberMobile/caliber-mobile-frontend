@@ -5,6 +5,7 @@ import {
   Button, View, Text, TouchableOpacity, Image,
 } from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
+import { useToast } from 'react-native-styled-toast';
 import { useAppDispatch } from '../redux';
 import { loginAsync, UserState } from '../redux/slices/user.slice';
 import LoginPageStyles from '../styles/LoginPageStyles';
@@ -12,6 +13,7 @@ import LoginPageStyles from '../styles/LoginPageStyles';
 const revlogo = require('../../assets/images/rev-logo.png');
 
 const LoginPage: React.FC<unknown> = (): JSX.Element => {
+  const { toast } = useToast();
   const navigation = useNavigation();
   const [username, setUserName] = useState<string>('');
   const [password, setPassWord] = useState<string>('');
@@ -21,8 +23,7 @@ const LoginPage: React.FC<unknown> = (): JSX.Element => {
     if (result.meta.requestStatus === 'fulfilled') {
       navigation.navigate('HomeDrawer', { screens: 'QualityAudit' });
     } else {
-      // eslint-disable-next-line no-alert
-      alert('Login failed');
+      toast({ message: 'Login Credentials invalid', intent: 'ERROR' });
     }
   };
   const Press = (): void => navigation.navigate(

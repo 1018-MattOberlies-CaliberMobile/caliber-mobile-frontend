@@ -8,7 +8,7 @@ export const batchSlice = createSlice({
   name: 'batch',
   initialState: null as BatchState,
   reducers: {
-    setBatch: (state, action: PayloadAction<Batch | null>) => JSON.stringify(action.payload),
+    setBatch: (state, action: PayloadAction<string | null>) => action.payload,
     clear: () => null,
   },
 });
