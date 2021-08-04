@@ -25,7 +25,7 @@ export default function App() {
   if (!isLoadingComplete) {
     return null;
   }
-  const theme = {
+  const appTheme = {
     space: [0, 4, 8, 12, 16, 20, 24, 32, 40, 48],
     colors: {
       text: '#474C55',
@@ -40,18 +40,18 @@ export default function App() {
 
   return (
     <Provider store={store}>
-      <ThemeProvider theme={theme}>
+      <ThemeProvider theme={appTheme}>
         <ToastProvider position="BOTTOM">
           <SafeAreaProvider>
             <RevatureBanner/>
             <Navigation colorScheme={colorScheme} />
+            {/* <OverallNotesScreen/> */}
+            {/* <WeekNotesScreen batchId={'123'}/> */}
             <StatusBar />
           </SafeAreaProvider>
         </ToastProvider>
       </ThemeProvider>
     </Provider>
-
-  // <OverallNotesScreen />
   );
 }
 

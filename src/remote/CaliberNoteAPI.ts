@@ -59,3 +59,9 @@ export const getNoteByBatchIdAndWeek = async (batchId: string, week: number): Pr
 
   return notes;
 };
+
+export const CreateOverallNote = (note: Note): void => {
+  BackendClient.post('/note', note)
+    .then((res) => { console.log('>> Saved note', res); })
+    .catch((err) => { console.log('>> Error on save note.', err); });
+};
