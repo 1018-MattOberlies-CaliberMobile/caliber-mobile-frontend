@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
-import React, { useState, useRef } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import {
   Text,
   View,
@@ -7,6 +7,7 @@ import {
   Animated,
   Easing,
 } from 'react-native';
+import { TechnicalScore } from '../@types';
 import Note from '../models/note';
 import { styles1 } from '../styles/style1';
 import StatusSelector from './StatusSelector';
@@ -15,13 +16,23 @@ type Props = {
   note: Note;
 }
 
-const AccordionListItem: React.FC<Props> = ({ note, children }) => {
+const AssociateCard: React.FC<Props> = ({ note, children }) => {
   const { technicalScore } = note;
-  const { firstName, lastName } = note.associate;
+  const [last, setLast] = useState<string>();
+  const [first, setFirst] = useState<string>();
+
+  useEffect(() => {
+    if (note.associate) {
+      const { firstName, lastName } = note.associate;
+      setLast(lastName);
+      setFirst(firstName);
+    }
+  }, []);
+
   const [open, setOpen] = useState(false);
   const animatedController = useRef(new Animated.Value(0)).current;
   const [bodySectionHeight, setBodySectionHeight] = useState<number>(0);
-  const [selected, setSelected] = useState<number | undefined>(technicalScore);
+  const [score, setScore] = useState<TechnicalScore>(technicalScore);
 
   const bodyHeight = animatedController.interpolate({
     inputRange: [0, 1],
@@ -51,8 +62,8 @@ const AccordionListItem: React.FC<Props> = ({ note, children }) => {
     <>
       <TouchableWithoutFeedback onPress={(): unknown => toggleListItem()}>
         <View style={styles1.cardContainer}>
-          <Text>{lastName}, {firstName}</Text>
-          <StatusSelector onSelect={setSelected}/>
+          <Text>{last}, {first}</Text>
+          <StatusSelector selected={score} onSelect={setScore}/>
         </View>
       </TouchableWithoutFeedback>
       <Animated.View style={[styles1.cardBackground, { height: bodyHeight }]}>
@@ -66,4 +77,4 @@ const AccordionListItem: React.FC<Props> = ({ note, children }) => {
     </>
   );
 };
-export default AccordionListItem;
+export default AssociateCard;

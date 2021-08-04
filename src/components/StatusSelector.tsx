@@ -7,7 +7,8 @@ import {
 } from 'react-native';
 import MobileModal from 'react-native-modal';
 import { TechnicalScore } from '../@types';
-import StatusIcon from './StatusIcon';
+import StatusIconPressable, { StatusIcon } from './StatusIcon';
+import styles from '../styles/WeekNotes';
 
 const Modal = require('modal-react-native-web');
 

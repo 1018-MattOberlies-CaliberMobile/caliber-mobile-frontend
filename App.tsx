@@ -38,18 +38,9 @@ export default function App() {
   };
 
   return (
-    <Provider store={store}>
-      <ThemeProvider theme={appTheme}>
-        <ToastProvider position="BOTTOM">
-          <SafeAreaProvider>
-            <Navigation colorScheme={colorScheme} />
-            {/* <OverallNotesScreen/> */}
-            {/* <WeekNotesScreen batchId={'123'}/> */}
-            <StatusBar />
-          </SafeAreaProvider>
-        </ToastProvider>
-      </ThemeProvider>
-    </Provider>
+
+
+    <WeekNotesScreen batchId={'123'}/>
   );
 }
 

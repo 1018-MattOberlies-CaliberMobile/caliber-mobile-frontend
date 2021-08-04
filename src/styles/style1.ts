@@ -5,6 +5,9 @@ export const styles1 = StyleSheet.create({
   break: {
     margin: 5,
   },
+  button: {
+    backgroundColor: '#F26925',
+  },
   cardBackground: {
     backgroundColor: '#EFEFEF',
     overflow: 'hidden',
@@ -62,21 +65,10 @@ export const styles1 = StyleSheet.create({
     height: 10,
     justifyContent: 'flex-end',
   },
-<<<<<<< HEAD
-  textInput: {
-    borderWidth: 1,
-    flex: 1,
-    flexDirection: 'row',
-    marginRight: 5,
-    paddingHorizontal: 5,
-=======
   textBox: {
     backgroundColor: '#f2f2f2',
-    borderBottomLeftRadius: 10,
-    borderBottomRightRadius: 10,
-    borderTopLeftRadius: 10,
-    borderTopRightRadius: 10,
     flex: 0.3,
+    // width: 
     shadowColor: '#000000',
     shadowOffset: {
       height: 1,
@@ -84,11 +76,20 @@ export const styles1 = StyleSheet.create({
     },
     shadowOpacity: 0.2,
     shadowRadius: 2,
->>>>>>> create NoteInput(complete), AssociateCard (wip)
+  },
+  textInput: {
+    borderWidth: 1,
+    flex: 1,
+    flexDirection: 'row',
+    marginRight: 5,
+    paddingHorizontal: 5,
   },
   title: {
     fontSize: 15,
     fontWeight: 'bold',
     textAlign: 'center',
   },
+  noteButton: {
+    
+  }
 });

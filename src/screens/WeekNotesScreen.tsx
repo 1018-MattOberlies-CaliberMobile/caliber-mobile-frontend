@@ -1,7 +1,9 @@
 /* eslint-disable no-param-reassign */
 import React, { useState, useEffect } from 'react';
 import { Text, View } from 'react-native';
+import AssociateCard from '../components/AssociateCard';
 import HorizontalSelector from '../components/HorizontalSelector';
+import NoteInput from '../components/NoteInput';
 import ToggleSwitch from '../components/ToggleSwitch';
 import Note from '../models/note';
 import { getNoteByBatchIdAndWeek } from '../remote/CaliberNoteAPI';
@@ -78,14 +80,21 @@ const WeekNotesScreen: React.FC<Props> = ({ batchId }): JSX.Element => {
   useEffect(() => {
     const items = assocNotes.map((note) => (
 
-      <View key={note.noteId}>
-        <Text>
-          {note.noteContent}
-        </Text>
-        <Text>
-          {note.technicalScore}
-        </Text>
-      </View>
+      <>
+        {/* <View key={note.noteId}>
+          <Text>
+            {note.noteContent}
+          </Text>
+          <Text>
+            {note.technicalScore}
+          </Text>
+        </View> */}
+        <View key={note.noteId}>
+          <AssociateCard note={note}>
+            <NoteInput note={note} />
+          </AssociateCard>
+        </View>
+      </>
     ));
     if (randomOrder) {
       FisherYatesShuffle(items);
