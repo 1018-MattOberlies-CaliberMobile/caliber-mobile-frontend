@@ -1,8 +1,9 @@
-/* eslint-disable no-param-reassign */
 import React, { useState, useEffect } from 'react';
 import { Text, View } from 'react-native';
 import HorizontalSelector from '../components/HorizontalSelector';
 import ToggleSwitch from '../components/ToggleSwitch';
+import CreateWeekArray from '../functions/CreateWeekArray';
+import FisherYatesShuffle from '../functions/FisherYatesShuffle';
 import Note from '../models/note';
 import { getNoteByBatchIdAndWeek } from '../remote/CaliberNoteAPI';
 import WeekNoteStyle from '../styles/WeekNotesStyle';
@@ -62,7 +63,7 @@ export const createWeekArray = (start: string, end: string): string[] => {
 };
 
 const WeekNotesScreen: React.FC<Props> = ({ batchId }): JSX.Element => {
-  const arrayString = createWeekArray('2021-7-5', '2021-7-30');
+  const arrayString = CreateWeekArray('2021-7-5', '2021-7-30');
   const [assocNotes, setAssocNotes] = useState<Note[]>([]);
   const [weekNum, setWeekNum] = useState<number>(0);
   const [noteItems, setNoteItems] = useState<JSX.Element[]>([]);
@@ -77,7 +78,6 @@ const WeekNotesScreen: React.FC<Props> = ({ batchId }): JSX.Element => {
 
   useEffect(() => {
     const items = assocNotes.map((note) => (
-
       <View key={note.noteId}>
         <Text>
           {note.noteContent}
@@ -88,7 +88,7 @@ const WeekNotesScreen: React.FC<Props> = ({ batchId }): JSX.Element => {
       </View>
     ));
     if (randomOrder) {
-      FisherYatesShuffle(items);
+      FisherYatesShuffle<JSX.Element>(items);
     }
 
     setNoteItems(items);
