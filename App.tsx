@@ -36,7 +36,6 @@ export default function App() {
       info: '#00FFFF',
     },
   };
-
   return (
     <Provider store={store}>
       <ThemeProvider theme={theme}>
