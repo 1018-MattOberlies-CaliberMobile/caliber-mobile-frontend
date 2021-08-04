@@ -2,7 +2,6 @@ import { StyleSheet } from 'react-native';
 
 const baseStyle = {
   borderRadius: 5,
-  borderWidth: 2,
   flex: 1,
   fontSize: 24,
   margin: 3,
@@ -15,6 +14,7 @@ const HorizontalSelectorStyle = StyleSheet.create({
     flexDirection: 'row',
     flexGrow: 1,
     justifyContent: 'center',
+    marginVertical: 5,
     paddingHorizontal: 10,
   },
   item: {
@@ -23,7 +23,7 @@ const HorizontalSelectorStyle = StyleSheet.create({
   },
   selectedItem: {
     ...baseStyle,
-    backgroundColor: '#FCB414',
+    backgroundColor: '#F26925',
   },
 });
 

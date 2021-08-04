@@ -1,13 +1,28 @@
+/* eslint-disable no-param-reassign */
 import React, { useState, useEffect } from 'react';
-import { Text } from 'react-native';
+import { Text, View } from 'react-native';
 import HorizontalSelector from '../components/HorizontalSelector';
-import { View } from '../components/Themed';
+import ToggleSwitch from '../components/ToggleSwitch';
 import Note from '../models/note';
 import { getNoteByBatchIdAndWeek } from '../remote/CaliberNoteAPI';
+import WeekNoteStyle from '../styles/WeekNotesStyle';
 
 type Props = {
   batchId: string;
 }
+
+const FisherYatesShuffle = (inputArray: JSX.Element[]): JSX.Element[] => {
+  const n = inputArray.length;
+
+  // eslint-disable-next-line no-plusplus
+  for (let i = n - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    const tmp = inputArray[i];
+    inputArray[i] = inputArray[j];
+    inputArray[j] = tmp;
+  }
+  return inputArray;
+};
 
 export const createWeekArray = (start: string, end: string): string[] => {
   const weekArray: string[] = [];
@@ -17,6 +32,7 @@ export const createWeekArray = (start: string, end: string): string[] => {
   let weekNum = 1;
 
   if (startDate.getDate() === endDate.getDate()) {
+    console.log('>> start and end dates match');
     return [];
   }
 
@@ -34,13 +50,14 @@ export const createWeekArray = (start: string, end: string): string[] => {
 
   const timeLength = endDate.valueOf() - startDate.valueOf();
   let timeRemaining = timeLength;
-
+  console.log('>> Time Remaining: ', timeRemaining);
   while (timeRemaining > 0) {
+    console.log('>> Time Remaining: ', timeRemaining);
     weekArray.push(`week${weekNum}`);
     weekNum += 1;
     timeRemaining -= MILLISECONDS_IN_WEEK;
   }
-
+  console.log('>> returning:', weekArray);
   return weekArray;
 };
 
@@ -48,8 +65,8 @@ const WeekNotesScreen: React.FC<Props> = ({ batchId }): JSX.Element => {
   const arrayString = createWeekArray('2021-7-5', '2021-7-30');
   const [assocNotes, setAssocNotes] = useState<Note[]>([]);
   const [weekNum, setWeekNum] = useState<number>(0);
-
-  const [noteItems, setNoteItems] = useState<JSX.Element[]>();
+  const [noteItems, setNoteItems] = useState<JSX.Element[]>([]);
+  const [randomOrder, setRandomOrder] = useState<boolean>(false);
 
   useEffect(() => {
     (async (): Promise<void> => {
@@ -59,7 +76,8 @@ const WeekNotesScreen: React.FC<Props> = ({ batchId }): JSX.Element => {
   }, [weekNum]);
 
   useEffect(() => {
-    setNoteItems(assocNotes.map((note) => (
+    const items = assocNotes.map((note) => (
+
       <View key={note.noteId}>
         <Text>
           {note.noteContent}
@@ -68,8 +86,13 @@ const WeekNotesScreen: React.FC<Props> = ({ batchId }): JSX.Element => {
           {note.technicalScore}
         </Text>
       </View>
-    )));
-  }, [assocNotes]);
+    ));
+    if (randomOrder) {
+      FisherYatesShuffle(items);
+    }
+
+    setNoteItems(items);
+  }, [assocNotes, randomOrder]);
 
   function handleGetNotesForWeek(week: string): void {
     setWeekNum(arrayString.indexOf(week));
@@ -77,14 +100,15 @@ const WeekNotesScreen: React.FC<Props> = ({ batchId }): JSX.Element => {
 
   return (
     <>
-      <div>
+      <View style={WeekNoteStyle.container}>
         <HorizontalSelector data={arrayString}
           initialSelected={arrayString[0]}
-          onPress={handleGetNotesForWeek}></HorizontalSelector>
-      </div>
-      <div>
+          onPress={handleGetNotesForWeek}/>
+        <ToggleSwitch value={randomOrder} setValue={setRandomOrder}/>
+      </View>
+      <View>
         { noteItems }
-      </div>
+      </View>
     </>
   );
 };
