@@ -135,4 +135,4 @@ The project code base is mainly located within the `src` folder.
 
 ## License
 
-This project uses the following license: [<license_name>](<link>).
+This project uses the following license: [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
