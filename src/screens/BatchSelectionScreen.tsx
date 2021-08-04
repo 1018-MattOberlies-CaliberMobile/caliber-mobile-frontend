@@ -34,7 +34,6 @@ const BatchSelectionScreen: React.FC<Props> = (): JSX.Element => {
           setSelectedYear(res[0]);
         })
         .catch((err) => {
-          console.log('catch');
           toast({ message: 'Could not retrieve years', intent: 'ERROR' });
         });
     };
@@ -79,7 +78,7 @@ const BatchSelectionScreen: React.FC<Props> = (): JSX.Element => {
         </View>
       </View>
 
-      <View style={ {flex: 0.5}} />
+      <View style={ { flex: 0.5 }} />
 
       <View style={ { flex: 8 } }>
         <ScrollView>
