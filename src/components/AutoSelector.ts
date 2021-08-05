@@ -1,12 +1,16 @@
 import { TechnicalScore } from '../@types';
+import Note from '../models/note';
 
-export default function AutoSelector(scoreArray: TechnicalScore[]): TechnicalScore {
+export default function AutoSelector(noteArray: Note[]): TechnicalScore {
+  const scoreArray = [] as TechnicalScore[];
+  for (let i = 0; i < noteArray.length; i += 1) {
+    scoreArray[i] = noteArray[i].technicalScore;
+  }
   const zeroCount = (scoreArray.filter((score) => score === 0)).length;
   let realFinal = 0 as TechnicalScore;
   if (scoreArray.length - zeroCount > 0) {
     let sum = 0;
-    // eslint-disable-next-line no-plusplus
-    for (let i = 0; i < scoreArray.length; i++) {
+    for (let i = 0; i < scoreArray.length; i += 1) {
       sum += scoreArray[i];
     }
     const average = sum / (scoreArray.length - zeroCount);
