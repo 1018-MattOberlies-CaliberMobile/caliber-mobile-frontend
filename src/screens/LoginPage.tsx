@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-empty-function */
 import { useNavigation } from '@react-navigation/native';
 import React, { useState } from 'react';
 import {
@@ -7,7 +6,8 @@ import {
 import { TextInput } from 'react-native-gesture-handler';
 import { useToast } from 'react-native-styled-toast';
 import { useAppDispatch } from '../redux';
-import { loginAsync, UserState } from '../redux/slices/user.slice';
+import { loginAsync } from '../redux/slices/user.slice';
+import RefreshButton from '../components/RefreshButton';
 import LoginPageStyles from '../styles/LoginPageStyles';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const revlogo = require('../../assets/images/rev-logo.png');

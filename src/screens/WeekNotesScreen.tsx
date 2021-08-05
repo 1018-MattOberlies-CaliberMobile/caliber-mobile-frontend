@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { Text, View } from 'react-native';
+import AssociateCard from '../components/AssociateCard';
 import HorizontalSelector from '../components/HorizontalSelector';
+import NoteInput from '../components/NoteInput';
 import ToggleSwitch from '../components/ToggleSwitch';
 import CreateWeekArray from '../functions/CreateWeekArray';
 import FisherYatesShuffle from '../functions/FisherYatesShuffle';
 import Note from '../models/note';
 import { getNoteByBatchIdAndWeek } from '../remote/CaliberNoteAPI';
 import WeekNoteStyle from '../styles/WeekNotesStyle';
+import RefreshButton from '../components/RefreshButton';
 
 type Props = {
   batchId: string;
@@ -28,15 +31,13 @@ const WeekNotesScreen: React.FC<Props> = ({ batchId }): JSX.Element => {
 
   useEffect(() => {
     const items = assocNotes.map((note) => (
-      <View key={note.noteId}>
-        <Text>
-          {note.noteContent}
-        </Text>
-        <Text>
-          {note.technicalScore}
-        </Text>
-      </View>
+        <View key={note.noteId}>
+          <AssociateCard note={note}>
+            <NoteInput note={note} />
+          </AssociateCard>
+        </View>
     ));
+    
     if (randomOrder) {
       FisherYatesShuffle<JSX.Element>(items);
     }
@@ -48,12 +49,17 @@ const WeekNotesScreen: React.FC<Props> = ({ batchId }): JSX.Element => {
     setWeekNum(arrayString.indexOf(week));
   }
 
+  async function refreshWeekNotes(): Promise<void> {
+    const assoc = await getNoteByBatchIdAndWeek(batchId, weekNum + 1);
+    setAssocNotes(assoc);
+  }
   return (
     <>
       <View style={WeekNoteStyle.container}>
         <HorizontalSelector data={arrayString}
           initialSelected={arrayString[0]}
           onPress={handleGetNotesForWeek}/>
+        <RefreshButton functionality={ refreshWeekNotes }/>
         <ToggleSwitch value={randomOrder} setValue={setRandomOrder}/>
       </View>
       <View>

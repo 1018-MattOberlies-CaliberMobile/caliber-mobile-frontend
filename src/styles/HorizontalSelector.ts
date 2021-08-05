@@ -13,6 +13,7 @@ const baseStyle = {
   },
   shadowOpacity: 0.2,
   elevation: 5,
+  fontFamily: 'futura-medium',
 };
 
 const HorizontalSelectorStyle = StyleSheet.create({
