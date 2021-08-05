@@ -4,10 +4,7 @@ import { View, Text, TextInput } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import Note from '../models/note';
 import { styles1 } from '../styles/style1';
-<<<<<<< HEAD
 import { theme } from '../styles/Theme';
-=======
->>>>>>> d60a8ae... finished some styling
 import WeekNoteStyle from '../styles/WeekNotesStyle';
 
 type Props = {

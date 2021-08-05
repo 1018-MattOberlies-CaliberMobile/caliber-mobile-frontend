@@ -10,6 +10,7 @@ import Note from '../models/note';
 import { getNoteByBatchIdAndWeek } from '../remote/CaliberNoteAPI';
 import WeekNoteStyle from '../styles/WeekNotesStyle';
 import RefreshButton from '../components/RefreshButton';
+import { styles1 } from '../styles/style1';
 
 type Props = {
   batchId: string;
