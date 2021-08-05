@@ -21,7 +21,7 @@ const LoginPage: React.FC<unknown> = (): JSX.Element => {
   const handleLogin = async ():Promise<void> => {
     const result = await dispatch(loginAsync({ username, password }));
     if (result.meta.requestStatus === 'fulfilled') {
-      navigation.navigate('HomeDrawer', { screens: 'QualityAudit' });
+      // navigation.navigate('HomeDrawer', { screens: 'QualityAudit' });
     } else {
       toast({ message: 'Login Credentials invalid', intent: 'ERROR' });
     }
