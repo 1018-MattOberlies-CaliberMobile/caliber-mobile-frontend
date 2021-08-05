@@ -70,10 +70,16 @@ const LoginPageStyles = StyleSheet.create({
     width: '100%',
   },
   label: {
+    borderColor: theme.colors.secondary,
+    borderWidth: 1,
     color: theme.colors.secondary,
-    fontFamily: 'futura-pt',
+    flex: 3,
+    flexDirection: 'row',
+    fontFamily: 'futura-medium',
     fontSize: 16,
     fontWeight: 'bold',
+    marginRight: 5,
+    paddingHorizontal: 5,
   },
   row: {
     flexDirection: 'row',
