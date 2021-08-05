@@ -45,6 +45,7 @@ export default function App() {
           <SafeAreaProvider>
             {/* <RevatureBanner/> */}
             {/* <Navigation colorScheme={colorScheme} /> */}
+            <Navigation colorScheme={colorScheme} />
             {/* <OverallNotesScreen/> */}
             <WeekNotesScreen batchId={'123'}/>
             <StatusBar />
