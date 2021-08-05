@@ -17,7 +17,7 @@ type Props = {
 }
 
 const WeekNotesScreen: React.FC<Props> = ({ batchId }): JSX.Element => {
-  const arrayString = CreateWeekArray('2021-7-5', '2021-7-30');
+  const arrayString = CreateWeekArray('2021-6-5', '2021-7-5');
   const [assocNotes, setAssocNotes] = useState<Note[]>([]);
   const [weekNum, setWeekNum] = useState<number>(0);
   const [noteItems, setNoteItems] = useState<JSX.Element[]>([]);
