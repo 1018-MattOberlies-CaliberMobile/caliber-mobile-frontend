@@ -89,8 +89,6 @@ export const styles1 = StyleSheet.create({
     shadowRadius: 2,
     width: '100%',
   },
-<<<<<<< HEAD
-=======
   textInput: {
     borderWidth: 1,
     // flex: 3,
@@ -107,14 +105,9 @@ export const styles1 = StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'center',
   },
->>>>>>> 9288c5b12a2d16d70bd9470eb8fb3b407bf764d0
   title: {
     fontSize: 15,
     fontWeight: 'bold',
     textAlign: 'center',
   },
-<<<<<<< HEAD
-
-=======
->>>>>>> 9288c5b12a2d16d70bd9470eb8fb3b407bf764d0
 });
