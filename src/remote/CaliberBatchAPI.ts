@@ -2,7 +2,6 @@
 import { Auth } from 'aws-amplify';
 import BackendClient from './CaliberBackendClient';
 import Batch from '../models/batch';
-import { batch } from 'react-redux';
 
 /**
  * Retrieves a list of years which contain batches
