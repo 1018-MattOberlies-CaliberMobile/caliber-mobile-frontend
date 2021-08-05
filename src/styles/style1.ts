@@ -74,7 +74,7 @@ export const styles1 = StyleSheet.create({
     shadowRadius: 2,
     marginTop: '10px',
     padding: 10,
-    flex: 1,
+    // flex: 1,
     justifyContent: 'center',
     borderRadius: 5,
   },
@@ -92,7 +92,7 @@ export const styles1 = StyleSheet.create({
   },
   textBox: {
     backgroundColor: '#f2f2f2',
-    flex: 1,
+    // flex: 1,
     justifyContent: 'center',
     shadowColor: '#000000',
     shadowOffset: {
@@ -105,7 +105,7 @@ export const styles1 = StyleSheet.create({
   },
   textInput: {
     borderWidth: 1,
-    flex: 3,
+    // flex: 3,
     flexDirection: 'row',
     fontFamily: 'futura-medium',
     marginRight: 5,
@@ -114,7 +114,7 @@ export const styles1 = StyleSheet.create({
   },
   textInputSave: {
     color: '#FFFFFF',
-    flex: 1,
+    // flex: 1,
     justifyContent: 'center',
     fontWeight: 'bold',
     textAlign: 'center',
