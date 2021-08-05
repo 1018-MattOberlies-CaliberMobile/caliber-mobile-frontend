@@ -27,17 +27,7 @@ export async function getBatchesByYear(year: string): Promise<Batch[]> {
       Authorization: `Bearer ${session.getAccessToken().getJwtToken()}`,
     },
   }).then((res) => {
-    // console.log('Successfuly retrieved batches', res.data);
-    const receivedBatches = JSON.parse(res.data.body).batches;
-    const batches: Batch[] = receivedBatches.map((b): Batch => {
-      const newBatch = {
-        ...b,
-        trainers: b.users,
-      };
-      delete newBatch.users;
-      return newBatch;
-    });
-    console.log('formatted batches: ', batches);
-    return batches;
+    console.log('Successfuly retrieved batches', JSON.parse(res.data.body).batches);
+    return JSON.parse(res.data.body).batches as Batch[];
   });
 }
