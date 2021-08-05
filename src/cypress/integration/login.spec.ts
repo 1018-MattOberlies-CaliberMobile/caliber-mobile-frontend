@@ -2,37 +2,34 @@
 
 describe('The Login Page', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:19006/Login');
+    cy.visit('http://localhost:19006');
   });
   it('successfully rendered text', () => {
     cy.get('[data-testid=username-input-label]').contains('Username:');
     cy.get('[data-testid=password-input-label]').contains('Password:');
   });
+
   it('invalid login', () => {
-    let failed = false;
-    cy.intercept({ method: 'Post' }, (req) => {
+    cy.intercept({ method: 'Post', url: 'https://cognito-idp.us-west-1.amazonaws.com/' }, (req) => {
       req.continue((res) => {
-        if (res.statusCode >= 300) {
-          failed = true;
-        }
+        expect(res.statusCode).to.equal(400);
       });
-    });
+    }).as('t1');
     cy.get('[data-testid=username-input]').type('invalid user');
     cy.get('[data-testid=password-input]').type('wrong password');
     cy.get('[data-testid=login-button]').click();
-    cy.wait(4000);
-    expect(failed);
+    cy.wait('@t1');
   });
+
   it('valid login', () => {
-    cy.intercept({ method: 'Post' }, (req) => {
+    cy.intercept({ method: 'Post', url: 'https://cognito-idp.us-west-1.amazonaws.com/' }, (req) => {
       req.continue((res) => {
-        if (res.statusCode >= 300) {
-          expect(2).to.equal(1);
-        }
+        expect(res.statusCode).to.equal(200);
       });
-    });
-    cy.get('[data-testid=username-input]').type('valid user');
-    cy.get('[data-testid=password-input]').type('password is correct');
+    }).as('t2');
+    cy.get('[data-testid=username-input]').type('Trainer1');
+    cy.get('[data-testid=password-input]').type('password');
     cy.get('[data-testid=login-button]').click();
+    cy.wait('@t2');
   });
 });
