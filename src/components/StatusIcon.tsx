@@ -9,6 +9,7 @@ import { TechnicalScore } from '../@types';
 type StatusIconProps = {
   status: TechnicalScore,
   size?: number,
+  style?: ViewStyle,
 };
 
 type PressableStatusIconProps = {
@@ -16,7 +17,7 @@ type PressableStatusIconProps = {
   style?: ViewStyle,
 };
 
-export const StatusIcon: React.FC<StatusIconProps> = ({ status, size }): JSX.Element => {
+export const StatusIcon: React.FC<StatusIconProps> = ({ status, size, style }): JSX.Element => {
   switch (status) {
   case 1:
     return <Entypo name="emoji-sad" size={size || 25} color="red" />;

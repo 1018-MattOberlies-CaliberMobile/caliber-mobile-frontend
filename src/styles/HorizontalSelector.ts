@@ -1,29 +1,45 @@
 import { StyleSheet } from 'react-native';
+import { theme } from './Theme';
 
 const baseStyle = {
   borderRadius: 5,
-  flex: 1,
+  // flex: 1,
   fontSize: 24,
   margin: 3,
   padding: 5,
+  shadowOffset: {
+    width: 3,
+    height: 3,
+  },
+  shadowOpacity: 0.2,
+  elevation: 5,
 };
 
 const HorizontalSelectorStyle = StyleSheet.create({
   container: {
     alignItems: 'center',
     flexDirection: 'row',
-    flexGrow: 1,
+    flexGrow: 1.25,
     justifyContent: 'center',
-    marginVertical: 5,
+    marginVertical: 0,
     paddingHorizontal: 10,
   },
   item: {
     ...baseStyle,
-    backgroundColor: '#B9B9BA',
+    backgroundColor: 'white',
+    borderColor: theme.colors.primary,
+    borderWidth: 3,
+    color: theme.colors.primary,
   },
   selectedItem: {
     ...baseStyle,
-    backgroundColor: '#F26925',
+    backgroundColor: theme.colors.primary,
+    borderColor: theme.colors.primary,
+    borderWidth: 3,
+    color: 'white',
+  },
+  selector: {
+    flex: 0.15,
   },
 });
 

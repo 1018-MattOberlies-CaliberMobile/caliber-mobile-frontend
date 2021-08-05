@@ -5,6 +5,7 @@ import {
   Pressable, Text, TextInput, TouchableOpacity, View,
 } from 'react-native';
 import { useDispatch } from 'react-redux';
+import { FontAwesome } from '@expo/vector-icons';
 import { TechnicalScore } from '../@types';
 import HorizontalSelector from '../components/HorizontalSelector';
 import StatusSelector from '../components/StatusSelector';
@@ -15,7 +16,10 @@ import { selectBatch, setBatch } from '../redux/slices/batch.slice';
 import { selectWeek, setWeek } from '../redux/slices/week.slice';
 import { CreateOverallNote } from '../remote/CaliberNoteAPI';
 import LoginPageStyles from '../styles/LoginPageStyles';
-import { createWeekArray } from './WeekNotesScreen';
+import { pageStyles } from '../styles/WeekNotes';
+import createWeekArray from '../functions/CreateWeekArray';
+import HorizontalSelectorStyle from '../styles/HorizontalSelector';
+import { theme } from '../styles/Theme';
 
 type Props = {
 
@@ -47,7 +51,7 @@ const OverallNotesScreen: React.FC<Props> = (props): JSX.Element => {
   useEffect(() => {
     const newBatch: Batch = new Batch('123', 'mockBatch',
       [{ username: 'mockUser', role: 'Trainer' }],
-      '2021-7-5', '2021-7-20',
+      '2021-7-5', '2021-9-20',
       [{ associateId: '13', firstName: 'associate', lastName: 'lastname' }],
       [{
         noteId: '151',
@@ -56,35 +60,44 @@ const OverallNotesScreen: React.FC<Props> = (props): JSX.Element => {
         weekNumber: 1,
         associate: { associateId: '13', firstName: 'associate', lastName: 'lastname' },
       }]);
-    console.log('>> newBatch: ', newBatch);
+    // console.log('>> newBatch: ', newBatch);
     dispatch(setBatch(JSON.stringify(newBatch)));
   }, []);
   useEffect(() => {
     if (batch) {
-      console.log('>> batch was updated');
-      console.log('>> StartDate: ', batch.startDate, ' >> EndDate: ', batch.endDate);
+      // console.log('>> batch was updated');
+      // console.log('>> StartDate: ', batch.startDate, ' >> EndDate: ', batch.endDate);
       const temp = createWeekArray(batch.startDate, batch.endDate);
-      console.log('>> weeks array: ');
+      // console.log('>> weeks array: ');
       setWeeks(temp);
     }
   }, [batch]);
-  useEffect(() => {
+  /* useEffect(() => {
     (():void => {
       // eslint-disable-next-line no-unused-expressions
       weeks && console.log('>> weeks was updated: ', weeks);
     })();
-  }, [weeks]);
+  }, [weeks]); */
 
   return (
-    <View>
-      {weeks && <HorizontalSelector initialSelected={currentWeek || ''} data={weeks} onPress={handleWeekSelector}/>}
-      <Text style={{ fontFamily: 'futura-medium' }}>{currentWeek}</Text>
-      <StatusSelector selected={technicalScore} onSelect={setSelected}/>
+    <View style={pageStyles.centeredView}>
+      <View style={HorizontalSelectorStyle.selector}>
+        {weeks ? <HorizontalSelector initialSelected={currentWeek || ''} data={weeks} onPress={handleWeekSelector}/> : <></>}
+      </View>
+
+      {/* <Text style={{ fontFamily: 'futura-medium' }}>currentWeek: {currentWeek}</Text> */}
+      <Text style={pageStyles.header} >Overall Technical Status</Text>
+      <StatusSelector buttonSize={75} selected={technicalScore} onSelect={setSelected}/>
       {!!technicalScore && <Text>{technicalScore}</Text>}
-      <TextInput testID='overallNotesInput' onChangeText={setNoteContent}></TextInput>
-      <TouchableOpacity style={LoginPageStyles.button} testID='SaveNote' onPress={handleSave}>
-        <Text style={ LoginPageStyles.buttonText}>Save</Text>
-      </TouchableOpacity>
+      <TextInput style={pageStyles.textInput} testID='overallNotesInput' onChangeText={setNoteContent} multiline={true}></TextInput>
+
+      <View style={pageStyles.buttonRight}>
+        <TouchableOpacity style={pageStyles.button} testID='SaveNote' onPress={handleSave}>
+          <FontAwesome name="save" size={24} color={theme.colors.primary} />
+
+          <Text style={ pageStyles.buttonText}>Save</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };
