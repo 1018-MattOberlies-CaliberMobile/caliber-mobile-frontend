@@ -18,6 +18,7 @@ import { CreateOverallNote } from '../remote/CaliberNoteAPI';
 import { pageStyles } from '../styles/WeekNotes';
 import createWeekArray from '../functions/CreateWeekArray';
 import HorizontalSelectorStyle from '../styles/HorizontalSelector';
+import AutoSelector from '../components/AutoSelector';
 import { theme } from '../styles/Theme';
 
 type Props = {
@@ -174,6 +175,12 @@ const OverallNotesScreen: React.FC<Props> = (props): JSX.Element => {
       }
     }
   }, [currentWeek]);
+
+  useEffect(() => {
+    if (batch) {
+      setTechnicalScore(AutoSelector(batch?.notes));
+    }
+  }, [batch?.notes]);
 
   return (
     <View style={pageStyles.centeredView}>
