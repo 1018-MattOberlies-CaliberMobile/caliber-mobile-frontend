@@ -31,13 +31,13 @@ const WeekNotesScreen: React.FC<Props> = ({ batchId }): JSX.Element => {
 
   useEffect(() => {
     const items = assocNotes.map((note) => (
-        <View key={note.noteId}>
-          <AssociateCard note={note}>
-            <NoteInput note={note} />
-          </AssociateCard>
-        </View>
+      <View key={note.noteId}>
+        <AssociateCard note={note}>
+          <NoteInput note={note} />
+        </AssociateCard>
+      </View>
     ));
-    
+
     if (randomOrder) {
       FisherYatesShuffle<JSX.Element>(items);
     }

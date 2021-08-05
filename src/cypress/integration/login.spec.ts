@@ -9,26 +9,25 @@ describe('The Login Page', () => {
     cy.get('[data-testid=password-input-label]').contains('Password:');
   });
   it('invalid login', () => {
+    let failed = false;
     cy.intercept({ method: 'Post' }, (req) => {
       req.continue((res) => {
-        if (res.body.status === 'failed') {
-          expect(1).to.equal(1);
-        } else {
-          expect(2).to.equal(1);
+        if (res.statusCode >= 300) {
+          failed = true;
         }
       });
     });
     cy.get('[data-testid=username-input]').type('invalid user');
     cy.get('[data-testid=password-input]').type('wrong password');
     cy.get('[data-testid=login-button]').click();
+    cy.wait(4000);
+    expect(failed);
   });
   it('valid login', () => {
     cy.intercept({ method: 'Post' }, (req) => {
       req.continue((res) => {
-        if (res.body.status === 'failed') {
+        if (res.statusCode >= 300) {
           expect(2).to.equal(1);
-        } else {
-          expect(1).to.equal(1);
         }
       });
     });
