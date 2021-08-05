@@ -47,7 +47,7 @@ export const getNoteByBatchIdAndWeek = async (batchId: string, week: number): Pr
       associate: { associateId: 'id', firstName: 'fn', lastName: 'ln' },
       weekNumber: 2,
     });
-    
+
     notes.push({
       noteId: '123e4567-e89b-12d3-a456-426614174222',
       noteContent: 'Great job',
@@ -58,4 +58,10 @@ export const getNoteByBatchIdAndWeek = async (batchId: string, week: number): Pr
   }
 
   return notes;
+};
+
+export const CreateOverallNote = (note: Note): void => {
+  BackendClient.post('/note', note)
+    .then((res) => { console.log('>> Saved note', res); })
+    .catch((err) => { console.log('>> Error on save note.', err); });
 };
