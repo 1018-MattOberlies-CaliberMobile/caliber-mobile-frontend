@@ -4,13 +4,9 @@ import React from 'react';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import { Platform, StyleSheet } from 'react-native';
 import { Provider } from 'react-redux';
-<<<<<<< HEAD
 import { ThemeProvider } from 'styled-components';
 import { ToastProvider } from 'react-native-styled-toast';
 import Amplify from 'aws-amplify';
-=======
-import { platform } from 'os';
->>>>>>> fa3e8c1 (Created Pressable Model)
 import useCachedResources from './src/hooks/useCachedResources';
 import useColorScheme from './src/hooks/useColorScheme';
 import Navigation from './src/navigation';
