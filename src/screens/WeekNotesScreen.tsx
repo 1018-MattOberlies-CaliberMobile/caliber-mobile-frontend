@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Text, TouchableOpacity, View } from 'react-native';
+import { View } from 'react-native';
 import AssociateCard from '../components/AssociateCard';
 import HorizontalSelector from '../components/HorizontalSelector';
 import NoteInput from '../components/NoteInput';
 import ToggleSwitch from '../components/ToggleSwitch';
-import CreateWeekArray from '../functions/CreateWeekArray';
-import FisherYatesShuffle from '../functions/FisherYatesShuffle';
+import CreateWeekArray from '../Functions/CreateWeekArray';
+import FisherYatesShuffle from '../Functions/FisherYatesShuffle';
 import Note from '../models/note';
 import { getNoteByBatchIdAndWeek } from '../remote/CaliberNoteAPI';
 import WeekNoteStyle from '../styles/WeekNotesStyle';
