@@ -5,9 +5,11 @@ const LoginPageStyles = StyleSheet.create({
   button: {
     alignItems: 'center',
     backgroundColor: theme.colors.primary,
+    borderRadius: 5,
     fontWeight: 'bold',
     justifyContent: 'center',
     margin: 10,
+    padding: 10,
   },
   buttonText: {
     color: 'white',

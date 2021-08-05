@@ -16,6 +16,27 @@ export const styles1 = StyleSheet.create({
     fontWeight: 'bold',
     letterSpacing: 0.25,
   },
+  cardBackground: {
+    backgroundColor: '#EFEFEF',
+    overflow: 'hidden',
+  },
+  cardContainer: {
+    alignItems: 'center',
+    borderBottomWidth: 1,
+    borderColor: '#EFEFEF',
+    borderTopWidth: 1,
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    padding: '1rem',
+    paddingLeft: '1.5rem',
+  },
+  cardDropdownContainer: {
+    bottom: 0,
+    padding: '1rem',
+    paddingLeft: '1.5rem',
+    position: 'absolute',
+  },
   centeredView: {
     alignItems: 'center',
     flex: 1,
@@ -52,6 +73,18 @@ export const styles1 = StyleSheet.create({
     height: 10,
     justifyContent: 'flex-end',
   },
+  textBox: {
+    backgroundColor: '#f2f2f2',
+    flex: 0.3,
+    // width: 
+    shadowColor: '#000000',
+    shadowOffset: {
+      height: 1,
+      width: 1,
+    },
+    shadowOpacity: 0.2,
+    shadowRadius: 2,
+  },
   textInput: {
     borderWidth: 1,
     flex: 3,
@@ -65,4 +98,7 @@ export const styles1 = StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'center',
   },
+  noteButton: {
+    
+  }
 });
