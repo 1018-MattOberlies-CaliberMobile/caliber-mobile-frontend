@@ -153,9 +153,9 @@ const OverallNotesScreen: React.FC<Props> = (props): JSX.Element => {
   useEffect(() => {
     if (batch) {
       // console.log('>> batch was updated');
-      console.log('>> StartDate: ', batch.startDate, ' >> EndDate: ', batch.endDate);
-      const temp = createWeekArray(batch.startDate, batch.endDate);
-      console.log('>> weeks array: ', temp);
+      // console.log('>> StartDate: ', batch.startDate, ' >> EndDate: ', batch.endDate);
+      const temp = createWeekArray(batch.startDate, batch.endDate).map((w) => ` Week ${w.replace(/week/i, '').trim()}`);
+      // console.log('>> weeks array: ', temp);
       setWeeks(temp);
     }
   }, [batch]);
@@ -187,7 +187,6 @@ const OverallNotesScreen: React.FC<Props> = (props): JSX.Element => {
 
       <Text style={pageStyles.header} >Overall Technical Status</Text>
       <StatusSelector buttonSize={75} selected={technicalScore} onSelect={setTechnicalScore}/>
-      {!!technicalScore && <Text>{technicalScore}</Text>}
       <TextInput
         style={pageStyles.textInput}
         testID='overallNotesInput'
