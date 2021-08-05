@@ -26,6 +26,7 @@ const StatusSelector: React.FC<Props> = ({ selected, onSelect, buttonSize = 35 }
     onSelect(status);
   };
   const ModalViewer = (): JSX.Element => (
+    // eslint-disable-next-line react-native/no-inline-styles
     <Pressable testID={ 'Status Options' } onPress={(): void => setModalVisible(!modalVisible)}>
       <StatusIcon size={buttonSize} status={selected} />
     </Pressable>

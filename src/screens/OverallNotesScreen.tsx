@@ -192,7 +192,6 @@ const OverallNotesScreen: React.FC<Props> = (props): JSX.Element => {
         style={pageStyles.textInput}
         testID='overallNotesInput'
         onChangeText={setNoteContent}
-        onEndEditing={handleSave}
         value={noteContent}
         multiline={true}
       />
@@ -200,7 +199,6 @@ const OverallNotesScreen: React.FC<Props> = (props): JSX.Element => {
       <View style={pageStyles.buttonRight}>
         <TouchableOpacity style={pageStyles.button} testID='SaveNote' onPress={handleSave}>
           <FontAwesome name="save" size={24} color={theme.colors.primary} />
-
           <Text style={pageStyles.buttonText}>Save</Text>
         </TouchableOpacity>
       </View>
