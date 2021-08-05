@@ -2,10 +2,21 @@ import { StyleSheet } from 'react-native';
 
 const WeekNoteStyle = StyleSheet.create({
   container: {
-    alignItems: 'center',
-    flexDirection: 'row',
-    justifyContent: 'center',
+    fontFamily: 'futura-medium',
+    marginTop: 10,
     paddingHorizontal: 20,
+  },
+  randomizeView: {
+    flexDirection: 'row',
+  },
+  subHeader: {
+    fontFamily: 'futura-bold',
+    fontSize: 24,
+    marginLeft: 20,
+    marginVertical: 20,
+  },
+  textFont: {
+    fontFamily: 'futura-medium',
   },
 });
 

@@ -1,5 +1,6 @@
 /* eslint-disable import/prefer-default-export */
 import { StyleSheet } from 'react-native';
+import { block } from 'react-native-reanimated';
 
 export const styles1 = StyleSheet.create({
   break: {
@@ -23,10 +24,10 @@ export const styles1 = StyleSheet.create({
   },
   cardDropdownContainer: {
     bottom: 0,
-    width: '100%',
     padding: 16,
     paddingLeft: 24,
     position: 'absolute',
+    width: '100%',
   },
   centeredView: {
     alignItems: 'center',
@@ -63,13 +64,19 @@ export const styles1 = StyleSheet.create({
     justifyContent: 'center',
     borderRadius: 5,
   },
+  noteViewSecondaryBar: {
+    alignItems: 'center',
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginVertical: 10,
+  },
   row: {
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'flex-end',
     paddingHorizontal: 40,
   },
-
   row2: {
     flexDirection: 'row',
     flexWrap: 'wrap',
@@ -77,6 +84,7 @@ export const styles1 = StyleSheet.create({
     justifyContent: 'flex-end',
   },
   textBox: {
+    fontFamily: 'futura-medium',
     backgroundColor: '#f2f2f2',
     // flex: 1,
     justifyContent: 'center',

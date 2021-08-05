@@ -13,6 +13,13 @@ const RefreshButton = StyleSheet.create({
     marginLeft: 5,
     marginRight: 5,
     padding: 10,
+    shadowColor: '#000000',
+    shadowOffset: {
+      height: 2,
+      width: 2,
+    },
+    shadowOpacity: 0.2,
+    shadowRadius: 2,
     width: 110,
   },
   buttonText: {

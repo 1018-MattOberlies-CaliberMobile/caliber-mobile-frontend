@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-context('weeks selection tests', () => {
+context('weeks selection screen tests', () => {
   beforeEach(() => {
     cy.visit('http://localhost:19006/WeekNotes/');
   });

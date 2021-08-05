@@ -10,6 +10,7 @@ import {
 import { TechnicalScore } from '../@types';
 import Note from '../models/note';
 import { styles1 } from '../styles/style1';
+import WeekNoteStyle from '../styles/WeekNotesStyle';
 import StatusSelector from './StatusSelector';
 
 type Props = {
@@ -62,7 +63,7 @@ const AssociateCard: React.FC<Props> = ({ note, children }) => {
     <>
       <TouchableWithoutFeedback onPress={(): unknown => toggleListItem()}>
         <View style={styles1.cardContainer}>
-          <Text>{last}, {first}</Text>
+          <Text style={WeekNoteStyle.textFont}>{last}, {first}</Text>
           <StatusSelector selected={score} onSelect={setScore}/>
         </View>
       </TouchableWithoutFeedback>

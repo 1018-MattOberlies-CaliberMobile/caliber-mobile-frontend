@@ -57,13 +57,25 @@ const WeekNotesScreen: React.FC<Props> = ({ batchId }): JSX.Element => {
   return (
     <>
       <View style={WeekNoteStyle.container}>
-        <HorizontalSelector data={arrayString}
-          initialSelected={arrayString[0]}
-          onPress={handleGetNotesForWeek}/>
-        <RefreshButton functionality={ refreshWeekNotes }/>
-        <ToggleSwitch value={randomOrder} setValue={setRandomOrder}/>
+        <View>
+          <HorizontalSelector
+            data={arrayString}
+            initialSelected={arrayString[0]}
+            onPress={handleGetNotesForWeek}
+          />
+        </View>
+        <View style={styles1.noteViewSecondaryBar}>
+          <RefreshButton functionality={ refreshWeekNotes }/>
+          <View style={WeekNoteStyle.randomizeView}>
+            <Text style={WeekNoteStyle.textFont}>Randomize: </Text>
+            <ToggleSwitch value={randomOrder} setValue={setRandomOrder}/>
+          </View>
+        </View>
       </View>
       <View>
+        <View>
+          <Text style={WeekNoteStyle.subHeader}>Accociates</Text>
+        </View>
         { noteItems }
       </View>
     </>
