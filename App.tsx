@@ -39,7 +39,19 @@ export default function App() {
   };
 
   return (
-    <WeekNotesScreen batchId={'123'}/>
+    <Provider store={store}>
+      <ThemeProvider theme={appTheme}>
+        <ToastProvider position="BOTTOM">
+          <SafeAreaProvider>
+            <RevatureBanner/>
+            <Navigation colorScheme={colorScheme} />
+            {/* <OverallNotesScreen/> */}
+            {/* <WeekNotesScreen batchId={'123'}/> */}
+            <StatusBar />
+          </SafeAreaProvider>
+        </ToastProvider>
+      </ThemeProvider>
+    </Provider>
   );
 }
 
