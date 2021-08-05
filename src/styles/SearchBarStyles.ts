@@ -1,11 +1,15 @@
 import { StyleSheet } from 'react-native';
+import { theme } from './Theme';
 
 const SearchBarStyles = StyleSheet.create({
   button: {
     alignItems: 'center',
-    backgroundColor: '#F26925',
+    backgroundColor: theme.colors.primary,
+    borderRadius: 5,
     flex: 1,
+    fontWeight: 'bold',
     justifyContent: 'center',
+    padding: 10,
   },
   buttonText: {
     color: 'white',
@@ -23,6 +27,7 @@ const SearchBarStyles = StyleSheet.create({
     paddingHorizontal: 40,
   },
   textInput: {
+    borderColor: theme.colors.secondary,
     borderWidth: 1,
     flex: 3,
     flexDirection: 'row',

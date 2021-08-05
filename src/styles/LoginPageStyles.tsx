@@ -35,8 +35,12 @@ const LoginPageStyles = StyleSheet.create({
   },
   inputField: {
     borderColor: theme.colors.secondary,
-    borderWidth: 2,
-    margin: 10,
+    borderWidth: 1,
+    flex: 3,
+    flexDirection: 'row',
+    fontFamily: 'futura-medium',
+    marginRight: 5,
+    paddingHorizontal: 5,
   },
   row: {
     flexDirection: 'row',
