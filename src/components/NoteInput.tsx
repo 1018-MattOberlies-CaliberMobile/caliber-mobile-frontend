@@ -23,7 +23,7 @@ const NoteInput: React.FC<Props> = ({ note }) => {
     <>
       <View
       // eslint-disable-next-line react-native/no-inline-styles
-        style={[{ flex: 1 }, styles1.textBox]}>
+        style={styles1.textBox}>
         <TextInput
           editable
           maxLength={400}
@@ -33,11 +33,11 @@ const NoteInput: React.FC<Props> = ({ note }) => {
           onChangeText={(text) => setContent(text)}
           value={content}
           // eslint-disable-next-line react-native/no-inline-styles
-          style={{ width: 600, padding: 10 }} // possibly change to something else
+          style={{ padding: 10 }} // possibly change to something else
         />
       </View>
-      <TouchableOpacity onPress={handlePress} >
-        <Text>Touch me</Text>
+      <TouchableOpacity onPress={handlePress} style={styles1.noteButton}>
+        <Text style={styles1.textInputSave}>Save</Text>
       </TouchableOpacity>
     </>
   );

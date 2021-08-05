@@ -45,14 +45,14 @@ const AssociateCard: React.FC<Props> = ({ note, children }) => {
         duration: 300,
         toValue: 0,
         easing: Easing.bezier(0.4, 0.0, 0.2, 1),
-        useNativeDriver: true,
+        useNativeDriver: false,
       }).start();
     } else {
       Animated.timing(animatedController, {
         duration: 300,
         toValue: 1,
         easing: Easing.bezier(0.4, 0.0, 0.2, 1),
-        useNativeDriver: true,
+        useNativeDriver: false,
       }).start();
     }
     setOpen(!open);

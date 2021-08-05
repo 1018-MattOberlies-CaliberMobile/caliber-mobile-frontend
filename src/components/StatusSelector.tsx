@@ -8,16 +8,17 @@ import {
 import MobileModal from 'react-native-modal';
 import { TechnicalScore } from '../@types';
 import StatusIconPressable, { StatusIcon } from './StatusIcon';
-import styles from '../styles/WeekNotes';
+import { modalStyles as styles } from '../styles/WeekNotes';
 
 const Modal = require('modal-react-native-web');
 
 type Props = {
   selected: TechnicalScore,
   onSelect: Dispatch<SetStateAction<TechnicalScore>>,
+  buttonSize?: number,
 }
 
-const StatusSelector: React.FC<Props> = ({ selected, onSelect }): JSX.Element => {
+const StatusSelector: React.FC<Props> = ({ selected, onSelect, buttonSize = 35 }): JSX.Element => {
   const [modalVisible, setModalVisible] = useState(false);
   const onPressHandler = (status: TechnicalScore): void => {
     setModalVisible(!modalVisible);
@@ -25,8 +26,9 @@ const StatusSelector: React.FC<Props> = ({ selected, onSelect }): JSX.Element =>
     onSelect(status);
   };
   const ModalViewer = (): JSX.Element => (
+    // eslint-disable-next-line react-native/no-inline-styles
     <Pressable testID={ 'Status Options' } onPress={(): void => setModalVisible(!modalVisible)}>
-      <StatusIcon size={35} status={selected} />
+      <StatusIcon size={buttonSize} status={selected} />
     </Pressable>
   );
   const StatusOptions:React.FC<{ size: number }> = ({ size }): JSX.Element => (
@@ -65,6 +67,7 @@ const StatusSelector: React.FC<Props> = ({ selected, onSelect }): JSX.Element =>
       )
         : (
           <View >
+            {console.log('>> Loading app')}
             <MobileModal
               backdropColor="transparent"
               isVisible={modalVisible}
