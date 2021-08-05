@@ -1,8 +1,10 @@
+import { FontAwesome } from '@expo/vector-icons';
 import React, { useEffect } from 'react';
 import { View, Text, TextInput } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import Note from '../models/note';
 import { styles1 } from '../styles/style1';
+import { theme } from '../styles/Theme';
 import WeekNoteStyle from '../styles/WeekNotesStyle';
 
 type Props = {
@@ -24,7 +26,7 @@ const NoteInput: React.FC<Props> = ({ note }) => {
     <>
       <View
       // eslint-disable-next-line react-native/no-inline-styles
-        style={styles1.textBox}>
+        style={styles1.textBox} testID="noteInput">
         <TextInput
           editable
           maxLength={400}
@@ -37,9 +39,12 @@ const NoteInput: React.FC<Props> = ({ note }) => {
           style={[{ padding: 10 }, WeekNoteStyle.textFont]} // possibly change to something else
         />
       </View>
-      <TouchableOpacity onPress={handlePress} style={styles1.noteButton}>
-        <Text style={styles1.textInputSave}>Save</Text>
-      </TouchableOpacity>
+      <View style={styles1.saveContainer}>
+        <TouchableOpacity onPress={handlePress} style={styles1.noteButton}>
+          <FontAwesome name="save" size={24} color={theme.colors.text} />
+          <Text style={styles1.textInputSave}>Save</Text>
+        </TouchableOpacity>
+      </View>
     </>
   );
 };

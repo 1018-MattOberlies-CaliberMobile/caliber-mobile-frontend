@@ -1,6 +1,5 @@
 /* eslint-disable import/prefer-default-export */
 import { StyleSheet } from 'react-native';
-import { block } from 'react-native-reanimated';
 
 export const styles1 = StyleSheet.create({
   break: {
@@ -13,6 +12,7 @@ export const styles1 = StyleSheet.create({
   },
   cardContainer: {
     alignItems: 'center',
+    backgroundColor: '#FFFFFF',
     borderBottomWidth: 1,
     borderColor: '#EFEFEF',
     borderTopWidth: 1,
@@ -50,18 +50,24 @@ export const styles1 = StyleSheet.create({
     textAlign: 'left',
   },
   noteButton: {
+    alignItems: 'center',
     backgroundColor: '#F26925',
     borderRadius: 5,
-    justifyContent: 'center',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
     marginTop: '10px',
+    paddingHorizontal: 20,
+    paddingVertical: 11,
     padding: 10,
     shadowColor: '#000000',
     shadowOffset: {
-      height: 1,
-      width: 1,
+      height: 2,
+      width: 2,
     },
     shadowOpacity: 0.2,
+
     shadowRadius: 2,
+    width: 110,
   },
   noteViewSecondaryBar: {
     alignItems: 'center',
@@ -82,9 +88,15 @@ export const styles1 = StyleSheet.create({
     height: 10,
     justifyContent: 'flex-end',
   },
+  saveContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+  },
   textBox: {
+    backgroundColor: '#FFFFFF',
     fontFamily: 'futura-medium',
-    backgroundColor: '#f2f2f2',
+    // flex: 1,
     justifyContent: 'center',
     shadowColor: '#000000',
     shadowOffset: {

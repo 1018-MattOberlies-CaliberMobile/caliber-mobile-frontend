@@ -4,10 +4,11 @@ const WeekNoteStyle = StyleSheet.create({
   container: {
     fontFamily: 'futura-medium',
     marginTop: 10,
-    paddingHorizontal: 20,
+    paddingLeft: 10,
   },
   randomizeView: {
     flexDirection: 'row',
+    paddingRight: 10,
   },
   subHeader: {
     fontFamily: 'futura-bold',

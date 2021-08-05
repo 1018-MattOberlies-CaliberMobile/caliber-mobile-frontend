@@ -10,8 +10,6 @@ const RefreshButton = StyleSheet.create({
     flexWrap: 'wrap',
     fontWeight: 'bold',
     justifyContent: 'center',
-    marginLeft: 5,
-    marginRight: 5,
     padding: 10,
     shadowColor: '#000000',
     shadowOffset: {
