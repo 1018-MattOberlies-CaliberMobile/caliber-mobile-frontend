@@ -1,10 +1,14 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { render, fireEvent } from '@testing-library/react-native';
 import { expect } from '@jest/globals';
 import 'react-native';
-import createWeekArray from '../functions/CreateWeekArray';
+import createWeekArray from '../Functions/CreateWeekArray';
+import FisherYatesShuffle from '../Functions/FisherYatesShuffle';
 
 describe('Testing week note screen', () => {
+  beforeEach(() => {
+    jest.spyOn(global.Math, 'random').mockReturnValue(0);
+  });
+
   test('Testing createWeekArray function properly creates an array of numbered weeks', () => {
     const weekOutput = createWeekArray('2021-7-5', '2021-7-30');
     const weekOutput2 = createWeekArray('2021-7-5', '2021-7-19');
@@ -19,5 +23,18 @@ describe('Testing week note screen', () => {
     expect(weekOutput4).toStrictEqual([]);
     expect(weekOutput5).toStrictEqual(['Week 1', 'Week 2', 'Week 3', 'Week 4']);
     expect(weekOutput6).toStrictEqual(['Week 1', 'Week 2', 'Week 3', 'Week 4', 'Week 5']);
+  });
+
+  test('Testing the FisherYatesShuffle without the randomness', () => {
+    const array = ['a', 'b', 'c', 'd', 'f'];
+
+    const newArray = FisherYatesShuffle(array);
+
+    expect(newArray).toStrictEqual(['b', 'c', 'd', 'f', 'a']);
+    expect(array).toStrictEqual(['b', 'c', 'd', 'f', 'a']);
+  });
+
+  afterEach(() => {
+    jest.spyOn(global.Math, 'random').mockRestore();
   });
 });
