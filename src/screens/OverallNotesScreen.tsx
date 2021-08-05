@@ -170,7 +170,7 @@ const OverallNotesScreen: React.FC<Props> = (props): JSX.Element => {
         setTechnicalScore(note.technicalScore || 0);
         setNoteContent(note.noteContent);
       } else {
-        setTechnicalScore(0);
+        setTechnicalScore(AutoSelector(batch.notes));
         setNoteContent('');
       }
     }
@@ -178,9 +178,9 @@ const OverallNotesScreen: React.FC<Props> = (props): JSX.Element => {
 
   useEffect(() => {
     if (batch) {
-      setTechnicalScore(AutoSelector(batch?.notes));
+      setTechnicalScore(AutoSelector(batch.notes));
     }
-  }, [batch?.notes]);
+  }, []);
 
   return (
     <View style={pageStyles.centeredView}>

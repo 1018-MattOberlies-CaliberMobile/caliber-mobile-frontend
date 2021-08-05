@@ -7,6 +7,7 @@ import { Provider } from 'react-redux';
 import { ThemeProvider } from 'styled-components';
 import { ToastProvider } from 'react-native-styled-toast';
 import Amplify from 'aws-amplify';
+import { NavigationContainer } from '@react-navigation/native'; // delete
 import useCachedResources from './src/hooks/useCachedResources';
 import useColorScheme from './src/hooks/useColorScheme';
 import Navigation from './src/navigation';
@@ -15,6 +16,7 @@ import OverallNotesScreen from './src/screens/OverallNotesScreen';
 import WeekNotesScreen from './src/screens/WeekNotesScreen';
 import awsmobile from './src/aws-exports';
 import RevatureBanner from './src/components/RevatureBanner';
+import NotesNavigator from './src/navigation/NotesNavigator';
 
 Amplify.configure(awsmobile);
 
@@ -44,9 +46,12 @@ export default function App() {
         <ToastProvider position="BOTTOM">
           <SafeAreaProvider>
             {/* <RevatureBanner/> */}
-            <Navigation colorScheme={colorScheme} />
+            {/* <Navigation colorScheme={colorScheme} />
             {/* <OverallNotesScreen/> */}
             {/* <WeekNotesScreen batchId={'123'}/> */}
+            <NavigationContainer>
+              <NotesNavigator/>
+            </NavigationContainer>
             <StatusBar />
           </SafeAreaProvider>
         </ToastProvider>
