@@ -13,8 +13,8 @@ export default function CreateWeekArray(start: string, end: string): string[] {
   dateSplit = end.split(/[- :]/);
   const endDate = new Date(Number(dateSplit[0]), Number(dateSplit[1]) - 1, Number(dateSplit[2]));
   let weekNum = 1;
+
   if (startDate.toISOString() === endDate.toISOString()) {
-    console.log('equal');
     return [];
   }
 
@@ -33,7 +33,7 @@ export default function CreateWeekArray(start: string, end: string): string[] {
   const timeLength = endDate.valueOf() - startDate.valueOf();
   let timeRemaining = timeLength;
   while (timeRemaining > 0) {
-    weekArray.push(`week${weekNum}`);
+    weekArray.push(`Week ${weekNum}`);
     weekNum += 1;
     timeRemaining -= MILLISECONDS_IN_WEEK;
   }

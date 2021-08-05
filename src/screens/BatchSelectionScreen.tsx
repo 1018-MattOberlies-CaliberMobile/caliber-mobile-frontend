@@ -7,7 +7,7 @@ import HorizontalSelector from '../components/HorizontalSelector';
 import { SearchBar } from '../components/SearchBar';
 import { getBatchYears, getBatchesByYear } from '../remote/CaliberBatchAPI';
 import Batch from '../models/batch';
-import { styles1 } from '../styles/style1';
+import SearchBarStyles from '../styles/SearchBarStyles';
 import BatchList from '../components/BatchList';
 import { setBatch } from '../redux/slices/batch.slice';
 
@@ -35,6 +35,7 @@ const BatchSelectionScreen: React.FC<Props> = (): JSX.Element => {
         })
         .catch((err) => {
           toast({ message: 'Could not retrieve years', intent: 'ERROR' });
+          console.log(err.message);
         });
     };
     retrieveBatchYears();
@@ -51,6 +52,7 @@ const BatchSelectionScreen: React.FC<Props> = (): JSX.Element => {
           })
           .catch((err) => {
             toast({ message: 'Could not retrieve batches', intent: 'ERROR' });
+            console.log(err.message);
           });
       }
     };
@@ -73,7 +75,7 @@ const BatchSelectionScreen: React.FC<Props> = (): JSX.Element => {
     <>
       <View style={ { flex: 1.25 } }>
         <HorizontalSelector data={years} initialSelected={years[0]} onPress={setSelectedYear} />
-        <View style = {styles1.container}>
+        <View style = {SearchBarStyles.container}>
           <SearchBar batchData={batchList} setBatchList={setSearchResults} />
         </View>
       </View>
