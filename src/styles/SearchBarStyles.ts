@@ -27,12 +27,9 @@ const SearchBarStyles = StyleSheet.create({
     paddingHorizontal: 40,
   },
   textInput: {
-<<<<<<< HEAD
     backgroundColor: '#FFFFFF',
-=======
     borderColor: theme.colors.secondary,
     borderWidth: 1,
->>>>>>> 7571d3c (Unified stylings for Login Page and Search Bar)
     flex: 3,
     flexDirection: 'row',
     fontFamily: 'futura-medium',
