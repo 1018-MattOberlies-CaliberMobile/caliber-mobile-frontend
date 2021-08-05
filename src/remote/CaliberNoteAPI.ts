@@ -19,7 +19,7 @@ export const getNoteByBatchIdAndWeek = async (batchId: string, week: number): Pr
       batchId,
       noteContent: 'A note',
       technicalScore: 0,
-      associate: { associateId: 'id', firstName: 'fn', lastName: 'ln' },
+      associate: { associateId: 'id', firstName: 'Joe', lastName: 'Scmoe' },
       weekNumber: 1,
     });
 
@@ -28,7 +28,7 @@ export const getNoteByBatchIdAndWeek = async (batchId: string, week: number): Pr
       batchId,
       noteContent: 'Very smart cookie!',
       technicalScore: 4,
-      associate: { associateId: 'id', firstName: 'fn', lastName: 'ln' },
+      associate: { associateId: 'id', firstName: 'Matt', lastName: 'Hat' },
       weekNumber: 1,
     });
 
@@ -37,7 +37,7 @@ export const getNoteByBatchIdAndWeek = async (batchId: string, week: number): Pr
       batchId,
       noteContent: 'Not so smart cookie!',
       technicalScore: 1,
-      associate: { associateId: 'id', firstName: 'fn', lastName: 'ln' },
+      associate: { associateId: 'id', firstName: 'Tai', lastName: 'Guy' },
       weekNumber: 1,
     });
   }
@@ -48,7 +48,7 @@ export const getNoteByBatchIdAndWeek = async (batchId: string, week: number): Pr
       batchId,
       noteContent: 'Another note',
       technicalScore: 4,
-      associate: { associateId: 'id', firstName: 'fn', lastName: 'ln' },
+      associate: { associateId: 'id', firstName: 'Mimi', lastName: 'Meme' },
       weekNumber: 2,
     });
 
@@ -57,7 +57,7 @@ export const getNoteByBatchIdAndWeek = async (batchId: string, week: number): Pr
       batchId,
       noteContent: 'Great job',
       technicalScore: 3,
-      associate: { associateId: 'id', firstName: 'fn', lastName: 'ln' },
+      associate: { associateId: 'id', firstName: 'TK', lastName: 'KO' },
       weekNumber: 2,
     });
   }
