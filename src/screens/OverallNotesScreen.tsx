@@ -153,9 +153,9 @@ const OverallNotesScreen: React.FC<Props> = (props): JSX.Element => {
   useEffect(() => {
     if (batch) {
       // console.log('>> batch was updated');
-      console.log('>> StartDate: ', batch.startDate, ' >> EndDate: ', batch.endDate);
-      const temp = createWeekArray(batch.startDate, batch.endDate);
-      console.log('>> weeks array: ', temp);
+      // console.log('>> StartDate: ', batch.startDate, ' >> EndDate: ', batch.endDate);
+      const temp = createWeekArray(batch.startDate, batch.endDate).map((w) => ` Week ${w.replace(/week/i, '').trim()}`);
+      // console.log('>> weeks array: ', temp);
       setWeeks(temp);
     }
   }, [batch]);
@@ -187,12 +187,10 @@ const OverallNotesScreen: React.FC<Props> = (props): JSX.Element => {
 
       <Text style={pageStyles.header} >Overall Technical Status</Text>
       <StatusSelector buttonSize={75} selected={technicalScore} onSelect={setTechnicalScore}/>
-      {!!technicalScore && <Text>{technicalScore}</Text>}
       <TextInput
         style={pageStyles.textInput}
         testID='overallNotesInput'
         onChangeText={setNoteContent}
-        onEndEditing={handleSave}
         value={noteContent}
         multiline={true}
       />
@@ -200,7 +198,6 @@ const OverallNotesScreen: React.FC<Props> = (props): JSX.Element => {
       <View style={pageStyles.buttonRight}>
         <TouchableOpacity style={pageStyles.button} testID='SaveNote' onPress={handleSave}>
           <FontAwesome name="save" size={24} color={theme.colors.primary} />
-
           <Text style={pageStyles.buttonText}>Save</Text>
         </TouchableOpacity>
       </View>
