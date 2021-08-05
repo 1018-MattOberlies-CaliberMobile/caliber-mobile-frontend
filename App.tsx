@@ -43,9 +43,9 @@ export default function App() {
       <ThemeProvider theme={appTheme}>
         <ToastProvider position="BOTTOM">
           <SafeAreaProvider>
-            <RevatureBanner/>
-            <Navigation colorScheme={colorScheme} />
-            {/* <OverallNotesScreen/> */}
+            {/* <RevatureBanner/> */}
+            {/* <Navigation colorScheme={colorScheme} /> */}
+            <OverallNotesScreen/>
             {/* <WeekNotesScreen batchId={'123'}/> */}
             <StatusBar />
           </SafeAreaProvider>

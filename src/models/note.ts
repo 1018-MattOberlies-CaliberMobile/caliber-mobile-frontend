@@ -8,6 +8,7 @@ import Associate from './associate';
 class Note {
   constructor(
     public noteId: string,
+    public batchId: string,
     public noteContent: string,
     public technicalScore: TechnicalScore,
     public weekNumber: number,
