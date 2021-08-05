@@ -5,17 +5,6 @@ export const styles1 = StyleSheet.create({
   break: {
     margin: 5,
   },
-  button: {
-    alignItems: 'center',
-    backgroundColor: '#F26925',
-    flex: 1,
-    justifyContent: 'center',
-  },
-  buttonText: {
-    color: 'white',
-    fontWeight: 'bold',
-    letterSpacing: 0.25,
-  },
   cardBackground: {
     backgroundColor: '#EFEFEF',
     overflow: 'hidden',
@@ -44,10 +33,6 @@ export const styles1 = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     marginTop: 22,
-  },
-  container: {
-    alignItems: 'center',
-    flex: 1,
   },
   item: {
     backgroundColor: '#D3D3D3',
@@ -84,6 +69,7 @@ export const styles1 = StyleSheet.create({
     justifyContent: 'flex-end',
     paddingHorizontal: 40,
   },
+
   row2: {
     flexDirection: 'row',
     flexWrap: 'wrap',

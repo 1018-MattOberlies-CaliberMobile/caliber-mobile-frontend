@@ -1,13 +1,11 @@
 /* eslint-disable import/prefer-default-export */
 /* eslint-disable no-unused-vars */
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { useNavigation } from '@react-navigation/native';
 import * as React from 'react';
 import { useState } from 'react';
-import { Text, TextInput, View, Button, TouchableOpacity } from 'react-native';
-
+import { Text, TextInput, View, TouchableOpacity } from 'react-native';
 import Batch from '../models/batch';
-import { styles1 } from '../styles/style1';
+import SearchBarStyles from '../styles/SearchBarStyles';
 
 type Props = {
   batchData:Array<Batch>,
@@ -40,16 +38,16 @@ export const SearchBar: React.FC<Props> = ({ batchData, setBatchList }): JSX.Ele
 
   return (
     <>
-      <View style={styles1.row}>
+      <View style={SearchBarStyles.row}>
         <TextInput
           testID='search-bar'
           placeholder = 'Search Here'
           onChangeText = { (txt): void => setSearch(txt) }
-          style = {styles1.textInput}
+          style = {SearchBarStyles.textInput}
         />
 
-        <TouchableOpacity style={styles1.button} testID='login-button' onPress={searchBatch}>
-          <Text style={ styles1.buttonText }>Search</Text>
+        <TouchableOpacity style={SearchBarStyles.button} testID='login-button' onPress={searchBatch}>
+          <Text style={SearchBarStyles.buttonText}>Search</Text>
         </TouchableOpacity>
       </View>
     </>
