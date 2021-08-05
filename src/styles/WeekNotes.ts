@@ -16,8 +16,7 @@ export const modalStyles = StyleSheet.create({
   },
   centeredView: {
     alignItems: 'center',
-
-    backgroundColor: 'rgba(0,0,0,0)',
+    backgroundColor: 'rgba(255, 255, 255, 0.5)',
     flex: 1,
     justifyContent: 'center',
   },
@@ -36,6 +35,7 @@ export const modalStyles = StyleSheet.create({
   },
   modalView: {
     alignItems: 'center',
+    backgroundColor: 'white',
     borderRadius: 20,
     borderStyle: 'solid',
     borderWidth: 5,
