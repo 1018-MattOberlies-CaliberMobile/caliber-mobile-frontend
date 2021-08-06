@@ -4,8 +4,21 @@ const SearchBarStyles = StyleSheet.create({
   button: {
     alignItems: 'center',
     backgroundColor: '#F26925',
+    borderRadius: 5,
     flex: 1,
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    fontWeight: 'bold',
     justifyContent: 'center',
+    padding: 10,
+    shadowColor: '#000000',
+    shadowOffset: {
+      height: 2,
+      width: 2,
+    },
+    shadowOpacity: 0.2,
+    shadowRadius: 2,
+    width: 110,
   },
   buttonText: {
     color: 'white',
