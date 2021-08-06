@@ -4,12 +4,22 @@ import { theme } from './Theme';
 const SearchBarStyles = StyleSheet.create({
   button: {
     alignItems: 'center',
-    backgroundColor: theme.colors.primary,
+    backgroundColor: '#F26925',
     borderRadius: 5,
     flex: 1,
+    flexDirection: 'row',
+    flexWrap: 'wrap',
     fontWeight: 'bold',
     justifyContent: 'center',
     padding: 10,
+    shadowColor: '#000000',
+    shadowOffset: {
+      height: 2,
+      width: 2,
+    },
+    shadowOpacity: 0.2,
+    shadowRadius: 2,
+    width: 110,
   },
   buttonText: {
     color: 'white',
@@ -27,13 +37,19 @@ const SearchBarStyles = StyleSheet.create({
     paddingHorizontal: 40,
   },
   textInput: {
-    borderColor: theme.colors.secondary,
-    borderWidth: 1,
+    backgroundColor: '#FFFFFF',
     flex: 3,
     flexDirection: 'row',
     fontFamily: 'futura-medium',
     marginRight: 5,
     paddingHorizontal: 5,
+    shadowColor: '#000000',
+    shadowOffset: {
+      height: 1,
+      width: 1,
+    },
+    shadowOpacity: 0.2,
+    shadowRadius: 2,
   },
 });
 

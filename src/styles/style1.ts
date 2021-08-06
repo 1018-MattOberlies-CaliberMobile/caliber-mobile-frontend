@@ -36,7 +36,7 @@ export const styles1 = StyleSheet.create({
     marginTop: 22,
   },
   item: {
-    backgroundColor: '#D3D3D3',
+    backgroundColor: '#FFFFFF',
     marginHorizontal: 5,
     marginVertical: 5,
     padding: 5,
@@ -45,6 +45,7 @@ export const styles1 = StyleSheet.create({
     textAlign: 'left',
   },
   leftTxt: {
+    fontFamily: 'futura-medium',
     fontSize: 15,
     marginLeft: 5,
     textAlign: 'left',
