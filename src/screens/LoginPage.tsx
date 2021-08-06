@@ -34,10 +34,10 @@ const LoginPage: React.FC<unknown> = (): JSX.Element => {
         />
       </View>
       <View style={LoginPageStyles.container}>
-        <Text testID="username-input-label">Username: </Text>
-        <TextInput style={LoginPageStyles.inputField} placeholder='username' testID='username-input' onChangeText={(text):void => setUserName(text)}></TextInput>
-        <Text testID="password-input-label">Password: </Text>
-        <TextInput style={LoginPageStyles.inputField} placeholder='password' testID='password-input' secureTextEntry={true} onChangeText={(text):void => setPassWord(text)}></TextInput>
+        <Text style={LoginPageStyles.text} testID="username-input-label">Username: </Text>
+        <TextInput style={LoginPageStyles.inputField} placeholder='Username' testID='username-input' onChangeText={(text):void => setUserName(text)}></TextInput>
+        <Text style={LoginPageStyles.text} testID="password-input-label">Password: </Text>
+        <TextInput style={LoginPageStyles.inputField} placeholder='Password' testID='password-input' secureTextEntry={true} onChangeText={(text):void => setPassWord(text)}></TextInput>
         <TouchableOpacity style={LoginPageStyles.button} testID='login-button' onPress={handleLogin}>
           <Text style={ LoginPageStyles.buttonText}>Login</Text>
         </TouchableOpacity>

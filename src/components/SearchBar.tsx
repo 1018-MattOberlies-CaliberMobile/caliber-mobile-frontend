@@ -3,7 +3,9 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import * as React from 'react';
 import { useState } from 'react';
-import { Text, TextInput, View, TouchableOpacity } from 'react-native';
+import {
+  Text, TextInput, View, TouchableOpacity,
+} from 'react-native';
 import Batch from '../models/batch';
 import SearchBarStyles from '../styles/SearchBarStyles';
 
@@ -46,7 +48,7 @@ export const SearchBar: React.FC<Props> = ({ batchData, setBatchList }): JSX.Ele
           style = {SearchBarStyles.textInput}
         />
 
-        <TouchableOpacity style={SearchBarStyles.button} testID='login-button' onPress={searchBatch}>
+        <TouchableOpacity style={SearchBarStyles.button} testID='search-button' onPress={searchBatch}>
           <Text style={SearchBarStyles.buttonText}>Search</Text>
         </TouchableOpacity>
       </View>
