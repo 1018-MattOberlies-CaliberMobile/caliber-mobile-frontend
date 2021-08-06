@@ -40,7 +40,7 @@ export default function App() {
       <ThemeProvider theme={appTheme}>
         <ToastProvider position="BOTTOM">
           <SafeAreaProvider>
-            <Navigation colorScheme={colorScheme}/>
+            <Navigation colorScheme={colorScheme} />
             <StatusBar />
           </SafeAreaProvider>
         </ToastProvider>

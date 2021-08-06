@@ -12,7 +12,7 @@ const designResolution = {
 const perfectSize = create(designResolution);
 // height / width
 const logoAspectRatio = 94 / 300;
-const logoWidth = perfectSize(300);
+const logoWidth = perfectSize(200);
 const logoHeight = logoWidth * logoAspectRatio;
 
 const styles = StyleSheet.create({
