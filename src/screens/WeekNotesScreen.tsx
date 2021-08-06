@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View } from 'react-native';
+import { View, Text } from 'react-native';
 import AssociateCard from '../components/AssociateCard';
 import HorizontalSelector from '../components/HorizontalSelector';
 import NoteInput from '../components/NoteInput';
@@ -32,7 +32,7 @@ const WeekNotesScreen: React.FC<Props> = ({ batchId }): JSX.Element => {
 
   useEffect(() => {
     const items = assocNotes.map((note) => (
-      <View key={note.noteId}>
+      <View key={note.noteId} testID="associateCard" >
         <AssociateCard note={note}>
           <NoteInput note={note} />
         </AssociateCard>
@@ -54,16 +54,29 @@ const WeekNotesScreen: React.FC<Props> = ({ batchId }): JSX.Element => {
     const assoc = await getNoteByBatchIdAndWeek(batchId, weekNum + 1);
     setAssocNotes(assoc);
   }
+
   return (
     <>
       <View style={WeekNoteStyle.container}>
-        <HorizontalSelector data={arrayString}
-          initialSelected={arrayString[0]}
-          onPress={handleGetNotesForWeek}/>
-        <RefreshButton functionality={ refreshWeekNotes }/>
-        <ToggleSwitch value={randomOrder} setValue={setRandomOrder}/>
+        <View>
+          <HorizontalSelector
+            data={arrayString}
+            initialSelected={arrayString[0]}
+            onPress={handleGetNotesForWeek}
+          />
+        </View>
+        <View style={styles1.noteViewSecondaryBar}>
+          <RefreshButton functionality={ refreshWeekNotes }/>
+          <View style={WeekNoteStyle.randomizeView}>
+            <Text style={WeekNoteStyle.textFont}>Randomize: </Text>
+            <ToggleSwitch value={randomOrder} setValue={setRandomOrder}/>
+          </View>
+        </View>
       </View>
       <View>
+        <View>
+          <Text style={WeekNoteStyle.subHeader}>Associates</Text>
+        </View>
         { noteItems }
       </View>
     </>

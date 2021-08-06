@@ -7,6 +7,7 @@ const baseStyle = {
   fontSize: 24,
   margin: 3,
   padding: 5,
+  paddingHorizontal: 11,
   shadowOffset: {
     width: 3,
     height: 3,
