@@ -3,10 +3,8 @@
 context('batch selection tests', () => {
   beforeEach(() => {
     cy.visit('http://localhost:19006/BatchSelection');
-
-    cy.intercept('some-url.amazonaws.com/dev/v1/year/2020', { fixture: 'batchData2020.json' }).as('getBatches2020');
-    cy.intercept('some-url.amazonaws.com/dev/v1/year/2021', { fixture: 'batchData2021.json' }).as('getBatches2021');
-    cy.intercept('some-url.amazonaws.com/dev/v1/year', { body: ['2021', '2020', '2019'] }).as('years');
+    cy.intercept('/dev/api/v1/batch/year/*', { fixture: 'batchData2021.json' }).as('getBatches2021');
+    cy.intercept('/dev/api/v1/batch/year', { fixture: 'batchYears.json' }).as('years');
   });
 
   context('year selection tests', () => {
@@ -28,7 +26,8 @@ context('batch selection tests', () => {
   context('navigation tests', () => {
     it('cy.go() - go forward to weeknotes page', () => {
       cy.wait('@years');
-      cy.wait('@getBatches2021');
+      cy.wait('@getBatches2020');
+
       cy.contains('05132021 Cloud Native Matt').click();
       cy.location('pathname').should('include', 'WeekNotes');
       cy.window().its('store').invoke('getState').should('deep.equal', {
@@ -45,7 +44,8 @@ context('batch selection tests', () => {
   context('search bar tests', () => {
     it('do a succesful search test', () => {
       cy.wait('@years');
-      cy.wait('@getBatches2021');
+      cy.wait('@getBatches2020');
+
 
       cy.get('[data-testid="search-bar"]').type('123123', { force: true });
       cy.contains('Search').click({ force: true });
@@ -54,7 +54,8 @@ context('batch selection tests', () => {
     });
     it('do a unsuccessful search test', () => {
       cy.wait('@years');
-      cy.wait('@getBatches2021');
+      cy.wait('@getBatches2020');
+
 
       cy.get('[data-testid="search-bar"]').type('fasdfasfd', { force: true });
       cy.contains('Search').click({ force: true });
