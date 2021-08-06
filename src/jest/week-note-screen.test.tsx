@@ -16,6 +16,7 @@ describe('Testing week note screen', () => {
     const weekOutput4 = createWeekArray('2021-7-30', '2021-7-30');
     const weekOutput5 = createWeekArray('2021-7-8', '2021-7-27');
     const weekOutput6 = createWeekArray('2021-6-5', '2021-7-5');
+    const weekOutput7 = createWeekArray('2021-07-04T04:00:00.000Z', '2021-08-06T04:00:00.000Z');
 
     expect(weekOutput).toStrictEqual(['Week 1', 'Week 2', 'Week 3', 'Week 4']);
     expect(weekOutput2).toStrictEqual(['Week 1', 'Week 2', 'Week 3']);
@@ -23,6 +24,7 @@ describe('Testing week note screen', () => {
     expect(weekOutput4).toStrictEqual([]);
     expect(weekOutput5).toStrictEqual(['Week 1', 'Week 2', 'Week 3', 'Week 4']);
     expect(weekOutput6).toStrictEqual(['Week 1', 'Week 2', 'Week 3', 'Week 4', 'Week 5']);
+    expect(weekOutput7).toStrictEqual(['Week 1', 'Week 2', 'Week 3', 'Week 4', 'Week 5']);
   });
 
   test('Testing the FisherYatesShuffle without the randomness', () => {
