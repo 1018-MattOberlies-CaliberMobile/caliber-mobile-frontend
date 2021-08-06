@@ -40,7 +40,7 @@ const HorizontalSelectorStyle = StyleSheet.create({
     color: 'white',
   },
   selector: {
-    flex: 0.15,
+    flex: 1.15,
   },
 });
 
