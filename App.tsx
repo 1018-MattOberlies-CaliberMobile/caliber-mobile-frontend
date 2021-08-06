@@ -46,12 +46,9 @@ export default function App() {
         <ToastProvider position="BOTTOM">
           <SafeAreaProvider>
             {/* <RevatureBanner/> */}
-            {/* <Navigation colorScheme={colorScheme} />
+            <Navigation colorScheme={colorScheme}/>
             {/* <OverallNotesScreen/> */}
             {/* <WeekNotesScreen batchId={'123'}/> */}
-            <NavigationContainer>
-              <NotesNavigator/>
-            </NavigationContainer>
             <StatusBar />
           </SafeAreaProvider>
         </ToastProvider>

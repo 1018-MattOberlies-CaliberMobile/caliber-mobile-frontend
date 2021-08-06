@@ -11,6 +11,9 @@ import { getNoteByBatchIdAndWeek } from '../remote/CaliberNoteAPI';
 import WeekNoteStyle from '../styles/WeekNotesStyle';
 import RefreshButton from '../components/RefreshButton';
 import { styles1 } from '../styles/style1';
+import { useAppSelector } from '../redux';
+import { selectBatch } from '../redux/slices/batch.slice';
+import Batch from '../models/batch';
 
 type Props = {
   batchId: string;
@@ -22,10 +25,11 @@ const WeekNotesScreen: React.FC<Props> = ({ batchId }): JSX.Element => {
   const [weekNum, setWeekNum] = useState<number>(0);
   const [noteItems, setNoteItems] = useState<JSX.Element[]>([]);
   const [randomOrder, setRandomOrder] = useState<boolean>(false);
+  const batch = useAppSelector(selectBatch) as Batch;
 
   useEffect(() => {
     (async (): Promise<void> => {
-      const assoc = await getNoteByBatchIdAndWeek(batchId, weekNum + 1);
+      const assoc = await getNoteByBatchIdAndWeek(batch.batchId, weekNum + 1);
       setAssocNotes(assoc);
     })();
   }, [weekNum]);

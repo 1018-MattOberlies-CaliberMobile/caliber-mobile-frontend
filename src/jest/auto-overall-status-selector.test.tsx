@@ -1,6 +1,6 @@
 import { expect } from '@jest/globals';
 import { TechnicalScore } from '../@types';
-import autoSelector from '../components/AutoSelector';
+import autoSelector from '../functions/AutoSelector';
 import Associate from '../models/associate';
 import Note from '../models/note';
 

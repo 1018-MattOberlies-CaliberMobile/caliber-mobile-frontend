@@ -3,14 +3,14 @@ import BackendClient from './CaliberBackendClient';
 import Note from '../models/note';
 
 export const getNoteByBatchIdAndWeek = async (batchId: string, week: number): Promise<Note[]> => {
-  // const notes = BackendClient.get<Note[]>(`/note/batch/${batchId}/${week}`)
-  //   .then((res) => {
-  //     console.log('Successfuly retreieved notes by BatchId and Week', res.data);
-  //     return res.data as Note[];
-  //   }).catch((error) => {
-  //     console.log('Erorr retrieving notes for BatchId and Week', error);
-  //     return [];
-  //   });
+  const deezNotes = BackendClient.get<Note[]>(`/note/batch/${batchId}/${week}`)
+    .then((res) => {
+      console.log('Successfuly retreieved notes by BatchId and Week', res.data);
+      return res.data as Note[];
+    }).catch((error) => {
+      console.log('Error retrieving notes for BatchId and Week', error);
+      return [];
+    });
 
   const notes: Note[] = [];
   if (week === 1) {
@@ -20,6 +20,7 @@ export const getNoteByBatchIdAndWeek = async (batchId: string, week: number): Pr
       technicalScore: 0,
       associate: { associateId: 'id', firstName: 'Joe', lastName: 'Scmoe' },
       weekNumber: 1,
+      batchId: 'SmatchId',
     });
 
     notes.push({
@@ -28,6 +29,7 @@ export const getNoteByBatchIdAndWeek = async (batchId: string, week: number): Pr
       technicalScore: 4,
       associate: { associateId: 'id', firstName: 'Matt', lastName: 'Hat' },
       weekNumber: 1,
+      batchId: 'SmatchId',
     });
 
     notes.push({
@@ -36,6 +38,7 @@ export const getNoteByBatchIdAndWeek = async (batchId: string, week: number): Pr
       technicalScore: 1,
       associate: { associateId: 'id', firstName: 'Tai', lastName: 'Guy' },
       weekNumber: 1,
+      batchId: 'SmatchId',
     });
   }
 
@@ -46,6 +49,7 @@ export const getNoteByBatchIdAndWeek = async (batchId: string, week: number): Pr
       technicalScore: 4,
       associate: { associateId: 'id', firstName: 'Mimi', lastName: 'Meme' },
       weekNumber: 2,
+      batchId: 'SmatchId',
     });
 
     notes.push({
@@ -54,10 +58,11 @@ export const getNoteByBatchIdAndWeek = async (batchId: string, week: number): Pr
       technicalScore: 3,
       associate: { associateId: 'id', firstName: 'TK', lastName: 'KO' },
       weekNumber: 2,
+      batchId: 'SmatchId',
     });
   }
 
-  return notes;
+  return deezNotes;
 };
 
 export const CreateOverallNote = (note: Note): void => {
