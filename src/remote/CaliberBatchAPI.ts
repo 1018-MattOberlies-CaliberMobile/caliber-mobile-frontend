@@ -7,10 +7,10 @@ import Batch from '../models/batch';
  * Retrieves a list of years which contain batches
  */
 export const getBatchYears = async (): Promise<string[]> => {
-  return BackendClient.get<string[]>('/year')
+  return BackendClient.get('/batch/year')
     .then((res) => {
       console.log('Successfuly retrieved years', res.data);
-      return res.data as string[];
+      return JSON.parse(res.data.body).years as string[];
     });
 };
 
@@ -22,13 +22,22 @@ export const getBatchYears = async (): Promise<string[]> => {
  */
 export async function getBatchesByYear(year: string): Promise<Batch[]> {
   const session = await Auth.currentSession();
-  console.log(session.getAccessToken().getJwtToken());
-  return BackendClient.get<Batch[]>(`/year/${year}`, {
+  return BackendClient.get(`/batch/year/${year}`, {
     headers: {
-      Authorizaton: `Bearer ${session.getIdToken().getJwtToken()}`,
+      Authorization: `Bearer ${session.getAccessToken().getJwtToken()}`,
     },
-  }).then((res: { data: Batch[]; }) => {
-    console.log('Successfuly retrieved batches', res.data);
-    return res.data as Batch[];
+  }).then((res) => {
+    // console.log('Successfuly retrieved batches', res.data);
+    const receivedBatches = JSON.parse(res.data.body).batches;
+    const batches: Batch[] = receivedBatches.map((b): Batch => {
+      const newBatch = {
+        ...b,
+        trainers: b.users,
+      };
+      delete newBatch.users;
+      return newBatch;
+    });
+    console.log('formatted batches: ', batches);
+    return batches;
   });
 }
