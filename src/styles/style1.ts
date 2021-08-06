@@ -12,6 +12,7 @@ export const styles1 = StyleSheet.create({
   },
   cardContainer: {
     alignItems: 'center',
+    backgroundColor: '#FFFFFF',
     borderBottomWidth: 1,
     borderColor: '#EFEFEF',
     borderTopWidth: 1,
@@ -23,10 +24,10 @@ export const styles1 = StyleSheet.create({
   },
   cardDropdownContainer: {
     bottom: 0,
-    width: '100%',
     padding: 16,
     paddingLeft: 24,
     position: 'absolute',
+    width: '100%',
   },
   centeredView: {
     alignItems: 'center',
@@ -49,19 +50,31 @@ export const styles1 = StyleSheet.create({
     textAlign: 'left',
   },
   noteButton: {
+    alignItems: 'center',
     backgroundColor: '#F26925',
+    borderRadius: 5,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginTop: '10px',
+    paddingHorizontal: 20,
+    paddingVertical: 11,
+    padding: 10,
     shadowColor: '#000000',
     shadowOffset: {
-      height: 1,
-      width: 1,
+      height: 2,
+      width: 2,
     },
     shadowOpacity: 0.2,
+
     shadowRadius: 2,
-    marginTop: '10px',
-    padding: 10,
-    // flex: 1,
-    justifyContent: 'center',
-    borderRadius: 5,
+    width: 110,
+  },
+  noteViewSecondaryBar: {
+    alignItems: 'center',
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginVertical: 10,
   },
   row: {
     flexDirection: 'row',
@@ -69,15 +82,20 @@ export const styles1 = StyleSheet.create({
     justifyContent: 'flex-end',
     paddingHorizontal: 40,
   },
-
   row2: {
     flexDirection: 'row',
     flexWrap: 'wrap',
     height: 10,
     justifyContent: 'flex-end',
   },
+  saveContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+  },
   textBox: {
-    backgroundColor: '#f2f2f2',
+    backgroundColor: '#FFFFFF',
+    fontFamily: 'futura-medium',
     // flex: 1,
     justifyContent: 'center',
     shadowColor: '#000000',
@@ -90,19 +108,17 @@ export const styles1 = StyleSheet.create({
     width: '100%',
   },
   textInput: {
+    borderRadius: 5,
     borderWidth: 1,
-    // flex: 3,
     flexDirection: 'row',
     fontFamily: 'futura-medium',
     marginRight: 5,
     paddingHorizontal: 5,
-    borderRadius: 5,
   },
   textInputSave: {
     color: '#FFFFFF',
-    // flex: 1,
-    justifyContent: 'center',
     fontWeight: 'bold',
+    justifyContent: 'center',
     textAlign: 'center',
   },
   title: {

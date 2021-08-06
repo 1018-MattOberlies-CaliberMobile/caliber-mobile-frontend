@@ -67,6 +67,7 @@ const StatusSelector: React.FC<Props> = ({ selected, onSelect, buttonSize = 35 }
       )
         : (
           <View >
+            {console.log('>> Loading app')}
             <MobileModal
               backdropColor="transparent"
               isVisible={modalVisible}

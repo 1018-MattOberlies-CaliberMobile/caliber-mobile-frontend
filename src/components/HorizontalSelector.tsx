@@ -1,6 +1,8 @@
 /* eslint-disable max-len */
 import React, { useEffect, useState } from 'react';
-import { Pressable, ScrollView, Text } from 'react-native';
+import {
+  Pressable, ScrollView, Text, View,
+} from 'react-native';
 import HorizontalSelectorStyle from '../styles/HorizontalSelector';
 
 type Props = {
@@ -17,7 +19,7 @@ const HorizontalSelector: React.FC<Props> = ({ data, initialSelected, onPress })
   }, [initialSelected]);
 
   return (
-    <ScrollView contentContainerStyle={HorizontalSelectorStyle.container} horizontal>
+    <ScrollView contentContainerStyle={HorizontalSelectorStyle.container} horizontal showsHorizontalScrollIndicator={false}>
       {
         data.map((item) => (
           <Pressable key={item} onPress={(): void => { onPress(item); setSelected(item); }}>
