@@ -1,5 +1,18 @@
 import { StyleSheet } from 'react-native';
+import { create } from 'react-native-pixel-perfect';
 import { theme } from './Theme';
+
+// my computer screen resolution
+const designResolution = {
+  width: 1920,
+  height: 1080,
+};
+
+const perfectSize = create(designResolution);
+// height / width
+const logoAspectRatio = 94 / 300;
+const logoWidth = perfectSize(300);
+const logoHeight = logoWidth * logoAspectRatio;
 
 const LoginPageStyles = StyleSheet.create({
   button: {
@@ -8,7 +21,7 @@ const LoginPageStyles = StyleSheet.create({
     borderRadius: 5,
     fontWeight: 'bold',
     justifyContent: 'center',
-    margin: 10,
+    margin: 20,
     padding: 10,
   },
   buttonText: {
@@ -21,30 +34,32 @@ const LoginPageStyles = StyleSheet.create({
     padding: 10,
   },
   image: {
-    height: 40,
-    marginBottom: 8,
+    height: logoHeight,
+    marginTop: 20,
     resizeMode: 'contain',
-    width: 100,
+    width: logoWidth,
   },
   imageContainer: {
     alignItems: 'center',
     backgroundColor: 'white',
-    height: 100,
+    height: 80,
     justifyContent: 'center',
     width: '100%',
   },
   inputField: {
     borderColor: theme.colors.secondary,
     borderWidth: 1,
-    flex: 3,
-    flexDirection: 'row',
     fontFamily: 'futura-medium',
     marginRight: 5,
-    paddingHorizontal: 5,
+    paddingHorizontal: 8,
   },
   row: {
     flexDirection: 'row',
     marginTop: 4,
+  },
+  text: {
+    fontFamily: 'futura-medium',
+    padding: 5,
   },
   title: {
     fontSize: 20,
