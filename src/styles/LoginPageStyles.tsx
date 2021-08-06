@@ -18,7 +18,7 @@ const LoginPageStyles = StyleSheet.create({
   button: {
     alignItems: 'center',
     backgroundColor: theme.colors.primary,
-    borderRadius: 5,
+    borderRadius: 10,
     fontWeight: 'bold',
     justifyContent: 'center',
     marginTop: 10,
@@ -42,7 +42,7 @@ const LoginPageStyles = StyleSheet.create({
   },
   image: {
     height: logoHeight,
-    marginTop: 20,
+    marginBottom: 100,
     resizeMode: 'contain',
     width: logoWidth,
   },
