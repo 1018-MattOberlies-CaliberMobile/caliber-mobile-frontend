@@ -73,8 +73,6 @@ const LoginPageStyles = StyleSheet.create({
     borderColor: theme.colors.secondary,
     borderWidth: 1,
     color: theme.colors.secondary,
-    flex: 3,
-    flexDirection: 'row',
     fontFamily: 'futura-medium',
     fontSize: 16,
     fontWeight: 'bold',
