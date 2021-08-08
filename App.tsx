@@ -43,7 +43,7 @@ export default function App() {
       <ThemeProvider theme={appTheme}>
         <ToastProvider position="BOTTOM">
           <SafeAreaProvider>
-            {/* <RevatureBanner/> */}
+            <RevatureBanner/>
             <Navigation colorScheme={colorScheme} />
             {/* <OverallNotesScreen/> */}
             {/* <WeekNotesScreen batchId={'123'}/> */}
