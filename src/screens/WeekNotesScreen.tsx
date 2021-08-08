@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from 'react';
+<<<<<<< HEAD
 import { View, Text } from 'react-native';
+=======
+import { Text, TouchableOpacity, View } from 'react-native';
+>>>>>>> 827aa31... first commit
 import AssociateCard from '../components/AssociateCard';
 import HorizontalSelector from '../components/HorizontalSelector';
 import NoteInput from '../components/NoteInput';
