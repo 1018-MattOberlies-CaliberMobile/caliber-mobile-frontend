@@ -3,7 +3,7 @@
 context('weeks selection screen tests', () => {
   beforeEach(() => {
     cy.visit('http://localhost:19006/WeekNotes/');
-    cy.intercept('https://j3txga8zdl.execute-api.us-east-1.amazonaws.com/dev/api/v1/', { body: ['2021', '2020', '2019'] }).as('years');
+    cy.intercept('https://k9ussq7588.execute-api.us-east-1.amazonaws.com/dev/api/v1/', { body: ['2021', '2020', '2019'] }).as('years');
   });
 
   it('has a scroll view for weeks', () => {

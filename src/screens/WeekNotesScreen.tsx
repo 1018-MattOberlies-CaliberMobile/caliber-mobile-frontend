@@ -31,8 +31,8 @@ const WeekNotesScreen: React.FC<Props> = ({ batchId }): JSX.Element => {
   }, [weekNum]);
 
   useEffect(() => {
-    const items = assocNotes.map((note) => (
-      <View key={note.noteId} testID="associateCard" >
+    const items = assocNotes.map((note, index) => (
+      <View key={note.noteId} testID={`associateCard${index}`} >
         <AssociateCard note={note}>
           <NoteInput note={note} />
         </AssociateCard>
