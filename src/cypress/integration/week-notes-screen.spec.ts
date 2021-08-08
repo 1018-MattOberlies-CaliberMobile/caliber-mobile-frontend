@@ -8,6 +8,7 @@ context('weeks selection screen tests', () => {
         batchId: '123', noteContent: 'hello world', technicalScore: 0, weekNumber: 1,
       },
     }).as('noteRequest');
+
   });
 
   it('has a scroll view for weeks', () => {

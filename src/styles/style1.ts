@@ -109,6 +109,7 @@ export const styles1 = StyleSheet.create({
     backgroundColor: '#FFFFFF',
     flex: 1,
     fontFamily: 'futura-medium',
+
     justifyContent: 'center',
     shadowColor: '#000000',
     shadowOffset: {

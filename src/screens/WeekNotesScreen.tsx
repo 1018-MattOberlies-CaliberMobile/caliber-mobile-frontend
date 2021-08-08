@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Text, View } from 'react-native';
+
+import { View, Text } from 'react-native';
 import AssociateCard from '../components/AssociateCard';
 import HorizontalSelector from '../components/HorizontalSelector';
 import NoteInput from '../components/NoteInput';
@@ -68,6 +69,8 @@ const WeekNotesScreen: React.FC<Props> = ({ batchId }): JSX.Element => {
       if (randomOrder) {
         FisherYatesShuffle<JSX.Element>(cards);
       }
+    ));
+
 
       setNoteItems(cards);
     }
