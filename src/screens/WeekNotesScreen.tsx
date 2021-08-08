@@ -11,6 +11,9 @@ import { getNoteByBatchIdAndWeek } from '../remote/CaliberNoteAPI';
 import WeekNoteStyle from '../styles/WeekNotesStyle';
 import RefreshButton from '../components/RefreshButton';
 import { styles1 } from '../styles/style1';
+import { useAppSelector } from '../redux';
+import { selectBatch } from '../redux/slices/batch.slice';
+import Associate from '../models/associate';
 
 type Props = {
   batchId: string;
@@ -23,27 +26,51 @@ const WeekNotesScreen: React.FC<Props> = ({ batchId }): JSX.Element => {
   const [noteItems, setNoteItems] = useState<JSX.Element[]>([]);
   const [randomOrder, setRandomOrder] = useState<boolean>(false);
 
+  const batch = useAppSelector(selectBatch);
+
   useEffect(() => {
     (async (): Promise<void> => {
-      const assoc = await getNoteByBatchIdAndWeek(batchId, weekNum + 1);
+      const assoc = await getNoteByBatchIdAndWeek(batch ? batch.batchId : '', weekNum + 1);
       setAssocNotes(assoc);
     })();
   }, [weekNum]);
 
   useEffect(() => {
-    const items = assocNotes.map((note, index) => (
-      <View key={note.noteId} testID={`associateCard${index}`} >
-        <AssociateCard note={note}>
-          <NoteInput note={note} />
-        </AssociateCard>
-      </View>
-    ));
+    if (batch) {
+      const cards = batch.associates.map((assoc: Associate, index) => {
+        const results = assocNotes.find(
+          (note: Note) => note.associate && note.associate.associateId === assoc.associateId,
+        );
+        if (results) {
+          return (
+            <View key={assoc.associateId} testID={`associateCard${index}`} >
+              <AssociateCard note={results}>
+                <NoteInput testIndex={index} note={results} />
+              </AssociateCard>
+            </View>
+          );
+        }
+        const emptyNote: Note = {
+          noteId: '123',
+          batchId: batch.batchId,
+          noteContent: 'No Note',
+          technicalScore: 0,
+          weekNumber: weekNum,
+        };
+        return (
+          <View key={assoc.associateId} testID={`associateCard${index}`} >
+            <AssociateCard note={emptyNote}>
+              <NoteInput testIndex={index} note={emptyNote} />
+            </AssociateCard>
+          </View>
+        );
+      });
+      if (randomOrder) {
+        FisherYatesShuffle<JSX.Element>(cards);
+      }
 
-    if (randomOrder) {
-      FisherYatesShuffle<JSX.Element>(items);
+      setNoteItems(cards);
     }
-
-    setNoteItems(items);
   }, [assocNotes, randomOrder]);
 
   function handleGetNotesForWeek(week: string): void {
