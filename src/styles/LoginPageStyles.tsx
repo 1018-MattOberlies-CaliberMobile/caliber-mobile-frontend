@@ -71,7 +71,7 @@ const LoginPageStyles = StyleSheet.create({
   },
   label: {
     color: theme.colors.secondary,
-    fontFamily: 'futura-medium',
+    fontFamily: 'futura-pt',
     fontSize: 16,
     fontWeight: 'bold',
   },
