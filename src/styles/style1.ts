@@ -1,5 +1,6 @@
 /* eslint-disable import/prefer-default-export */
 import { StyleSheet } from 'react-native';
+import { block } from 'react-native-reanimated';
 
 export const styles1 = StyleSheet.create({
   break: {
@@ -87,6 +88,13 @@ export const styles1 = StyleSheet.create({
     },
     shadowOpacity: 0.2,
     shadowRadius: 2,
+  },
+  noteViewSecondaryBar: {
+    alignItems: 'center',
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginVertical: 10,
   },
   row: {
     flexDirection: 'row',
