@@ -121,7 +121,6 @@ export const styles1 = StyleSheet.create({
   },
   textInput: {
     borderRadius: 5,
-    borderRadius: 5,
     borderWidth: 1,
     flexDirection: 'row',
     fontFamily: 'futura-medium',
@@ -131,12 +130,6 @@ export const styles1 = StyleSheet.create({
   textInputSave: {
     color: '#FFFFFF',
     flex: 1,
-    fontWeight: 'bold',
-    justifyContent: 'center',
-    textAlign: 'center',
-  },
-  textInputSave: {
-    color: '#FFFFFF',
     fontWeight: 'bold',
     justifyContent: 'center',
     textAlign: 'center',
