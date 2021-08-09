@@ -1,7 +1,7 @@
 import React from 'react';
 import { Text, TouchableOpacity } from 'react-native';
 import Batch from '../models/batch';
-import { styles1 } from '../styles/style1';
+import BatchListStyles from '../styles/BatchListStyles';
 
 type Props = {
   batch: Batch,
@@ -9,9 +9,9 @@ type Props = {
 }
 
 const BatchCard: React.FC<Props> = ({ batch, onPress }) => (
-  <TouchableOpacity onPress={(): void => onPress(batch)} style={styles1.item}>
-    <Text style={styles1.leftTxt}>{batch.batchTitle} </Text>
-    <Text style={styles1.leftTxt}>Trainer:  {batch.trainers[0]?.username} </Text>
+  <TouchableOpacity onPress={(): void => onPress(batch)} style={BatchListStyles.card}>
+    <Text style={BatchListStyles.cardText}>{batch.batchTitle} </Text>
+    <Text style={BatchListStyles.cardText}>Trainer:  {batch.trainers[0]?.username} </Text>
   </TouchableOpacity>
 );
 
