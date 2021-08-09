@@ -8,20 +8,19 @@ import { theme } from '../styles/Theme';
 import WeekNoteStyle from '../styles/WeekNotesStyle';
 
 type Props = {
-  note: Note
-  testIndex: number
+  note: Note,
+  setNoteContent: React.Dispatch<React.SetStateAction<string>>,
+  handleSave: () => void,
+  content: string,
+  testIndex: number,
 }
 
-const NoteInput: React.FC<Props> = ({ note, testIndex }) => {
-  const [content, setContent] = React.useState('No notes');
-
+const NoteInput: React.FC<Props> = ({
+  note, setNoteContent, handleSave, content, testIndex,
+}) => {
   useEffect(() => {
-    setContent(note.noteContent);
+    setNoteContent(note.noteContent);
   }, [note]);
-
-  const handlePress = (): void => {
-    // TODO
-  };
 
   return (
     <>
@@ -34,14 +33,14 @@ const NoteInput: React.FC<Props> = ({ note, testIndex }) => {
           multiline
           numberOfLines={8}
           // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-          onChangeText={(text) => setContent(text)}
+          onChangeText={setNoteContent}
           value={content}
           // eslint-disable-next-line react-native/no-inline-styles
           style={[{ padding: 10 }, WeekNoteStyle.textFont]} // possibly change to something else
         />
       </View>
       <View style={styles1.saveContainer}>
-        <TouchableOpacity testID={`noteSave${testIndex}`} onPress={handlePress} style={styles1.noteButton}>
+        <TouchableOpacity testID={`noteSave${testIndex}`} onPress={handleSave} style={styles1.noteButton}>
           <FontAwesome name="save" size={24} color={theme.colors.text} />
           <Text style={styles1.textInputSave}>Save</Text>
         </TouchableOpacity>

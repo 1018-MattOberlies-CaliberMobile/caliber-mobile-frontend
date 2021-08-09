@@ -15,6 +15,7 @@ import { styles1 } from '../styles/style1';
 import { useAppSelector } from '../redux';
 import { selectBatch } from '../redux/slices/batch.slice';
 import Associate from '../models/associate';
+import { TechnicalScore } from '../@types';
 
 type Props = {
   batchId: string;
@@ -26,6 +27,20 @@ const WeekNotesScreen: React.FC<Props> = ({ batchId }): JSX.Element => {
   const [noteItems, setNoteItems] = useState<JSX.Element[]>([]);
   const [randomOrder, setRandomOrder] = useState<boolean>(false);
   const [weekArray, setWeekArray] = useState<string[]>([]);
+  const [status, setStatus] = useState<TechnicalScore>(0);
+  const [noteContent, setNoteContent] = useState<string>('');
+
+  const handleSave = (): void => {
+    const newNote: Note = {
+      noteId: '',
+      batchId: '',
+      noteContent,
+      technicalScore: status,
+      weekNumber: weekNum,
+      associate: undefined,
+    };
+  };
+
   const batch = useAppSelector(selectBatch);
 
   useEffect(() => {
@@ -42,6 +57,7 @@ const WeekNotesScreen: React.FC<Props> = ({ batchId }): JSX.Element => {
       const assoc = await getNoteByBatchIdAndWeek(batch ? batch.batchId : '', weekNum + 1);
       // console.log('asdasdasds', assoc);
       setAssocNotes(assoc);
+      setNoteContent('');
     })();
   }, [weekNum]);
 
@@ -56,9 +72,11 @@ const WeekNotesScreen: React.FC<Props> = ({ batchId }): JSX.Element => {
         if (associateNote) {
           console.log('associate note', associateNote);
           return (
-            <View key={assoc.associateId} testID={`associateCard${index}`} >
-              <AssociateCard note={associateNote}>
-                <NoteInput testIndex={index} note={associateNote} />
+            <View key={assoc.associateId} testID={`associateCard${index}`}>
+              <AssociateCard note={associateNote} setStatus={setStatus} status={status}>
+                <NoteInput note={associateNote} setNoteContent={setNoteContent}
+                  handleSave={handleSave} content={noteContent} testIndex={index}
+                />
               </AssociateCard>
             </View>
           );
@@ -73,8 +91,9 @@ const WeekNotesScreen: React.FC<Props> = ({ batchId }): JSX.Element => {
         };
         return (
           <View key={assoc.associateId} testID={`associateCard${index}`} >
-            <AssociateCard note={emptyNote}>
-              <NoteInput testIndex={index} note={emptyNote} />
+            <AssociateCard note={emptyNote} setStatus={setStatus} status={status}>
+              <NoteInput testIndex={index} note={emptyNote} setNoteContent={setNoteContent}
+                handleSave={handleSave} content={noteContent} />
             </AssociateCard>
           </View>
         );
