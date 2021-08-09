@@ -18,7 +18,7 @@ export const SearchBar: React.FC<Props> = ({ batchData, setBatchList }): JSX.Ele
 
   const searchBatch = (): void => {
     const arr: Batch[] = [];
-    if (search === 'all') {
+    if (search === '') {
       setBatchList(batchData);
       return;
     }
@@ -26,7 +26,7 @@ export const SearchBar: React.FC<Props> = ({ batchData, setBatchList }): JSX.Ele
       if (batchData[i].batchTitle.toLowerCase().includes(search.toLowerCase())) {
         arr.push(batchData[i]);
       }
-      if (batchData[i].trainers[0].username === search) {
+      if (batchData[i].trainers.find((trainer) => trainer.username === search)) {
         arr.push(batchData[i]);
       }
       if (batchData[i].batchId === search) {

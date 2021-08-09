@@ -30,8 +30,9 @@ const BatchSelectionScreen: React.FC<Props> = (): JSX.Element => {
     const retrieveBatchYears = async (): Promise<void> => {
       getBatchYears()
         .then((res) => {
-          setYears(res);
-          setSelectedYear(res[0]);
+          const sortedYears = res.sort((a, b) => Number(a) - Number(b));
+          setYears(sortedYears);
+          setSelectedYear(sortedYears[sortedYears.length - 1]);
         })
         .catch((err) => {
           toast({ message: 'Could not retrieve years', intent: 'ERROR' });
@@ -74,7 +75,10 @@ const BatchSelectionScreen: React.FC<Props> = (): JSX.Element => {
   return (
     <>
       <View style={ { flex: 1.25 } }>
-        <HorizontalSelector data={years} initialSelected={years[0]} onPress={setSelectedYear} />
+        <HorizontalSelector
+          data={years}
+          initialSelected={years[years.length - 1]}
+          onPress={setSelectedYear} />
         <View style = {SearchBarStyles.container}>
           <SearchBar batchData={batchList} setBatchList={setSearchResults} />
         </View>
