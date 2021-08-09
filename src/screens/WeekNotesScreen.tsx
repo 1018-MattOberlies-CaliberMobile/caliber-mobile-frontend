@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-
 import { View, Text } from 'react-native';
+import { ScrollView } from 'react-native-gesture-handler';
 import AssociateCard from '../components/AssociateCard';
 import HorizontalSelector from '../components/HorizontalSelector';
 import NoteInput from '../components/NoteInput';
@@ -37,11 +37,12 @@ const WeekNotesScreen: React.FC<Props> = ({ batchId }): JSX.Element => {
   }, [weekNum]);
 
   useEffect(() => {
-    if (batch) {
+    if (batch && batch.associates && assocNotes) {
       const cards = batch.associates.map((assoc: Associate, index) => {
         const results = assocNotes.find(
           (note: Note) => note.associate && note.associate.associateId === assoc.associateId,
         );
+
         if (results) {
           return (
             <View key={assoc.associateId} testID={`associateCard${index}`} >
@@ -51,6 +52,7 @@ const WeekNotesScreen: React.FC<Props> = ({ batchId }): JSX.Element => {
             </View>
           );
         }
+
         const emptyNote: Note = {
           noteId: '123',
           batchId: batch.batchId,
@@ -66,12 +68,10 @@ const WeekNotesScreen: React.FC<Props> = ({ batchId }): JSX.Element => {
           </View>
         );
       });
+
       if (randomOrder) {
         FisherYatesShuffle<JSX.Element>(cards);
       }
-    ));
-
-
       setNoteItems(cards);
     }
   }, [assocNotes, randomOrder]);
@@ -107,7 +107,9 @@ const WeekNotesScreen: React.FC<Props> = ({ batchId }): JSX.Element => {
         <View>
           <Text style={WeekNoteStyle.subHeader}>Associates</Text>
         </View>
-        { noteItems }
+        <ScrollView style={WeekNoteStyle.container}>
+          { noteItems }
+        </ScrollView>
       </View>
     </>
   );
