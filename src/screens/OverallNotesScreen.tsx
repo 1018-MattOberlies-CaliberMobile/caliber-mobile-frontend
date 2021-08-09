@@ -161,7 +161,7 @@ const OverallNotesScreen: React.FC<Props> = (props): JSX.Element => {
   }, [batch]);
 
   useEffect(() => {
-    if (batch) {
+    if (batch && batch.notes && currentWeek) {
       console.log(currentWeek);
       const note = batch.notes.find((n) => !n.associate && n.weekNumber.toString() === currentWeek.replace(/week/i, '').trim());
       setOverallNote(note);
