@@ -70,8 +70,8 @@ const LoginPageStyles = StyleSheet.create({
     width: '100%',
   },
   label: {
-    borderColor: theme.colors.secondary,
-    borderWidth: 1,
+    // borderColor: theme.colors.secondary,
+    // borderWidth: 1,
     color: theme.colors.secondary,
     fontFamily: 'futura-medium',
     fontSize: 16,

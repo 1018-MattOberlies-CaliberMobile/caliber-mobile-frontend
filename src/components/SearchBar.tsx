@@ -27,11 +27,9 @@ export const SearchBar: React.FC<Props> = ({ batchData, setBatchList }): JSX.Ele
     for (let i = 0; i < batchData.length; i += 1) {
       if (batchData[i].batchTitle.toLowerCase().includes(search.toLowerCase())) {
         arr.push(batchData[i]);
-      }
-      if (batchData[i].trainers.find((trainer) => trainer.username === search)) {
+      } else if (batchData[i].trainers.find((trainer) => trainer.username.toLocaleLowerCase().includes(search.toLocaleLowerCase()))) {
         arr.push(batchData[i]);
-      }
-      if (batchData[i].batchId === search) {
+      } else if (batchData[i].batchId === search) {
         arr.push(batchData[i]);
       }
     }
@@ -44,13 +42,13 @@ export const SearchBar: React.FC<Props> = ({ batchData, setBatchList }): JSX.Ele
         <TextInput
           testID='search-bar'
           placeholder = 'Search Here'
-          onChangeText = { (txt): void => setSearch(txt) }
+          onChangeText = { (txt): void => {
+            setSearch(txt);
+            searchBatch();
+          } }
           style = {SearchBarStyles.textInput}
         />
 
-        <TouchableOpacity style={SearchBarStyles.button} testID='search-button' onPress={searchBatch}>
-          <Text style={SearchBarStyles.buttonText}>Search</Text>
-        </TouchableOpacity>
       </View>
     </>
   );

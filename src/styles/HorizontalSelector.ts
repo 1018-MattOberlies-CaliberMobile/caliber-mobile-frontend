@@ -24,7 +24,7 @@ const HorizontalSelectorStyle = StyleSheet.create({
     flexDirection: 'row',
     flexGrow: 1.25,
     justifyContent: 'center',
-    marginVertical: 0,
+    marginVertical: 10,
     paddingHorizontal: 10,
   },
   item: {
@@ -44,7 +44,7 @@ const HorizontalSelectorStyle = StyleSheet.create({
     color: 'white',
   },
   selector: {
-    flex: 1.15,
+    flex: 0.3,
   },
 });
 

@@ -21,33 +21,44 @@ type Props = {
 }
 
 const WeekNotesScreen: React.FC<Props> = ({ batchId }): JSX.Element => {
-  const arrayString = CreateWeekArray('2021-6-5', '2021-7-5');
   const [assocNotes, setAssocNotes] = useState<Note[]>([]);
   const [weekNum, setWeekNum] = useState<number>(0);
   const [noteItems, setNoteItems] = useState<JSX.Element[]>([]);
   const [randomOrder, setRandomOrder] = useState<boolean>(false);
-
+  const [weekArray, setWeekArray] = useState<string[]>([]);
   const batch = useAppSelector(selectBatch);
 
   useEffect(() => {
+    if (batch) {
+      const arr = CreateWeekArray(batch.startDate, batch.endDate);
+      setWeekArray(arr);
+    }
+  }, []);
+
+  useEffect(() => {
+    console.log('batch', batch);
+    // console.log('chaning week', weekNum);
     (async (): Promise<void> => {
       const assoc = await getNoteByBatchIdAndWeek(batch ? batch.batchId : '', weekNum + 1);
+      // console.log('asdasdasds', assoc);
       setAssocNotes(assoc);
     })();
   }, [weekNum]);
 
   useEffect(() => {
-    if (batch && batch.associates && assocNotes) {
-      const cards = batch.associates.map((assoc: Associate, index) => {
-        const results = assocNotes.find(
-          (note: Note) => note.associate && note.associate.associateId === assoc.associateId,
+    // console.log('hello>', batch?.associates, assocNotes);
+    if (batch && assocNotes) {
+      const cards = batch.associates?.map((assoc: Associate, index) => {
+        const associateNote = assocNotes.find(
+          (note: Note) => note.associate && (note.associate.associateId === assoc.associateId),
         );
 
-        if (results) {
+        if (associateNote) {
+          console.log('associate note', associateNote);
           return (
             <View key={assoc.associateId} testID={`associateCard${index}`} >
-              <AssociateCard note={results}>
-                <NoteInput testIndex={index} note={results} />
+              <AssociateCard note={associateNote}>
+                <NoteInput testIndex={index} note={associateNote} />
               </AssociateCard>
             </View>
           );
@@ -77,7 +88,7 @@ const WeekNotesScreen: React.FC<Props> = ({ batchId }): JSX.Element => {
   }, [assocNotes, randomOrder]);
 
   function handleGetNotesForWeek(week: string): void {
-    setWeekNum(arrayString.indexOf(week));
+    setWeekNum(weekArray.indexOf(week));
   }
 
   async function refreshWeekNotes(): Promise<void> {
@@ -86,12 +97,12 @@ const WeekNotesScreen: React.FC<Props> = ({ batchId }): JSX.Element => {
   }
 
   return (
-    <>
+    <ScrollView>
       <View style={WeekNoteStyle.container}>
         <View>
           <HorizontalSelector
-            data={arrayString}
-            initialSelected={arrayString[0]}
+            data={weekArray}
+            initialSelected={weekArray[0]}
             onPress={handleGetNotesForWeek}
           />
         </View>
@@ -107,11 +118,11 @@ const WeekNotesScreen: React.FC<Props> = ({ batchId }): JSX.Element => {
         <View>
           <Text style={WeekNoteStyle.subHeader}>Associates</Text>
         </View>
-        <ScrollView style={WeekNoteStyle.container}>
+        <View style={WeekNoteStyle.container}>
           { noteItems }
-        </ScrollView>
+        </View>
       </View>
-    </>
+    </ScrollView>
   );
 };
 

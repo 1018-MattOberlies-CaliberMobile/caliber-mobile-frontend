@@ -5,8 +5,9 @@ import Note from '../models/note';
 export const getNoteByBatchIdAndWeek = async (batchId: string, week: number): Promise<Note[]> => {
   const notes = BackendClient.get(`/note/batch/${batchId}/${week}`)
     .then((res) => {
-      console.log('Successfuly retreieved notes by BatchId and Week', res.data);
-      return JSON.parse(res.data.body).notes as Note[];
+      console.log('Successfuly retreieved notes by BatchId and Week', JSON.parse(res.data.body).notes);
+      const result = JSON.parse(res.data.body).notes as Note[];
+      return result;
     }).catch((error) => {
       console.log('Erorr retrieving notes for BatchId and Week', error);
       return [];

@@ -1,6 +1,6 @@
 import { useNavigation } from '@react-navigation/native';
 import React, { useEffect, useState } from 'react';
-import { View } from 'react-native';
+import { ScrollView, View } from 'react-native';
 import { useDispatch } from 'react-redux';
 import { useToast } from 'react-native-styled-toast';
 import HorizontalSelector from '../components/HorizontalSelector';
@@ -49,6 +49,8 @@ const BatchSelectionScreen: React.FC<Props> = (): JSX.Element => {
         getBatchesByYear(selectedYear)
           .then((res) => {
             res.sort((a, b) => Date.parse(b.startDate) - Date.parse(a.startDate));
+
+            console.log('res', res);
             setBatchList(res);
           })
           .catch((err) => {
@@ -72,7 +74,7 @@ const BatchSelectionScreen: React.FC<Props> = (): JSX.Element => {
 
   console.log('Batch Selection');
   return (
-    <>
+    <ScrollView>
       <View style={ { flex: 1.25 } }>
         <HorizontalSelector
           data={years}
@@ -89,7 +91,7 @@ const BatchSelectionScreen: React.FC<Props> = (): JSX.Element => {
       <View style={ { flex: 8 } }>
         <BatchList batches={searchResults || batchList} onPress={onSelectBatch} />
       </View>
-    </>
+    </ScrollView>
   );
 };
 
