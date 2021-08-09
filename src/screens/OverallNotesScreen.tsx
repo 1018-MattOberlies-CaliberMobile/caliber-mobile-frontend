@@ -15,10 +15,15 @@ import { useAppSelector } from '../redux';
 import { selectBatch, setBatch } from '../redux/slices/batch.slice';
 import { selectWeek, setWeek } from '../redux/slices/week.slice';
 import { CreateOverallNote } from '../remote/CaliberNoteAPI';
+<<<<<<< HEAD
 import { pageStyles } from '../styles/WeekNotes';
 import createWeekArray from '../functions/CreateWeekArray';
 import HorizontalSelectorStyle from '../styles/HorizontalSelector';
 import { theme } from '../styles/Theme';
+=======
+import LoginPageStyles from '../styles/LoginPageStyles';
+import createWeekArray from '../functions/CreateWeekArray';
+>>>>>>> 8594a17 (added batchId to note)
 
 type Props = {
 
@@ -35,6 +40,7 @@ const OverallNotesScreen: React.FC<Props> = (props): JSX.Element => {
   const handleWeekSelector = (week: string): void => {
     dispatch(setWeek(week));
   };
+
   const handleSave = (): void => {
     console.log('>> saving info');
     console.log('>>> week: ', currentWeek);
