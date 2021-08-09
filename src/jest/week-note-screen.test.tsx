@@ -1,8 +1,8 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { expect } from '@jest/globals';
 import 'react-native';
-import createWeekArray from '../Functions/CreateWeekArray';
-import FisherYatesShuffle from '../Functions/FisherYatesShuffle';
+import createWeekArray from '../functions/CreateWeekArray';
+import FisherYatesShuffle from '../functions/FisherYatesShuffle';
 
 describe('Testing week note screen', () => {
   beforeEach(() => {

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-
 import { View, Text } from 'react-native';
 import AssociateCard from '../components/AssociateCard';
 import HorizontalSelector from '../components/HorizontalSelector';
@@ -42,6 +41,7 @@ const WeekNotesScreen: React.FC<Props> = ({ batchId }): JSX.Element => {
         const results = assocNotes.find(
           (note: Note) => note.associate && note.associate.associateId === assoc.associateId,
         );
+
         if (results) {
           return (
             <View key={assoc.associateId} testID={`associateCard${index}`} >
@@ -51,6 +51,7 @@ const WeekNotesScreen: React.FC<Props> = ({ batchId }): JSX.Element => {
             </View>
           );
         }
+
         const emptyNote: Note = {
           noteId: '123',
           batchId: batch.batchId,
@@ -66,12 +67,10 @@ const WeekNotesScreen: React.FC<Props> = ({ batchId }): JSX.Element => {
           </View>
         );
       });
+
       if (randomOrder) {
         FisherYatesShuffle<JSX.Element>(cards);
       }
-    ));
-
-
       setNoteItems(cards);
     }
   }, [assocNotes, randomOrder]);

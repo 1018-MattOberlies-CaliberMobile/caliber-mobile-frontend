@@ -63,6 +63,7 @@ const BatchSelectionScreen: React.FC<Props> = (): JSX.Element => {
   }, [selectedYear]);
 
   const onSelectBatch = (batch: Batch): void => {
+    console.log('Selecting batch');
     console.log(batch);
     // Assign redux state to be this batch
     dispatch(setBatch(JSON.stringify(batch)));
