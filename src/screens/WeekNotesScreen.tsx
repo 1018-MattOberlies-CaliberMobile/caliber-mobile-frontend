@@ -8,7 +8,7 @@ import ToggleSwitch from '../components/ToggleSwitch';
 import CreateWeekArray from '../functions/CreateWeekArray';
 import FisherYatesShuffle from '../functions/FisherYatesShuffle';
 import Note from '../models/note';
-import { getNoteByBatchIdAndWeek } from '../remote/CaliberNoteAPI';
+import { getNoteByBatchIdAndWeek, createAssociateNote } from '../remote/CaliberNoteAPI';
 import WeekNoteStyle from '../styles/WeekNotesStyle';
 import RefreshButton from '../components/RefreshButton';
 import { styles1 } from '../styles/style1';
@@ -29,19 +29,22 @@ const WeekNotesScreen: React.FC<Props> = ({ batchId }): JSX.Element => {
   const [weekArray, setWeekArray] = useState<string[]>([]);
   const [status, setStatus] = useState<TechnicalScore>(0);
   const [noteContent, setNoteContent] = useState<string>('');
-
-  const handleSave = (): void => {
-    const newNote: Note = {
-      noteId: '',
-      batchId: '',
-      noteContent,
-      technicalScore: status,
-      weekNumber: weekNum,
-      associate: undefined,
-    };
-  };
-
   const batch = useAppSelector(selectBatch);
+
+  const handleSave = (associate: Associate | undefined, noteId: string): void => {
+    if (batch) {
+      const newNote: Note = {
+        noteId,
+        batchId: batch.batchId,
+        noteContent,
+        technicalScore: status,
+        weekNumber: weekNum,
+        associate,
+      };
+      console.log('New Note: ', newNote);
+      createAssociateNote(newNote);
+    }
+  };
 
   useEffect(() => {
     if (batch) {
@@ -88,6 +91,7 @@ const WeekNotesScreen: React.FC<Props> = ({ batchId }): JSX.Element => {
           noteContent: 'No Note',
           technicalScore: 0,
           weekNumber: weekNum,
+          associate: assoc,
         };
         return (
           <View key={assoc.associateId} testID={`associateCard${index}`} >
