@@ -8,9 +8,9 @@
 export default function CreateWeekArray(start: string, end: string): string[] {
   const weekArray: string[] = [];
   const MILLISECONDS_IN_WEEK = 7 * 24 * 60 * 60 * 1000;
-  let dateSplit = start.split(/[- :]/);
+  let dateSplit = start.split(/[- :T]/);
   const startDate = new Date(Number(dateSplit[0]), Number(dateSplit[1]) - 1, Number(dateSplit[2]));
-  dateSplit = end.split(/[- :]/);
+  dateSplit = end.split(/[- :T]/);
   const endDate = new Date(Number(dateSplit[0]), Number(dateSplit[1]) - 1, Number(dateSplit[2]));
   let weekNum = 1;
 

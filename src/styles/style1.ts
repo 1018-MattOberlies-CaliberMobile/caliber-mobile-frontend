@@ -56,7 +56,7 @@ export const styles1 = StyleSheet.create({
     borderRadius: 5,
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginTop: '10px',
+    marginTop: 16,
     paddingHorizontal: 20,
     paddingVertical: 11,
     padding: 10,
@@ -72,10 +72,21 @@ export const styles1 = StyleSheet.create({
   },
   noteViewSecondaryBar: {
     alignItems: 'center',
+    backgroundColor: '#F26925',
+    borderRadius: 5,
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'space-between',
+    marginTop: 16,
     marginVertical: 10,
+    padding: 10,
+    shadowColor: '#000000',
+    shadowOffset: {
+      height: 1,
+      width: 1,
+    },
+    shadowOpacity: 0.2,
+    shadowRadius: 2,
   },
   row: {
     flexDirection: 'row',
@@ -96,8 +107,9 @@ export const styles1 = StyleSheet.create({
   },
   textBox: {
     backgroundColor: '#FFFFFF',
+    flex: 1,
     fontFamily: 'futura-medium',
-    // flex: 1,
+
     justifyContent: 'center',
     shadowColor: '#000000',
     shadowOffset: {
@@ -118,6 +130,7 @@ export const styles1 = StyleSheet.create({
   },
   textInputSave: {
     color: '#FFFFFF',
+    flex: 1,
     fontWeight: 'bold',
     justifyContent: 'center',
     textAlign: 'center',

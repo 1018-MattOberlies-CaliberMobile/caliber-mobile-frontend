@@ -9,9 +9,10 @@ import WeekNoteStyle from '../styles/WeekNotesStyle';
 
 type Props = {
   note: Note
+  testIndex: number
 }
 
-const NoteInput: React.FC<Props> = ({ note }) => {
+const NoteInput: React.FC<Props> = ({ note, testIndex }) => {
   const [content, setContent] = React.useState('No notes');
 
   useEffect(() => {
@@ -26,7 +27,7 @@ const NoteInput: React.FC<Props> = ({ note }) => {
     <>
       <View
       // eslint-disable-next-line react-native/no-inline-styles
-        style={styles1.textBox} testID="noteInput">
+        style={styles1.textBox} testID={`noteInput${testIndex}`}>
         <TextInput
           editable
           maxLength={400}
@@ -40,7 +41,7 @@ const NoteInput: React.FC<Props> = ({ note }) => {
         />
       </View>
       <View style={styles1.saveContainer}>
-        <TouchableOpacity onPress={handlePress} style={styles1.noteButton}>
+        <TouchableOpacity testID={`noteSave${testIndex}`} onPress={handlePress} style={styles1.noteButton}>
           <FontAwesome name="save" size={24} color={theme.colors.text} />
           <Text style={styles1.textInputSave}>Save</Text>
         </TouchableOpacity>

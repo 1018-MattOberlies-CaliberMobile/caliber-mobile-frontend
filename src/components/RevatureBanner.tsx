@@ -18,8 +18,6 @@ const logoHeight = logoWidth * logoAspectRatio;
 const styles = StyleSheet.create({
   header: {
     backgroundColor: '#FFFFFF',
-    padding: perfectSize(40),
-    paddingTop: perfectSize(100),
     textAlign: 'center',
   },
   logo: {

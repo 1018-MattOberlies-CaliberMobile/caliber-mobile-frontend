@@ -17,7 +17,6 @@ const LoginPage: React.FC<unknown> = (): JSX.Element => {
   const [password, setPassWord] = useState<string>('');
   const dispatch = useAppDispatch();
   const navigation = useNavigation();
-
   const handleLogin = async ():Promise<void> => {
     const result = await dispatch(loginAsync({ username, password }));
     if (result.meta.requestStatus === 'fulfilled') {
@@ -29,15 +28,15 @@ const LoginPage: React.FC<unknown> = (): JSX.Element => {
 
   return (
     <>
-      <View style={LoginPageStyles.imageContainer}>
-        <Image style = {LoginPageStyles.image}
-          source={revlogo}
-        />
-      </View>
       <View style={LoginPageStyles.container}>
-        <Text testID="username-input-label">Username: </Text>
+        <View style={LoginPageStyles.imageContainer}>
+          <Image style = {LoginPageStyles.image}
+            source={revlogo}
+          />
+        </View>
+        <Text style={LoginPageStyles.label} testID="username-input-label">Username: </Text>
         <TextInput style={LoginPageStyles.inputField} placeholder='username' testID='username-input' onChangeText={(text):void => setUserName(text)}></TextInput>
-        <Text testID="password-input-label">Password: </Text>
+        <Text style={LoginPageStyles.label} testID="password-input-label">Password: </Text>
         <TextInput style={LoginPageStyles.inputField} placeholder='password' testID='password-input' secureTextEntry={true} onChangeText={(text):void => setPassWord(text)}></TextInput>
         <TouchableOpacity style={LoginPageStyles.button} testID='login-button' onPress={handleLogin}>
           <Text style={ LoginPageStyles.buttonText}>Login</Text>
