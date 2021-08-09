@@ -2,6 +2,8 @@ import React from 'react';
 import { ScrollView } from 'react-native';
 import Batch from '../models/batch';
 import BatchCard from './BatchCard';
+import BatchListStyles from '../styles/BatchListStyles';
+
 
 type Props = {
   batches: Batch[],
@@ -9,7 +11,7 @@ type Props = {
 }
 
 const BatchList: React.FC<Props> = ({ batches, onPress }) => (
-  <ScrollView testID='batch-list'>
+  <ScrollView contentContainerStyle={BatchListStyles.container} testID='batch-list'>
     {
       batches.map((batch) => (
         <BatchCard key={batch.batchId} batch={batch} onPress={onPress} />

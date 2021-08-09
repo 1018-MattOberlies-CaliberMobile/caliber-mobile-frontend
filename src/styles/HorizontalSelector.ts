@@ -15,6 +15,7 @@ const baseStyle = {
   shadowOpacity: 0.2,
   elevation: 5,
   fontFamily: 'futura-medium',
+
 };
 
 const HorizontalSelectorStyle = StyleSheet.create({
@@ -28,10 +29,12 @@ const HorizontalSelectorStyle = StyleSheet.create({
   },
   item: {
     ...baseStyle,
+    alignItems: 'center',
     backgroundColor: 'white',
     borderColor: theme.colors.primary,
     borderWidth: 3,
     color: theme.colors.primary,
+    justifyContent: 'center',
   },
   selectedItem: {
     ...baseStyle,

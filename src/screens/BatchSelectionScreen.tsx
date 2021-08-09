@@ -1,6 +1,6 @@
 import { useNavigation } from '@react-navigation/native';
 import React, { useEffect, useState } from 'react';
-import { ScrollView, View } from 'react-native';
+import { View } from 'react-native';
 import { useDispatch } from 'react-redux';
 import { useToast } from 'react-native-styled-toast';
 import HorizontalSelector from '../components/HorizontalSelector';
@@ -77,7 +77,8 @@ const BatchSelectionScreen: React.FC<Props> = (): JSX.Element => {
         <HorizontalSelector
           data={years}
           initialSelected={years[years.length - 1]}
-          onPress={setSelectedYear} />
+          onPress={setSelectedYear}
+          startAtEnd />
         <View style = {SearchBarStyles.container}>
           <SearchBar batchData={batchList} setBatchList={setSearchResults} />
         </View>
@@ -86,9 +87,7 @@ const BatchSelectionScreen: React.FC<Props> = (): JSX.Element => {
       <View style={ { flex: 0.5 }} />
 
       <View style={ { flex: 8 } }>
-        <ScrollView>
-          <BatchList batches={searchResults || batchList} onPress={onSelectBatch} />
-        </ScrollView>
+        <BatchList batches={searchResults || batchList} onPress={onSelectBatch} />
       </View>
     </>
   );
