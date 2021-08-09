@@ -17,7 +17,7 @@ const NoteInput: React.FC<Props> = ({ note, testIndex }) => {
 
   useEffect(() => {
     setContent(note.noteContent);
-  }, []);
+  }, [note]);
 
   const handlePress = (): void => {
     // TODO

@@ -193,17 +193,19 @@ const OverallNotesScreen: React.FC<Props> = (props): JSX.Element => {
 
       <Text style={pageStyles.header} >Overall Technical Status</Text>
       <StatusSelector buttonSize={75} selected={technicalScore} onSelect={setTechnicalScore}/>
-      <TextInput
-        style={pageStyles.textInput}
-        testID='overallNotesInput'
-        onChangeText={setNoteContent}
-        value={noteContent}
-        multiline={true}
-      />
+      <View style={pageStyles.textInputView}>
+        <TextInput
+          style={pageStyles.textInput}
+          testID='overallNotesInput'
+          onChangeText={setNoteContent}
+          value={noteContent}
+          multiline={true}
+        />
+      </View>
 
       <View style={pageStyles.buttonRight}>
         <TouchableOpacity style={pageStyles.button} testID='SaveNote' onPress={handleSave}>
-          <FontAwesome name="save" size={24} color={theme.colors.primary} />
+          <FontAwesome name="save" size={24} color={'white'} />
           <Text style={pageStyles.buttonText}>Save</Text>
         </TouchableOpacity>
       </View>
