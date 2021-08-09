@@ -55,7 +55,7 @@ const BatchSelectionScreen: React.FC<Props> = (): JSX.Element => {
           })
           .catch((err) => {
             toast({ message: 'Could not retrieve batches', intent: 'ERROR' });
-            console.log(err.message);
+            console.log('>> get batch error', err.message);
           });
       }
     };

@@ -21,3 +21,9 @@ export const CreateOverallNote = (note: Note): void => {
     .then((res) => { console.log('>> Saved overall note', res); })
     .catch((err) => { console.error('>> Error on save overall note.', err); });
 };
+
+export const createAssociateNote = (note: Note): void => {
+  BackendClient.post('note', note)
+    .then((res) => { console.log('>> Saved associate note', res); })
+    .catch((err) => { console.error('>> Error on save associate note.', err); });
+};

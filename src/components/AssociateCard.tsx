@@ -14,10 +14,14 @@ import WeekNoteStyle from '../styles/WeekNotesStyle';
 import StatusSelector from './StatusSelector';
 
 type Props = {
-  note: Note;
+  note: Note,
+  setStatus: React.Dispatch<React.SetStateAction<TechnicalScore>>,
+  status: TechnicalScore,
 }
 
-const AssociateCard: React.FC<Props> = ({ note, children }) => {
+const AssociateCard: React.FC<Props> = ({
+  note, children, setStatus, status,
+}) => {
   const [last, setLast] = useState<string>();
   const [first, setFirst] = useState<string>();
   const [open, setOpen] = useState(false);
