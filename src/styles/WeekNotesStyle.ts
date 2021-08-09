@@ -18,6 +18,7 @@ const WeekNoteStyle = StyleSheet.create({
   },
   textFont: {
     fontFamily: 'futura-medium',
+    paddingHorizontal: 20,
   },
 });
 
