@@ -1,6 +1,6 @@
 import { useNavigation } from '@react-navigation/native';
 import React, { useEffect, useState } from 'react';
-import { View } from 'react-native';
+import { ScrollView, View } from 'react-native';
 import { useDispatch } from 'react-redux';
 import { useToast } from 'react-native-styled-toast';
 import HorizontalSelector from '../components/HorizontalSelector';
