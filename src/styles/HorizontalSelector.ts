@@ -15,6 +15,7 @@ const baseStyle = {
   shadowOpacity: 0.2,
   elevation: 5,
   fontFamily: 'futura-medium',
+
 };
 
 const HorizontalSelectorStyle = StyleSheet.create({
@@ -23,15 +24,17 @@ const HorizontalSelectorStyle = StyleSheet.create({
     flexDirection: 'row',
     flexGrow: 1.25,
     justifyContent: 'center',
-    marginVertical: 0,
+    marginVertical: 10,
     paddingHorizontal: 10,
   },
   item: {
     ...baseStyle,
+    alignItems: 'center',
     backgroundColor: 'white',
     borderColor: theme.colors.primary,
     borderWidth: 3,
     color: theme.colors.primary,
+    justifyContent: 'center',
   },
   selectedItem: {
     ...baseStyle,
@@ -41,7 +44,7 @@ const HorizontalSelectorStyle = StyleSheet.create({
     color: 'white',
   },
   selector: {
-    flex: 0.15,
+    flex: 0.3,
   },
 });
 

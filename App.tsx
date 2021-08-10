@@ -1,8 +1,8 @@
 import 'react-native-gesture-handler';
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
-import { Platform, StyleSheet } from 'react-native';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { StyleSheet } from 'react-native';
 import { Provider } from 'react-redux';
 import { ThemeProvider } from 'styled-components';
 import { ToastProvider } from 'react-native-styled-toast';
@@ -12,11 +12,7 @@ import useCachedResources from './src/hooks/useCachedResources';
 import useColorScheme from './src/hooks/useColorScheme';
 import Navigation from './src/navigation';
 import store from './src/redux/store';
-import OverallNotesScreen from './src/screens/OverallNotesScreen';
-import WeekNotesScreen from './src/screens/WeekNotesScreen';
 import awsmobile from './src/aws-exports';
-import RevatureBanner from './src/components/RevatureBanner';
-import NotesNavigator from './src/navigation/NotesNavigator';
 
 Amplify.configure(awsmobile);
 
@@ -45,10 +41,7 @@ export default function App() {
       <ThemeProvider theme={appTheme}>
         <ToastProvider position="BOTTOM">
           <SafeAreaProvider>
-            {/* <RevatureBanner/> */}
-            <Navigation colorScheme={colorScheme}/>
-            {/* <OverallNotesScreen/> */}
-            {/* <WeekNotesScreen batchId={'123'}/> */}
+            <Navigation colorScheme={colorScheme} />
             <StatusBar />
           </SafeAreaProvider>
         </ToastProvider>

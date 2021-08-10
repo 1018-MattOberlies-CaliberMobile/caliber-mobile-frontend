@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text } from 'react-native';
+import { ScrollView } from 'react-native-gesture-handler';
 import AssociateCard from '../components/AssociateCard';
 import HorizontalSelector from '../components/HorizontalSelector';
 import NoteInput from '../components/NoteInput';
@@ -7,51 +8,110 @@ import ToggleSwitch from '../components/ToggleSwitch';
 import CreateWeekArray from '../functions/CreateWeekArray';
 import FisherYatesShuffle from '../functions/FisherYatesShuffle';
 import Note from '../models/note';
-import { getNoteByBatchIdAndWeek } from '../remote/CaliberNoteAPI';
+import { getNoteByBatchIdAndWeek, createAssociateNote } from '../remote/CaliberNoteAPI';
 import WeekNoteStyle from '../styles/WeekNotesStyle';
 import RefreshButton from '../components/RefreshButton';
 import { styles1 } from '../styles/style1';
 import { useAppSelector } from '../redux';
 import { selectBatch } from '../redux/slices/batch.slice';
-import Batch from '../models/batch';
+import Associate from '../models/associate';
+import { TechnicalScore } from '../@types';
 
 type Props = {
   batchId: string;
 }
 
 const WeekNotesScreen: React.FC<Props> = ({ batchId }): JSX.Element => {
-  const arrayString = CreateWeekArray('2021-6-5', '2021-7-5');
   const [assocNotes, setAssocNotes] = useState<Note[]>([]);
   const [weekNum, setWeekNum] = useState<number>(0);
   const [noteItems, setNoteItems] = useState<JSX.Element[]>([]);
   const [randomOrder, setRandomOrder] = useState<boolean>(false);
-  const batch = useAppSelector(selectBatch) as Batch;
+  const [weekArray, setWeekArray] = useState<string[]>([]);
+  const [status, setStatus] = useState<TechnicalScore>(0);
+  const [noteContent, setNoteContent] = useState<string>('');
+  const batch = useAppSelector(selectBatch);
+
+  const handleSave = (associate: Associate | undefined, noteId: string): void => {
+    if (batch) {
+      const newNote: Note = {
+        noteId,
+        batchId: batch.batchId,
+        noteContent,
+        technicalScore: status,
+        weekNumber: weekNum,
+        associate,
+      };
+      console.log('New Note: ', newNote);
+      createAssociateNote(newNote);
+    }
+  };
 
   useEffect(() => {
+    if (batch) {
+      const arr = CreateWeekArray(batch.startDate, batch.endDate);
+      setWeekArray(arr);
+    }
+  }, []);
+
+  useEffect(() => {
+    console.log('batch', batch);
+    // console.log('chaning week', weekNum);
     (async (): Promise<void> => {
-      const assoc = await getNoteByBatchIdAndWeek(batch.batchId, weekNum + 1);
+      const assoc = await getNoteByBatchIdAndWeek(batch ? batch.batchId : '', weekNum + 1);
+      // console.log('asdasdasds', assoc);
       setAssocNotes(assoc);
+      setNoteContent('');
     })();
   }, [weekNum]);
 
   useEffect(() => {
-    const items = assocNotes.map((note) => (
-      <View key={note.noteId} testID="associateCard" >
-        <AssociateCard note={note}>
-          <NoteInput note={note} />
-        </AssociateCard>
-      </View>
-    ));
+    // console.log('hello>', batch?.associates, assocNotes);
+    if (batch && assocNotes) {
+      const cards = batch.associates?.map((assoc: Associate, index) => {
+        const associateNote = assocNotes.find(
+          (note: Note) => note.associate && (note.associate.associateId === assoc.associateId),
+        );
 
-    if (randomOrder) {
-      FisherYatesShuffle<JSX.Element>(items);
+        if (associateNote) {
+          console.log('associate note', associateNote);
+          return (
+            <View key={assoc.associateId} testID={`associateCard${index}`}>
+              <AssociateCard note={associateNote} setStatus={setStatus} status={status}>
+                <NoteInput note={associateNote} setNoteContent={setNoteContent}
+                  handleSave={handleSave} content={noteContent} testIndex={index}
+                />
+              </AssociateCard>
+            </View>
+          );
+        }
+
+        const emptyNote: Note = {
+          noteId: '123',
+          batchId: batch.batchId,
+          noteContent: 'No Note',
+          technicalScore: 0,
+          weekNumber: weekNum,
+          associate: assoc,
+        };
+        return (
+          <View key={assoc.associateId} testID={`associateCard${index}`} >
+            <AssociateCard note={emptyNote} setStatus={setStatus} status={status}>
+              <NoteInput testIndex={index} note={emptyNote} setNoteContent={setNoteContent}
+                handleSave={handleSave} content={noteContent} />
+            </AssociateCard>
+          </View>
+        );
+      });
+
+      if (randomOrder) {
+        FisherYatesShuffle<JSX.Element>(cards);
+      }
+      setNoteItems(cards);
     }
-
-    setNoteItems(items);
   }, [assocNotes, randomOrder]);
 
   function handleGetNotesForWeek(week: string): void {
-    setWeekNum(arrayString.indexOf(week));
+    setWeekNum(weekArray.indexOf(week));
   }
 
   async function refreshWeekNotes(): Promise<void> {
@@ -60,12 +120,12 @@ const WeekNotesScreen: React.FC<Props> = ({ batchId }): JSX.Element => {
   }
 
   return (
-    <>
+    <ScrollView>
       <View style={WeekNoteStyle.container}>
         <View>
           <HorizontalSelector
-            data={arrayString}
-            initialSelected={arrayString[0]}
+            data={weekArray}
+            initialSelected={weekArray[0]}
             onPress={handleGetNotesForWeek}
           />
         </View>
@@ -81,9 +141,11 @@ const WeekNotesScreen: React.FC<Props> = ({ batchId }): JSX.Element => {
         <View>
           <Text style={WeekNoteStyle.subHeader}>Associates</Text>
         </View>
-        { noteItems }
+        <View style={WeekNoteStyle.container}>
+          { noteItems }
+        </View>
       </View>
-    </>
+    </ScrollView>
   );
 };
 

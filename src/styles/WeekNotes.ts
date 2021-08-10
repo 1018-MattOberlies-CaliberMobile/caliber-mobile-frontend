@@ -57,17 +57,16 @@ export const modalStyles = StyleSheet.create({
 export const pageStyles = StyleSheet.create({
   button: {
     alignItems: 'center',
-    backgroundColor: 'white',
-    borderColor: theme.colors.primary,
+    backgroundColor: theme.colors.primary,
     borderRadius: 5,
-    borderStyle: 'solid',
-    borderWidth: 3,
     elevation: 5,
     flexDirection: 'row',
     fontWeight: 'bold',
     justifyContent: 'space-between',
+    marginBottom: 10,
+    marginRight: 10,
     paddingHorizontal: 20,
-    paddingVertical: 5,
+    paddingVertical: 10,
     shadowOffset: {
       width: 3,
       height: 3,
@@ -81,29 +80,37 @@ export const pageStyles = StyleSheet.create({
     width: '100%',
   },
   buttonText: {
-    color: theme.colors.primary,
+    color: 'white',
     fontFamily: 'futura-bold',
   },
   centeredView: {
     alignItems: 'center',
     flex: 1,
-    marginHorizontal: 25,
-    marginVertical: 25,
   },
   header: {
     fontFamily: 'futura-bold',
     fontSize: 15,
     marginBottom: 15,
-    marginTop: 30,
   },
   textInput: {
-    borderStyle: 'solid',
-    borderWidth: 3,
+    backgroundColor: '#FFFFFF',
+    elevation: 10,
     flex: 1,
-    height: 100,
-    marginBottom: 25,
-    marginTop: 40,
+    fontFamily: 'futura-medium',
+    marginHorizontal: 10,
+    marginVertical: 10,
     padding: 15,
+
+    shadowColor: '#000000',
+    shadowOffset: {
+      height: 1,
+      width: 1,
+    },
+    shadowOpacity: 0.2,
+    shadowRadius: 2,
+  },
+  textInputView: {
+    flex: 1,
     width: '100%',
   },
   textStyle: {

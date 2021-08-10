@@ -8,7 +8,7 @@ type Props = {
 
 const ToggleSwitch: React.FC<Props> = ({ value, setValue }) => (
   <Switch onValueChange={setValue} value={value}
-    trackColor={{ true: '#474C55', false: '#B9B9BA' }} thumbColor={value ? '#F26925' : '#FCB414'} />
+    trackColor={{ true: '#B9B9BA', false: '#B9B9BA' }} thumbColor={value ? '#F26925' : '#B9B9BA'} />
 );
 
 export default ToggleSwitch;
