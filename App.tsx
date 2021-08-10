@@ -7,7 +7,6 @@ import { Provider } from 'react-redux';
 import { ThemeProvider } from 'styled-components';
 import { ToastProvider } from 'react-native-styled-toast';
 import Amplify from 'aws-amplify';
-import { NavigationContainer } from '@react-navigation/native'; // delete
 import useCachedResources from './src/hooks/useCachedResources';
 import useColorScheme from './src/hooks/useColorScheme';
 import Navigation from './src/navigation';

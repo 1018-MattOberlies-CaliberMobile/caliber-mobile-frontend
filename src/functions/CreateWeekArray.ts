@@ -13,6 +13,7 @@ export default function CreateWeekArray(start: string, end: string): string[] {
   dateSplit = end.split(/[- :T]/);
   const endDate = new Date(Number(dateSplit[0]), Number(dateSplit[1]) - 1, Number(dateSplit[2]));
   let weekNum = 1;
+
   if (startDate.toISOString() === endDate.toISOString()) {
     return [];
   }

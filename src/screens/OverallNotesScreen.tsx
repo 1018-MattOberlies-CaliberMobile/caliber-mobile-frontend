@@ -34,6 +34,7 @@ const OverallNotesScreen: React.FC<Props> = (props): JSX.Element => {
   const handleWeekSelector = (week: string): void => {
     dispatch(setWeek(week));
   };
+
   const handleSave = (): void => {
     console.log('>> saving info');
     console.log('>>> week: ', currentWeek);

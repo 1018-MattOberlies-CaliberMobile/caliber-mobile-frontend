@@ -27,7 +27,6 @@ export const SearchBar: React.FC<Props> = ({ batchData, setBatchList }): JSX.Ele
     for (let i = 0; i < batchData.length; i += 1) {
       if (batchData[i].batchTitle.toLowerCase().includes(search.toLowerCase())) {
         arr.push(batchData[i]);
-      // eslint-disable-next-line max-len
       } else if (batchData[i].trainers.find((trainer) => trainer.username.toLocaleLowerCase().includes(search.toLocaleLowerCase()))) {
         arr.push(batchData[i]);
       } else if (batchData[i].batchId === search) {
