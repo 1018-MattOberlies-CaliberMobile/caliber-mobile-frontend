@@ -13,7 +13,6 @@ const Drawer = createDrawerNavigator<HomeNavStackParamList>();
  */
 const HomeDrawerNavigator: React.FC<unknown> = (): JSX.Element => (
   <Drawer.Navigator screenOptions={{ headerShown: false }}>
-    {console.log('Home Nav')}
     <Drawer.Screen name="QualityAudit" component={QualityAuditNavigator} />
   </Drawer.Navigator>
 );

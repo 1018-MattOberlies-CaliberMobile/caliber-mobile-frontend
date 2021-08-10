@@ -8,34 +8,38 @@ import {
   Easing,
 } from 'react-native';
 import { TechnicalScore } from '../@types';
+import Associate from '../models/associate';
 import Note from '../models/note';
 import { styles1 } from '../styles/style1';
 import WeekNoteStyle from '../styles/WeekNotesStyle';
+import NoteInput from './NoteInput';
 import StatusSelector from './StatusSelector';
 
 type Props = {
   note: Note,
-  setStatus: React.Dispatch<React.SetStateAction<TechnicalScore>>,
-  status: TechnicalScore,
+  handleSave: (
+    associate: Associate | undefined, noteId: string | undefined,
+     noteContent: string, status: TechnicalScore) => void,
+  index: number,
 }
 
 const AssociateCard: React.FC<Props> = ({
-  note, children, setStatus, status,
+  note, children, handleSave, index,
 }) => {
   const [last, setLast] = useState<string>();
   const [first, setFirst] = useState<string>();
   const [open, setOpen] = useState(false);
   const animatedController = useRef(new Animated.Value(0)).current;
   const [bodySectionHeight, setBodySectionHeight] = useState<number>(0);
-  const [score, setScore] = useState<TechnicalScore>(note.technicalScore);
+  const [status, setStatus] = useState<TechnicalScore>(0);
 
   useEffect(() => {
     if (note.associate) {
-      console.log('note associate', note);
+      // console.log('note associate', note);
       const { firstName, lastName } = note.associate;
       setLast(lastName);
       setFirst(firstName);
-      setScore(note.technicalScore);
+      setStatus(note.technicalScore);
     }
   }, [note]);
 
@@ -68,7 +72,7 @@ const AssociateCard: React.FC<Props> = ({
       <TouchableWithoutFeedback onPress={(): unknown => toggleListItem()}>
         <View style={styles1.cardContainer}>
           <Text style={WeekNoteStyle.textFont}>{last}, {first}</Text>
-          <StatusSelector selected={Number(score) as TechnicalScore} onSelect={setScore}/>
+          <StatusSelector selected={Number(status) as TechnicalScore} onSelect={setStatus}/>
         </View>
       </TouchableWithoutFeedback>
       <Animated.View style={[styles1.cardBackground, { height: bodyHeight }]}>
@@ -76,7 +80,10 @@ const AssociateCard: React.FC<Props> = ({
           style={styles1.cardDropdownContainer}
           onLayout={(event) => setBodySectionHeight(event.nativeEvent.layout.height)
           }>
-          {children}
+          {/* {children} */}
+          <NoteInput note={note}
+            handleSave={handleSave} testIndex={index} status={status}
+          />
         </View>
       </Animated.View>
     </>

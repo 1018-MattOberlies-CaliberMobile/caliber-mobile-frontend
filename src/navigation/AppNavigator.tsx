@@ -12,7 +12,6 @@ const Stack = createStackNavigator<AppNavStackParamList>();
  */
 const AppNavigator: React.FC<unknown> = (): JSX.Element => (
   <Stack.Navigator screenOptions={{ headerShown: false }}>
-    {console.log('App Nav')}
     <Stack.Screen name="Login" component={LoginPage} />
     <Stack.Screen name="HomeDrawer" component={HomeDrawerNavigator} options={{ title: 'Oops!' }} />
   </Stack.Navigator>

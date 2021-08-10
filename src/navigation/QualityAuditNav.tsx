@@ -19,7 +19,6 @@ const QualityAuditNavigator: React.FC<unknown> = (): JSX.Element => (
       headerTitle: (props):React.ReactNode => <RevatureBanner {...props}/>,
       headerStyle: { height: 100 },
     }}>
-    {console.log('Quality Nav')}
     <Stack.Screen name="BatchSelection" component={BatchSelectionScreen} />
     <Stack.Screen name="NoteNavigation" component={NotesNavigator} />
   </Stack.Navigator>
