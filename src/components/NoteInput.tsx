@@ -21,7 +21,7 @@ const NoteInput: React.FC<Props> = ({
 }) => {
   useEffect(() => {
     setNoteContent(note.noteContent);
-  }, [note]);
+  }, []);
 
   return (
     <>

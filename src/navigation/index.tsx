@@ -12,13 +12,11 @@ import { ColorSchemeName } from 'react-native';
 
 import NotFoundScreen from '../screens/NotFoundScreen';
 import { RootStackParamList } from '../@types/types';
-import BottomTabNavigator from './NotesNavigator';
 import LinkingConfiguration from './LinkingConfiguration';
 import AppNavigator from './AppNavigator';
 
 const Stack = createStackNavigator<RootStackParamList>();
 function RootNavigator() {
-  console.log('root');
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen name="AppNavigator" component={AppNavigator} />
