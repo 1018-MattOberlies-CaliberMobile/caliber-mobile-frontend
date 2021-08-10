@@ -14,26 +14,30 @@ import WeekNoteStyle from '../styles/WeekNotesStyle';
 import StatusSelector from './StatusSelector';
 
 type Props = {
-  note: Note;
+  note: Note,
+  setStatus: React.Dispatch<React.SetStateAction<TechnicalScore>>,
+  status: TechnicalScore,
 }
 
-const AssociateCard: React.FC<Props> = ({ note, children }) => {
-  const { technicalScore } = note;
+const AssociateCard: React.FC<Props> = ({
+  note, children, setStatus, status,
+}) => {
   const [last, setLast] = useState<string>();
   const [first, setFirst] = useState<string>();
-
-  useEffect(() => {
-    if (note.associate) {
-      const { firstName, lastName } = note.associate;
-      setLast(lastName);
-      setFirst(firstName);
-    }
-  }, []);
-
   const [open, setOpen] = useState(false);
   const animatedController = useRef(new Animated.Value(0)).current;
   const [bodySectionHeight, setBodySectionHeight] = useState<number>(0);
-  const [score, setScore] = useState<TechnicalScore>(technicalScore);
+  const [score, setScore] = useState<TechnicalScore>(note.technicalScore);
+
+  useEffect(() => {
+    if (note.associate) {
+      console.log('note associate', note);
+      const { firstName, lastName } = note.associate;
+      setLast(lastName);
+      setFirst(firstName);
+      setScore(note.technicalScore);
+    }
+  }, [note]);
 
   const bodyHeight = animatedController.interpolate({
     inputRange: [0, 1],
@@ -64,7 +68,7 @@ const AssociateCard: React.FC<Props> = ({ note, children }) => {
       <TouchableWithoutFeedback onPress={(): unknown => toggleListItem()}>
         <View style={styles1.cardContainer}>
           <Text style={WeekNoteStyle.textFont}>{last}, {first}</Text>
-          <StatusSelector selected={score} onSelect={setScore}/>
+          <StatusSelector selected={Number(score) as TechnicalScore} onSelect={setScore}/>
         </View>
       </TouchableWithoutFeedback>
       <Animated.View style={[styles1.cardBackground, { height: bodyHeight }]}>

@@ -17,7 +17,7 @@ const QualityAuditNavigator: React.FC<unknown> = (): JSX.Element => (
     screenOptions={{
       headerShown: true,
       headerTitle: (props):React.ReactNode => <RevatureBanner {...props}/>,
-      headerStyle: { height: 150 },
+      headerStyle: { height: 100 },
     }}>
     {console.log('Quality Nav')}
     <Stack.Screen name="BatchSelection" component={BatchSelectionScreen} />
