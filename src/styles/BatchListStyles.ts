@@ -1,5 +1,4 @@
 import { StyleSheet } from 'react-native';
-import { theme } from './Theme';
 
 const BatchListStyles = StyleSheet.create({
   card: {
@@ -8,7 +7,6 @@ const BatchListStyles = StyleSheet.create({
     marginHorizontal: 7,
     marginVertical: 3,
     paddingVertical: 5,
-
   },
   cardTextTitle: {
     fontFamily: 'futura-bold',
