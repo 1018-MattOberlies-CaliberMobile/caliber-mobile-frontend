@@ -22,8 +22,7 @@ export const CreateOverallNote = (note: Note): void => {
     .catch((err) => { console.error('>> Error on save overall note.', err); });
 };
 
-export const createAssociateNote = (note: Note): void => {
-  BackendClient.post('note', note)
-    .then((res) => { console.log('>> Saved associate note', res); })
-    .catch((err) => { console.error('>> Error on save associate note.', err); });
+export const createAssociateNote = async (note: Note): Promise<void> => {
+  const res = await BackendClient.post('note', note);
+  console.log('>> Saved associate note', res);
 };
