@@ -4,7 +4,6 @@ import Batch from '../models/batch';
 import BatchCard from './BatchCard';
 import BatchListStyles from '../styles/BatchListStyles';
 
-
 type Props = {
   batches: Batch[],
   onPress: (batch: Batch) => void,
