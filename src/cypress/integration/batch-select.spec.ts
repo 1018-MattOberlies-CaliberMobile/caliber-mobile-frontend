@@ -2,18 +2,20 @@
 
 context('batch selection tests', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:19006/BatchSelection');
-    cy.intercept('/dev/api/v1/batch/year/*', { fixture: 'batchData2021.json' }).as('getBatches2021');
+    cy.intercept('/dev/api/v1/batch/year/2021', { fixture: 'batchData2021.json' }).as('getBatches2021');
     cy.intercept('/dev/api/v1/batch/year', { fixture: 'batchYears.json' }).as('years');
+    cy.visit('http://localhost:19006/BatchSelection');
   });
 
   context('year selection tests', () => {
     it('Before a year is selected, display batches for the current year', () => {
       cy.wait('@years');
+      cy.contains('2021').click();
       cy.wait('@getBatches2021');
       cy.contains('05132021 Cloud Native Matt').should('be.visible');
       cy.contains('04162020 DevOps Tim').should('not.exist');
     });
+
     it('Selecting a year shows a list of batches for that year', () => {
       cy.wait('@years');
       cy.wait('@getBatches2021');
@@ -46,16 +48,15 @@ context('batch selection tests', () => {
       cy.wait('@years');
       cy.wait('@getBatches2020');
 
-
       cy.get('[data-testid="search-bar"]').type('123123', { force: true });
       cy.contains('Search').click({ force: true });
       cy.contains('05132021 Cloud Native Matt').should('be.visible');
       cy.contains('05132021 Java Trevor').should('not.exist');
     });
+
     it('do a unsuccessful search test', () => {
       cy.wait('@years');
       cy.wait('@getBatches2020');
-
 
       cy.get('[data-testid="search-bar"]').type('fasdfasfd', { force: true });
       cy.contains('Search').click({ force: true });

@@ -10,8 +10,8 @@ type Props = {
 
 const BatchCard: React.FC<Props> = ({ batch, onPress }) => (
   <TouchableOpacity onPress={(): void => onPress(batch)} style={BatchListStyles.card}>
-    <Text style={BatchListStyles.cardText}>{batch.batchTitle} </Text>
-    <Text style={BatchListStyles.cardText}>Trainer:  {batch.trainers[0]?.username} </Text>
+    <Text style={BatchListStyles.cardTextTitle}>{batch.batchTitle} </Text>
+    <Text style={BatchListStyles.cardTextTrainer}>Trainer:  {batch.trainers[0]?.username} </Text>
   </TouchableOpacity>
 );
 
