@@ -82,7 +82,14 @@ This project is set up to use Jest for end-to-end tests. Create test files in di
 
 ## Usage
 
-> TODO: how to use the project.
+1. Log in with Revature credential.
+2. After you log in, you will be taken to the batch-selection screen like below. From there, you will select a batch that you want to add notes.
+    ![alt text](https://github.com/1018-MattOberlies-CaliberMobile/caliber-mobile-frontend/blob/main/assets/images/caliber1.png?raw=true)
+3. After the batch selection, you will be taken to the week-selection screen, where you can add QC notes for each associate. 
+    ![alt text](https://github.com/1018-MattOberlies-CaliberMobile/caliber-mobile-frontend/blob/main/assets/images/caliber2.png?raw=true)
+4. Once you are done, you can click on the tab navigator in the bottom of the screen to navigate to the overall-notes screen, where you can input overall note for the batch.
+    ![alt text](https://github.com/1018-MattOberlies-CaliberMobile/caliber-mobile-frontend/blob/main/assets/images/caliber3.png?raw=true)
+
 
 ## Detailed Installation/deployment instructions
 
