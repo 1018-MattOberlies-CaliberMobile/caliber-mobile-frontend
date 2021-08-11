@@ -46,7 +46,7 @@ const WeekNotesScreen: React.FC<Props> = ({ batchId }): JSX.Element => {
       console.log('Note to save: ', newNote);
       try {
         await createAssociateNote(newNote);
-        toast({ message: 'Successfuly saved note.', intent: 'INFO' });
+        toast({ message: 'Successfuly saved note.', intent: 'SUCCESS' });
       } catch (err) {
         console.log('>>>>>>>> ', err);
         toast({ message: 'Error saving note.', intent: 'ERROR' });
