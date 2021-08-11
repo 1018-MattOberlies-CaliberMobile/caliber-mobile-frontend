@@ -67,6 +67,7 @@ const BatchSelectionScreen: React.FC<Props> = (): JSX.Element => {
   const onSelectBatch = (batch: Batch): void => {
     // Assign redux state to be this batch
     dispatch(setBatch(JSON.stringify(batch)));
+    console.log(batch);
 
     // navigate to notes page
     navigation.navigate('NoteNavigation');

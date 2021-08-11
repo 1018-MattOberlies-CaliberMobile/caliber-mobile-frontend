@@ -18,7 +18,7 @@ type PressableStatusIconProps = {
 };
 
 export const StatusIcon: React.FC<StatusIconProps> = ({ status, size, style }): JSX.Element => {
-  switch (status) {
+  switch (parseInt(status, 10)) {
   case 1:
     return <Entypo name="emoji-sad" size={size || 25} color="red" />;
   case 2:
