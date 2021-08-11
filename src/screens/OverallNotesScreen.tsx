@@ -9,10 +9,9 @@ import { FontAwesome } from '@expo/vector-icons';
 import { TechnicalScore } from '../@types';
 import HorizontalSelector from '../components/HorizontalSelector';
 import StatusSelector from '../components/StatusSelector';
-import Batch from '../models/batch';
 import Note from '../models/note';
 import { useAppSelector } from '../redux';
-import { selectBatch, setBatch } from '../redux/slices/batch.slice';
+import { selectBatch } from '../redux/slices/batch.slice';
 import { selectWeek, setWeek } from '../redux/slices/week.slice';
 import { CreateOverallNote } from '../remote/CaliberNoteAPI';
 import { pageStyles } from '../styles/WeekNotes';
@@ -50,7 +49,6 @@ const OverallNotesScreen: React.FC<Props> = (props): JSX.Element => {
     console.log(newNote);
     CreateOverallNote(newNote);
   };
-
   useEffect(() => {
     if (batch) {
       // console.log('>> batch was updated');
