@@ -39,7 +39,7 @@ const WeekNotesScreen: React.FC<Props> = ({ batchId }): JSX.Element => {
         noteId,
         batchId: batch.batchId,
         noteContent,
-        technicalScore: status,
+        technicalScore: parseInt(status, 10),
         weekNumber: weekNum + 1,
         associate,
       };
@@ -48,7 +48,7 @@ const WeekNotesScreen: React.FC<Props> = ({ batchId }): JSX.Element => {
         await createAssociateNote(newNote);
         toast({ message: 'Successfuly saved note.', intent: 'INFO' });
       } catch (err) {
-        console.log('>> ', err);
+        console.log('>>>>>>>> ', err);
         toast({ message: 'Error saving note.', intent: 'ERROR' });
       }
     }

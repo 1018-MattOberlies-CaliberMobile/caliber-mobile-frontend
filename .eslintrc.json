@@ -40,7 +40,7 @@
     "rules": {
         "no-use-before-define": "off",
         "no-useless-constructor": "off",
-        "no-console": "off",
+        "no-console": "warn",
         "indent": [
             "error",
             2

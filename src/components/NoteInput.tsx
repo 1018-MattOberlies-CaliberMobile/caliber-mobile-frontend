@@ -5,6 +5,8 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import { TechnicalScore } from '../@types';
 import Associate from '../models/associate';
 import Note from '../models/note';
+import { useAppSelector } from '../redux';
+import { selectUser } from '../redux/slices/user.slice';
 import { styles1 } from '../styles/style1';
 import { theme } from '../styles/Theme';
 import WeekNoteStyle from '../styles/WeekNotesStyle';
@@ -22,6 +24,7 @@ const NoteInput: React.FC<Props> = ({
   note, handleSave, testIndex, status,
 }) => {
   const [noteContent, setNoteContent] = useState<string>('');
+  const user = useAppSelector(selectUser);
   useEffect(() => {
     setNoteContent(note.noteContent);
   }, [note]);
@@ -32,7 +35,7 @@ const NoteInput: React.FC<Props> = ({
       // eslint-disable-next-line react-native/no-inline-styles
         style={styles1.textBox} testID={`noteInput${testIndex}`}>
         <TextInput
-          editable
+          editable={!(user?.role === 'Trainer')}
           maxLength={400}
           multiline
           numberOfLines={8}
@@ -43,12 +46,17 @@ const NoteInput: React.FC<Props> = ({
           style={[{ padding: 10 }, WeekNoteStyle.textFont]} // possibly change to something else
         />
       </View>
-      <View style={styles1.saveContainer}>
-        <TouchableOpacity testID={`noteSave${testIndex}`} onPress={(): void => handleSave(note.associate, note.noteId, noteContent, status)} style={styles1.noteButton}>
-          <FontAwesome name="save" size={24} color={theme.colors.text} />
-          <Text style={styles1.textInputSave}>Save</Text>
-        </TouchableOpacity>
-      </View>
+
+      {
+        !(user?.role === 'Trainer') && (
+          <View style={styles1.saveContainer}>
+            <TouchableOpacity testID={`noteSave${testIndex}`} onPress={(): void => handleSave(note.associate, note.noteId, noteContent, status)} style={styles1.noteButton}>
+              <FontAwesome name="save" size={24} color={theme.colors.text} />
+              <Text style={styles1.textInputSave}>Save</Text>
+            </TouchableOpacity>
+          </View>
+        )
+      }
     </>
   );
 };
