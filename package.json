@@ -6,7 +6,7 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "eject": "expo eject",
-    "test": "npx jest",
+    "test": "npx jest --coverage",
     "test:file": "npx jest --",
     "cy": "cd src && npx cypress open"
   },
