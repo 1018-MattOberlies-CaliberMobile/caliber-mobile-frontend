@@ -31,10 +31,9 @@ export const getNoteByBatchIdAndWeekOverall = async (
   return null;
 };
 
-export const CreateOverallNote = async (note: Note): void => {
-  BackendClient.post('note', note)
-    .then((res) => { console.log('>> Saved overall note', res); })
-    .catch((err) => { console.error('>> Error on save overall note.', err); });
+export const CreateOverallNote = async (note: Note): Promise<void> => {
+  const res = await BackendClient.post('note', note);
+  console.log('>> Saved associate note', res);
 };
 
 export const createAssociateNote = async (note: Note): Promise<void> => {

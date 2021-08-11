@@ -6,6 +6,7 @@ import {
 } from 'react-native';
 import { useDispatch } from 'react-redux';
 import { FontAwesome } from '@expo/vector-icons';
+import { useToast } from 'react-native-styled-toast';
 import { TechnicalScore } from '../@types';
 import HorizontalSelector from '../components/HorizontalSelector';
 import StatusSelector from '../components/StatusSelector';
@@ -19,7 +20,6 @@ import createWeekArray from '../functions/CreateWeekArray';
 import HorizontalSelectorStyle from '../styles/HorizontalSelector';
 import BackendClient from '../remote/CaliberBackendClient';
 import { selectUser } from '../redux/slices/user.slice';
-import { useToast } from 'react-native-styled-toast';
 
 type Props = {
 
@@ -41,7 +41,7 @@ const OverallNotesScreen: React.FC<Props> = (props): JSX.Element => {
   const { toast } = useToast();
   const user = useAppSelector(selectUser);
 
-  const handleSave = (): void => {
+  const handleSave = async (): Promise<void> => {
     // console.log('>> saving info');
     // console.log('>>> week: ', currentWeek);
     // console.log('>>> technical score: ', technicalScore);
@@ -55,7 +55,12 @@ const OverallNotesScreen: React.FC<Props> = (props): JSX.Element => {
     } as Note;
 
     console.log(newNote);
-    CreateOverallNote(newNote);
+    try {
+      await CreateOverallNote(newNote);
+      toast({ message: 'Saved note', intent: 'SUCCESS' });
+    } catch (err) {
+      toast({ message: 'Failed to save note', intent: 'ERROR' });
+    }
   };
   useEffect(() => {
     if (batch) {
